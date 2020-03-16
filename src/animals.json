@@ -1,0 +1,128 @@
+[
+{
+    "model": "animals.animal",
+    "pk": 1,
+    "fields": {
+        "name": "Boris",
+        "desctription": "Cheeky little schnauzer. Loves belly rubs.",
+        "animal_type": "dog",
+        "breed": "schnauzer",
+        "age": "elderly",
+        "size": "medium",
+        "gender": "male",
+        "shelter_id": 1
+    }
+},
+{
+    "model": "animals.animal",
+    "pk": 2,
+    "fields": {
+        "name": "Clarence",
+        "desctription": "Poodle with sass. Does bite. Super ugly. Sheds a lot.",
+        "animal_type": "dog",
+        "breed": "Shitzhu",
+        "age": "mid-life",
+        "size": "small",
+        "gender": "Female",
+        "shelter_id": 1
+    }
+},
+{
+    "model": "animals.animal",
+    "pk": 3,
+    "fields": {
+        "name": "Dream Berry",
+        "desctription": "Loveable stray we took in. She seems obsessed with the tv remote.",
+        "animal_type": "dog",
+        "breed": "pit bull",
+        "age": "puppy",
+        "size": "medium",
+        "gender": "Female",
+        "shelter_id": 1
+    }
+},
+{
+    "model": "animals.animal",
+    "pk": 4,
+    "fields": {
+        "name": "Carlo",
+        "desctription": "Fantistic hunting dog. Great nose. Hates bread.",
+        "animal_type": "dog",
+        "breed": "German Sheppard",
+        "age": "Teenager",
+        "size": "big",
+        "gender": "male",
+        "shelter_id": 2
+    }
+},
+{
+    "model": "animals.animal",
+    "pk": 5,
+    "fields": {
+        "name": "Marshmallow",
+        "desctription": "Fuzzy wuzzy itty bitty kitten",
+        "animal_type": "cat",
+        "breed": "Siamese",
+        "age": "kitten",
+        "size": "small",
+        "gender": "Male",
+        "shelter_id": 2
+    }
+},
+{
+    "model": "animals.animal",
+    "pk": 6,
+    "fields": {
+        "name": "Chapstick",
+        "desctription": "super moist lips",
+        "animal_type": "cat",
+        "breed": "Tabby",
+        "age": "elderly",
+        "size": "small",
+        "gender": "Female",
+        "shelter_id": 2
+    }
+},
+{
+    "model": "animals.animal",
+    "pk": 7,
+    "fields": {
+        "name": "The Duchess",
+        "desctription": "Queen-like. Many enemies in the community. Not to be trusted with any amount of money.",
+        "animal_type": "Rabbit",
+        "breed": "Jackrabbit",
+        "age": "unknown",
+        "size": "big",
+        "gender": "Female",
+        "shelter_id": 3
+    }
+},
+{
+    "model": "animals.animal",
+    "pk": 8,
+    "fields": {
+        "name": "Bobby Christo",
+        "desctription": "Absolutely no ability to see or hear. Can play the piano beautifully.",
+        "animal_type": "Lizard",
+        "breed": "Bearded Dragon",
+        "age": "4",
+        "size": "small",
+        "gender": "male",
+        "shelter_id": 3
+    }
+},
+{
+    "model": "animals.animal",
+    "pk": 9,
+    "fields": {
+        "name": "Ubiquitous",
+        "desctription": "Keeps escaping her cage. Somehow appears in a new place every time.",
+        "animal_type": "Bird",
+        "breed": "Parrot",
+        "age": "14",
+        "size": "small",
+        "gender": "Female",
+        "shelter_id": 3
+    }
+}
+]

@@ -7,15 +7,18 @@ import '../styles/Navbar.scss';
 class Navbar extends Component {
   render() {
     return (
-    <nav className="navbar">
-
-        <Link to='/' className="navbar-name">Pawdopt</Link>
-        <div className="navbar-items">
-          <Link to='/about' className="navbar-about">about</Link>
-          <LoggedOut/>
-      </div>
-    </nav>
-    )
+      <nav className='navbar'>
+        <Link to='/' className='navbar-name'>
+          Pawdopt
+        </Link>
+        <div className='navbar-items'>
+          <Link to='/about' className='navbar-about'>
+            about
+          </Link>
+          <LoggedOut />
+        </div>
+      </nav>
+    );
   }
 }
 

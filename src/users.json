@@ -1,0 +1,50 @@
+[
+{
+    "model": "users.user",
+    "pk": 1,
+    "fields": {
+        "first_name": "max",
+        "last_name": "rosenthal",
+        "email": "s@s.com",
+        "password": ";laskjdf;alkjdf;a",
+        "photo_url": null,
+        "bio": ""
+    }
+},
+{
+    "model": "users.user",
+    "pk": 2,
+    "fields": {
+        "first_name": "Cassidy",
+        "last_name": "Quaite",
+        "email": "test@test.com",
+        "password": "12345",
+        "photo_url": null,
+        "bio": ""
+    }
+},
+{
+    "model": "users.user",
+    "pk": 3,
+    "fields": {
+        "first_name": "Shirley",
+        "last_name": "Temple",
+        "email": "movieStar@glamour.com",
+        "password": "action",
+        "photo_url": null,
+        "bio": ""
+    }
+},
+{
+    "model": "users.user",
+    "pk": 4,
+    "fields": {
+        "first_name": "LaBrista",
+        "last_name": "Stub",
+        "email": "7times5@35.com",
+        "password": "jerry",
+        "photo_url": null,
+        "bio": ""
+    }
+}
+]

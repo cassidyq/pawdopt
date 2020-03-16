@@ -1,0 +1,38 @@
+[
+{
+    "model": "applications.application",
+    "pk": 1,
+    "fields": {
+        "user_id": 1,
+        "animal_id": 1,
+        "info": "I would like to apply for Boris. He is the beet to my borscht."
+    }
+},
+{
+    "model": "applications.application",
+    "pk": 2,
+    "fields": {
+        "user_id": 4,
+        "animal_id": 5,
+        "info": "Please, oh please, pick me!"
+    }
+},
+{
+    "model": "applications.application",
+    "pk": 3,
+    "fields": {
+        "user_id": 4,
+        "animal_id": 8,
+        "info": "This one will go great on my wall!"
+    }
+},
+{
+    "model": "applications.application",
+    "pk": 4,
+    "fields": {
+        "user_id": 3,
+        "animal_id": 2,
+        "info": "My boy would love a dog."
+    }
+}
+]
