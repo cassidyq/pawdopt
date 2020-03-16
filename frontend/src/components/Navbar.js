@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
-import '../styles/Navbar.css';
+import { Link } from 'react-router-dom';
+import '../styles/Navbar.scss';
 
 class Navbar extends Component {
   render() {
-    return <div className='navbar'>Navbar</div>;
+    return (
+    <nav className="navbar">
+      <div>
+        <Link to='/' className="navbar-name">Pawdopt</Link>
+      </div>
+    </nav>
+    )
   }
 }
 

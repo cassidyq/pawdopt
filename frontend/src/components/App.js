@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
-import '../styles/App.css';
+import { BrowserRouter } from 'react-router-dom';
 import Navbar from './Navbar';
 
 class App extends Component {
@@ -44,7 +43,7 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <BrowserRouter>
         <Navbar />
         {this.state.users.map(item => (
           <div key={item.id}>
@@ -54,7 +53,7 @@ class App extends Component {
             <h1>{item.password}</h1>
           </div>
         ))}
-      </div>
+      </BrowserRouter>
     );
   }
 }
