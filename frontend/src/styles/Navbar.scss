@@ -1,6 +1,61 @@
 .navbar {
-  background-color: grey;
+  background-color: #24252A;
   width: 100%;
   height: 3.5rem;
-  font-size: 3rem;
+  top: 0;
+  z-index: 999;
+  display: flex;
+
+  .navbar-items {
+    @extend .navbar;
+    font-size: 1.25rem;
+    justify-content: flex-end;
+    align-items: center;
+    color: #edf0f1;
+  }
+
+  .navbar-name {
+    @extend .set-default-text;
+    @extend .navbar;
+    font-size: 2.5rem;
+    align-items: center;
+    margin-left: 1rem;
+  }
+
+  .navbar-about {
+    @extend .set-default-text;
+    margin-left: 1rem;
+    margin-right:1rem;
+  }
+  .navbar-login {
+    @extend .set-default-text;
+    margin-left: .5rem;
+    margin-right:.5rem;
+
+  }
+
+  .navbar-register {
+    @extend .set-default-text;
+    margin-left: .5rem;
+    margin-right:1rem;
+  }
+
+
+  .navbar-name:hover {
+    color: #60d7f5;
+  }
+
+  .navbar-about:hover {
+    color: #60d7f5;;
+  }
+  .navbar-login:hover {
+    color: #60d7f5;
+  }
+
 };
+
+
+.set-default-text {
+  color: #edf0f1;
+  text-decoration: inherit;
+}
