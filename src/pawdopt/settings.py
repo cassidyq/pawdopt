@@ -44,6 +44,8 @@ INSTALLED_APPS = [
 
     #custom
     'users',
+    'shelters',
+    'animals',
 ]
 
 MIDDLEWARE = [
