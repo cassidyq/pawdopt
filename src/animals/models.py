@@ -1,4 +1,6 @@
 from django.db import models
+from shelters.models import Shelter
+
 
 # Create your models here.
 class Animal(models.Model):
@@ -9,4 +11,4 @@ class Animal(models.Model):
   age = models.CharField(max_length=100)
   size = models.CharField(max_length=100)
   gender = models.CharField(max_length=100)
-  # shelter_id = models.ForeignKey(Shelter, on_delete=models.CASCADE)
+  shelter_id = models.ForeignKey(Shelter, on_delete=models.CASCADE)

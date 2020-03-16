@@ -14,5 +14,6 @@ class AnimalSerializer(serializers.ModelSerializer):
             'age',
             'size',
             'gender',
+            'shelter_id',
         )
         model = Animal
