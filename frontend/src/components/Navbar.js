@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import LoggedIn from './LoggedIn';
 import LoggedOut from './LoggedOut';
+import About from './About';
 import '../styles/Navbar.scss';
 
 class Navbar extends Component {
@@ -12,7 +13,7 @@ class Navbar extends Component {
         <Link to='/' className="navbar-name">Pawdopt</Link>
         <div className="navbar-items">
           <Link to='/about' className="navbar-about">about</Link>
-          <LoggedOut/>
+          <Route component={LoggedOut}/>
       </div>
     </nav>
     )
