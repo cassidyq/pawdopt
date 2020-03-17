@@ -12,3 +12,6 @@ class Animal(models.Model):
   size = models.CharField(max_length=100)
   gender = models.CharField(max_length=100)
   shelter_id = models.ForeignKey(Shelter, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return self.name
