@@ -9,12 +9,11 @@ class Navbar extends Component {
   render() {
     return (
     <nav className="navbar">
-
         <Link to='/' className="navbar-name">Pawdopt</Link>
-        <div className="navbar-items">
+        <span className="navbar-items">
           <Link to='/about' className="navbar-about">about</Link>
           <Route component={LoggedOut}/>
-      </div>
+      </span>
     </nav>
     )
   }

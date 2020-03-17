@@ -3,8 +3,8 @@
   width: 100%;
   height: 3.5rem;
   top: 0;
-  z-index: 999;
   display: flex;
+  position: fixed;
 
   .navbar-items {
     @extend .navbar;
@@ -20,6 +20,9 @@
     font-size: 2.5rem;
     align-items: center;
     margin-left: 1rem;
+    width: 50%;
+    z-index: 1000;
+    
   }
 
   .navbar-about {
