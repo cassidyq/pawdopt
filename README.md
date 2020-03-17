@@ -50,6 +50,16 @@ create a super user to acces the admin dashboard.
 python manage.py createsuperuser
 ```
 
+## Seed Database With Fake Data
+
+We used elephantSQL to keep our database online. If for some reason that data gets deleted, change into the directory with manage.py and run this command to reload the fake data.
+
+```
+python manage.py loaddata db/fixtures.json
+```
+
+You can also add more data to this list. Find the approriate model and be sure to incriment the pk field by 1. Data added normally will auto incriment pk.
+
 ## Running The Server
 
 run this to start the server.
