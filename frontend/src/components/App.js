@@ -1,58 +1,23 @@
 import React, { Component } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import Navbar from './Navbar';
+import Home from './Home';
+import About from './About';
+import Login from './Login';
+import Register from './Register';
+
+
 
 class App extends Component {
-  state = {
-    users: []
-  };
-
-  // function App() {
-  //   return (
-  //     <div className='App'>
-  //       <header className='App-header'>
-  //         <img src={logo} className='App-logo' alt='logo' />
-  //         <p>
-  //           Edit <code>src/App.js</code> and save to reload.
-  //         </p>
-  //         <a
-  //           className='App-link'
-  //           href='https://reactjs.org'
-  //           target='_blank'
-  //           rel='noopener noreferrer'
-  //         >
-  //           Learn React
-  //         </a>
-  //       </header>
-  //     </div>
-  //   );
-  // }
-
-  async componentDidMount() {
-    try {
-      const res = await fetch('http://127.0.0.1:8000/api/users'); // fetching the data from api, before the page loaded
-      const users = await res.json();
-      console.log('testing');
-      this.setState({
-        users
-      });
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
+  
   render() {
     return (
       <BrowserRouter>
         <Navbar />
-        {this.state.users.map(item => (
-          <div key={item.id}>
-            <h1>{item.first_name}</h1>
-            <h1>{item.last_name}</h1>
-            <h1>{item.email}</h1>
-            <h1>{item.password}</h1>
-          </div>
-        ))}
+        <Route exact path ="/" component={Home}/>
+        <Route exact path ="/about" component={About}/>
+        <Route exact path ="/login" component={Login}/>
+        <Route exact path ="/register" component={Register}/>
       </BrowserRouter>
     );
   }
