@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/base-padding.scss';
 import '../styles/Animals.scss';
-// import { Grid, Image } from 'semantic-ui-react';
+import { Grid, Image } from 'semantic-ui-react';
 
 export default function Animals(props) {
 
@@ -16,14 +16,14 @@ export default function Animals(props) {
   */
 
   return (
-    <div className="ui grid">
-    {filterRecent.map(item => (
-      <div className="four wide column"key={item.id}>
-        <div className="ui segment">
-          <img className="animal-img"src='https://www.traditionsvetcenters.com/sites/default/files/styles/large/adaptive-image/public/miniature-schnauzer-dog-breed-infp.jpg?itok=BUA05j1p'/> <br/>
-          {item.name} <br/>
-          {item.breed} <br/>
-          {item.age} <br/>
+    <div className="container">
+    {filterRecent.map(animal => (
+      <div className="row" key={animal.id}>
+        <div>
+          <img className="carousel slide"src='https://www.traditionsvetcenters.com/sites/default/files/styles/large/adaptive-image/public/miniature-schnauzer-dog-breed-infp.jpg?itok=BUA05j1p'/> <br/>
+          {animal.name} <br/>
+          {animal.breed} <br/>
+          {animal.age} <br/>
           </div>
       </div>
     )).reverse()}
@@ -32,3 +32,16 @@ export default function Animals(props) {
 
 }
 
+
+
+// {filterRecent.map(animal => (
+//   <div className="four wide col" key={animal.id}>
+//     <div className="ui segment">
+//       <img className="animal-img"src='https://www.traditionsvetcenters.com/sites/default/files/styles/large/adaptive-image/public/miniature-schnauzer-dog-breed-infp.jpg?itok=BUA05j1p'/> <br/>
+//       {animal.name} <br/>
+//       {animal.breed} <br/>
+//       {animal.age} <br/>
+//       </div>
+//   </div>
+// )).reverse()}
+//   </Grid>
