@@ -12,6 +12,10 @@ class Home extends Component {
     try {
       const res = await fetch('http://127.0.0.1:8000/api/animals'); // fetching the data from api, before the page loaded
       const animals = await res.json();
+<<<<<<< HEAD
+=======
+      console.log('testing');
+>>>>>>> feature/login-page
       this.setState({
         animals
       });
@@ -22,11 +26,14 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        Welcome to Pawdopt!
-        <h1>Recent: </h1>
-        <Animals animals={this.state.animals} />
-      </div>
+      <body>
+        <p>Welcome to Pawdopt!</p>
+        {this.state.animals.map(item => (
+          <div key={item.id}>
+            <h1>{item.name}</h1>
+          </div>
+        ))}
+      </body>
     );
   }
 }
