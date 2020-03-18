@@ -12,10 +12,7 @@ class Home extends Component {
     try {
       const res = await fetch('http://127.0.0.1:8000/api/animals'); // fetching the data from api, before the page loaded
       const animals = await res.json();
-<<<<<<< HEAD
-=======
       console.log('testing');
->>>>>>> feature/login-page
       this.setState({
         animals
       });
