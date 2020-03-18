@@ -9,6 +9,7 @@ class AnimalSerializer(serializers.ModelSerializer):
             'id',
             'name',
             'desctription',
+            'photo_url',
             'animal_type',
             'breed',
             'age',
