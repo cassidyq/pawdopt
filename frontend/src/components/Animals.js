@@ -16,32 +16,33 @@ export default function Animals(props) {
   */
 
   return (
-    <div className="container">
-    {filterRecent.map(animal => (
-      <div className="row" key={animal.id}>
-        <div>
-          <img className="carousel slide"src='https://www.traditionsvetcenters.com/sites/default/files/styles/large/adaptive-image/public/miniature-schnauzer-dog-breed-infp.jpg?itok=BUA05j1p'/> <br/>
-          {animal.name} <br/>
-          {animal.breed} <br/>
-          {animal.age} <br/>
-          </div>
+    <Grid>
+{filterRecent.map(animal => (
+  <div className="four wide col" key={animal.id}>
+    <div className="ui segment">
+      <img className="animal-img" src={animal.photo_url}/> <br/>
+      {animal.name} <br/>
+      {animal.breed} <br/>
+      {animal.age} <br/>
       </div>
-    )).reverse()}
-      </div>
+  </div>
+)).reverse()}
+  </Grid>
     )
 
 }
 
 
 
+{/* <img className="animal-img"src='https://www.traditionsvetcenters.com/sites/default/files/styles/large/adaptive-image/public/miniature-schnauzer-dog-breed-infp.jpg?itok=BUA05j1p'/> <br/> */}
+
 // {filterRecent.map(animal => (
-//   <div className="four wide col" key={animal.id}>
-//     <div className="ui segment">
-//       <img className="animal-img"src='https://www.traditionsvetcenters.com/sites/default/files/styles/large/adaptive-image/public/miniature-schnauzer-dog-breed-infp.jpg?itok=BUA05j1p'/> <br/>
+//   <div className="row" key={animal.id}>
+//     <div>
+//       {animal.photo_url} <br/>
 //       {animal.name} <br/>
 //       {animal.breed} <br/>
 //       {animal.age} <br/>
 //       </div>
 //   </div>
 // )).reverse()}
-//   </Grid>
