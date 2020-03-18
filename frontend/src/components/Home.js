@@ -1,18 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import '../styles/base-padding.scss';
+
+import Animals from './Animals';
 
 class Home extends Component {
   state = {
-    adopters: []
+    animals: []
   };
 
   async componentDidMount() {
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/adopters'); // fetching the data from api, before the page loaded
-      const adopters = await res.json();
-      console.log('testing');
+      const res = await fetch('http://127.0.0.1:8000/api/animals'); // fetching the data from api, before the page loaded
+      const animals = await res.json();
       this.setState({
-        adopters
+        animals
       });
     } catch (e) {
       console.log(e);
@@ -21,14 +22,11 @@ class Home extends Component {
 
   render() {
     return (
-      <body>
-        <p>Welcome to Pawdopt!</p>
-        {this.state.adopters.map(item => (
-          <div key={item.id}>
-            <h1>{item.name}</h1>
-          </div>
-        ))}
-      </body>
+      <div>
+        Welcome to Pawdopt!
+        <h1>Recent: </h1>
+        <Animals animals={this.state.animals} />
+      </div>
     );
   }
 }

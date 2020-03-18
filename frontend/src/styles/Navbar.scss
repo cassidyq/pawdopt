@@ -1,10 +1,19 @@
 .navbar {
   background-color: #24252A;
   width: 100%;
-  height: 3.5rem;
+  height: 4rem;
   top: 0;
   display: flex;
   position: fixed;
+  font-family: 'Fredoka One', cursive;
+
+  .navbar-logo {
+    z-index: 1000;
+    align-items: center;
+    margin-left: 1rem;
+    z-index: 1000;
+    height: 50%;
+  }
 
   .navbar-items {
     @extend .navbar;
@@ -15,13 +24,10 @@
   }
 
   .navbar-name {
-    @extend .set-default-text;
+
     @extend .navbar;
     font-size: 2.5rem;
-    align-items: center;
-    margin-left: 1rem;
-    width: 50%;
-    z-index: 1000;
+
     
   }
 
@@ -45,17 +51,19 @@
 
 
   .navbar-name:hover {
-    color: #60d7f5;
+    color: #95dff3;
   }
 
   .navbar-about:hover {
-    color: #60d7f5;;
+    color: #95dff3;;
   }
   .navbar-login:hover {
-    color: #60d7f5;
+    color: #95dff3;
   }
 
 };
+
+
 
 
 .set-default-text {
