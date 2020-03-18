@@ -1,6 +1,6 @@
 # users/serializers.py
 from rest_framework import serializers
-from .models import User
+from .models import User, SavedSearch, Favourite
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -15,3 +15,23 @@ class UserSerializer(serializers.ModelSerializer):
             'bio',
         )
         model = User
+
+class SavedSearchSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = (
+            'id',
+            'user_id',
+            'query_params',
+            'name',
+        )
+        model = SavedSearch
+
+class FavouriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = (
+            'id',
+            'user_id',
+            'animal_id',
+            'name',
+        )
+        model = Favourite

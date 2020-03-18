@@ -5,6 +5,7 @@ import Home from './Home';
 import About from './About';
 import Login from './Login';
 import Register from './Register';
+import Shelter from './Shelter';
 
 
 
@@ -18,6 +19,7 @@ class App extends Component {
         <Route exact path ="/about" component={About}/>
         <Route exact path ="/login" component={Login}/>
         <Route exact path ="/register" component={Register}/>
+        <Route exact path ="/shelter" component={Shelter}/>
       </BrowserRouter>
     );
   }
