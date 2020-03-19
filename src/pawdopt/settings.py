@@ -41,12 +41,14 @@ INSTALLED_APPS = [
     #for connecting django back end to react front end
     'rest_framework',
     'corsheaders',
+    'rest_framework.authtoken',  # <-- Here
+    'knox',
 
     #custom
-    'users',
     'shelters',
     'animals',
     'applications',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -88,9 +90,9 @@ WSGI_APPLICATION = 'pawdopt.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'itqchujl',
-        'USER': 'itqchujl',
-        'PASSWORD': 'bVvoOBLJKtLj8QP0sg9Id-ow6IqJdlUz',
+        'NAME': 'vaiegxam',
+        'USER': 'vaiegxam',
+        'PASSWORD': 'GjvVqQU0FyDpPw169-QTc5u0pXnn3WZA',
         'HOST': 'drona.db.elephantsql.com',
         'PORT': '5432'
     }
@@ -136,9 +138,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ]
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'knox.auth.TokenAuthentication',
+        'rest_framework.authentication.TokenAuthentication',  # <-- And here
+    ],
 }
 
 CORS_ORIGIN_WHITELIST = [
