@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'corsheaders',
 
     #custom
-    'users',
     'shelters',
     'animals',
     'applications',
@@ -88,9 +87,9 @@ WSGI_APPLICATION = 'pawdopt.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'itqchujl',
-        'USER': 'itqchujl',
-        'PASSWORD': 'bVvoOBLJKtLj8QP0sg9Id-ow6IqJdlUz',
+        'NAME': 'vaiegxam',
+        'USER': 'vaiegxam',
+        'PASSWORD': 'GjvVqQU0FyDpPw169-QTc5u0pXnn3WZA',
         'HOST': 'drona.db.elephantsql.com',
         'PORT': '5432'
     }

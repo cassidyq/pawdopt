@@ -18,12 +18,13 @@ from django.urls import include, path
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/users', include('users.urls')),
+    # path('api/users', include('users.urls')),
     path('api/shelters', include('shelters.urls')),
     path('api/animals', include('animals.urls')),
     path('api/applications', include('applications.urls')),
+    path('api/login', include('applications.urls')),
+
     # path('api/users/saved-searches', include('users.urls')),
     # path('api/users/favourites', include('users.urls')),
-
 
 ]
