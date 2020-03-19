@@ -41,11 +41,14 @@ INSTALLED_APPS = [
     #for connecting django back end to react front end
     'rest_framework',
     'corsheaders',
+    'rest_framework.authtoken',  # <-- Here
+    'knox',
 
     #custom
     'shelters',
     'animals',
     'applications',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -135,9 +138,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 REST_FRAMEWORK = {
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
-    ]
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',
+        'knox.auth.TokenAuthentication',
+        'rest_framework.authentication.TokenAuthentication',  # <-- And here
+    ],
 }
 
 CORS_ORIGIN_WHITELIST = [
