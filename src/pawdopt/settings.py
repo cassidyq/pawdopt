@@ -90,9 +90,9 @@ WSGI_APPLICATION = 'pawdopt.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'vaiegxam',
-        'USER': 'vaiegxam',
-        'PASSWORD': 'GjvVqQU0FyDpPw169-QTc5u0pXnn3WZA',
+        'NAME': 'cryjlree',
+        'USER': 'cryjlree',
+        'PASSWORD': 'kfnpGaAe4bmY5Xj9eIWI9TsG5a-SYJUq',
         'HOST': 'drona.db.elephantsql.com',
         'PORT': '5432'
     }
