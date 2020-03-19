@@ -1,14 +1,16 @@
 # todos/serializers.py
 from rest_framework import serializers
 from .models import Animal
+from applications.serializers import ApplicationSerializer
 
 
 class AnimalSerializer(serializers.ModelSerializer):
+    applications = ApplicationSerializer(many=True)
     class Meta:
         fields = (
             'id',
             'name',
-            'desctription',
+            'description',
             'photo_url',
             'animal_type',
             'breed',
@@ -16,5 +18,6 @@ class AnimalSerializer(serializers.ModelSerializer):
             'size',
             'gender',
             'shelter_id',
+            'applications',
         )
         model = Animal

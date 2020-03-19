@@ -1,10 +1,13 @@
 # shelters/serializers.py
 from rest_framework import serializers
 from .models import Shelter
+from animals.serializers import AnimalSerializer
 
 
 class ShelterSerializer(serializers.ModelSerializer):
+    animals = AnimalSerializer(many=True)
     class Meta:
+        model = Shelter
         fields = (
             'id',
             'name',
@@ -18,5 +21,6 @@ class ShelterSerializer(serializers.ModelSerializer):
             'city',
             'street',
             'postal_code',
+            'animals',
         )
-        model = Shelter
+        

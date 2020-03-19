@@ -15,15 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from rest_framework.authtoken.views import obtain_auth_token  # <-- Here
 
 urlpatterns = [
+    path('api-token-auth/', obtain_auth_token, name='api_token_auth'),  # <-- And here
     path('admin/', admin.site.urls),
-    path('api/users', include('users.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
     path('api/shelters', include('shelters.urls')),
     path('api/animals', include('animals.urls')),
     path('api/applications', include('applications.urls')),
+    path('api/login', include('applications.urls')),
+    path('', include('accounts.urls'))
+
     # path('api/users/saved-searches', include('users.urls')),
     # path('api/users/favourites', include('users.urls')),
-
 
 ]

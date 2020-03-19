@@ -1,10 +1,62 @@
 [
   {
+    "model": "shelters.shelter",
+    "pk": 1,
+    "fields": {
+      "name": "SPCA",
+      "email": "spca@test.com",
+      "password": "123456",
+      "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584574444/Pawdopt/spca_400x400_gkpi52.png",
+      "description": "",
+      "website": "www.spca.com",
+      "country": "Canada",
+      "province": "BC",
+      "city": "Victoria",
+      "street": "3150 Napier Ln",
+      "postal_code": "V8T 4V5"
+    }
+  },
+  {
+    "model": "shelters.shelter",
+    "pk": 2,
+    "fields": {
+      "name": "King James Sanctuary for Animals",
+      "email": "kingjames@shelter.com",
+      "password": "kingjames",
+      "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584576841/Pawdopt/animals-logo-template-with-flying-bird-vector-13253770_owv3w2.jpg",
+      "description": "We (heart) animals",
+      "website": "KJSanctuary.com",
+      "country": "Canada",
+      "province": "BC",
+      "city": "Victoria",
+      "street": "1123 Hoochikoo Ave",
+      "postal_code": "G2G 7B1"
+    }
+  },
+  {
+    "model": "shelters.shelter",
+    "pk": 3,
+    "fields": {
+      "name": "Solomon's Temple",
+      "email": "ST@holypets.com",
+      "password": "jesuswasadog",
+      "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584574499/Pawdopt/content_wt1su2.jpg",
+      "description": "Home for religiously inclined animals.",
+      "website": "solomonstemple.com",
+      "country": "Canada",
+      "province": "BC",
+      "city": "Victoria",
+      "street": "Dormant Volcano St",
+      "postal_code": "V9S1P9"
+    }
+  },
+  {
     "model": "animals.animal",
     "pk": 1,
     "fields": {
       "name": "Boris",
-      "desctription": "Cheeky little schnauzer. Loves belly rubs.",
+      "description": "Cheeky little schnauzer. Loves belly rubs.",
+      "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584492812/Pawdopt/SchnauzerStanley-1_todyvk.jpg", 
       "animal_type": "dog",
       "breed": "schnauzer",
       "age": "elderly",
@@ -18,7 +70,8 @@
     "pk": 2,
     "fields": {
       "name": "Clarence",
-      "desctription": "Poodle with sass. Does bite. Super ugly. Sheds a lot.",
+      "description": "Poodle with sass. Does bite. Super ugly. Sheds a lot.",
+      "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584492976/Pawdopt/4064c477e627a632936425e89596bd7b_ssh9w0.jpg",
       "animal_type": "dog",
       "breed": "Shitzhu",
       "age": "mid-life",
@@ -32,7 +85,8 @@
     "pk": 3,
     "fields": {
       "name": "Dream Berry",
-      "desctription": "Loveable stray we took in. She seems obsessed with the tv remote.",
+      "description": "Loveable stray we took in. She seems obsessed with the tv remote.",
+      "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584493111/Pawdopt/357470e4c6e853a9eeb57b53a2fc811e_gytb5u.png",
       "animal_type": "dog",
       "breed": "pit bull",
       "age": "puppy",
@@ -46,7 +100,8 @@
     "pk": 4,
     "fields": {
       "name": "Carlo",
-      "desctription": "Fantistic hunting dog. Great nose. Hates bread.",
+      "description": "Fantistic hunting dog. Great nose. Hates bread.",
+      "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584569891/Pawdopt/german-shepherd_tnt6pi.jpg",
       "animal_type": "dog",
       "breed": "German Sheppard",
       "age": "Teenager",
@@ -60,7 +115,8 @@
     "pk": 5,
     "fields": {
       "name": "Marshmallow",
-      "desctription": "Fuzzy wuzzy itty bitty kitten",
+      "description": "Fuzzy wuzzy itty bitty kitten",
+      "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584569799/Pawdopt/How-to-Care-for-Siamese-Kittens-min_oigubo.jpg",
       "animal_type": "cat",
       "breed": "Siamese",
       "age": "kitten",
@@ -74,7 +130,8 @@
     "pk": 6,
     "fields": {
       "name": "Chapstick",
-      "desctription": "super moist lips",
+      "description": "super moist lips",
+      "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584493345/Pawdopt/e69b6feb89a524682cf149d527026893_ogo1cd.jpg",
       "animal_type": "cat",
       "breed": "Tabby",
       "age": "elderly",
@@ -88,7 +145,8 @@
     "pk": 7,
     "fields": {
       "name": "The Duchess",
-      "desctription": "Queen-like. Many enemies in the community. Not to be trusted with any amount of money.",
+      "description": "Queen-like. Many enemies in the community. Not to be trusted with any amount of money.",
+      "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584493449/Pawdopt/1200px-Oryctolagus_cuniculus_Rcdo_jz1n2w.jpg",
       "animal_type": "Rabbit",
       "breed": "Jackrabbit",
       "age": "unknown",
@@ -102,7 +160,8 @@
     "pk": 8,
     "fields": {
       "name": "Bobby Christo",
-      "desctription": "Absolutely no ability to see or hear. Can play the piano beautifully.",
+      "description": "Absolutely no ability to see or hear. Can play the piano beautifully.",
+      "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584493526/Pawdopt/photo-1504450874802-0ba2bcd9b5ae_gqkaxx.jpg",
       "animal_type": "Lizard",
       "breed": "Bearded Dragon",
       "age": "4",
@@ -116,7 +175,8 @@
     "pk": 9,
     "fields": {
       "name": "Ubiquitous",
-      "desctription": "Keeps escaping her cage. Somehow appears in a new place every time.",
+      "description": "Keeps escaping her cage. Somehow appears in a new place every time.",
+      "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584493510/Pawdopt/249px-Congo_African_Grey_pet_on_a_perch_roll6e.jpg",
       "animal_type": "Bird",
       "breed": "Parrot",
       "age": "14",
@@ -138,7 +198,7 @@
     "model": "applications.application",
     "pk": 2,
     "fields": {
-      "user_id": 4,
+      "user_id": 2,
       "animal_id": 5,
       "info": "Please, oh please, pick me!"
     }
@@ -147,7 +207,7 @@
     "model": "applications.application",
     "pk": 3,
     "fields": {
-      "user_id": 4,
+      "user_id": 2,
       "animal_id": 8,
       "info": "This one will go great on my wall!"
     }
@@ -156,120 +216,9 @@
     "model": "applications.application",
     "pk": 4,
     "fields": {
-      "user_id": 3,
+      "user_id": 2,
       "animal_id": 2,
       "info": "My boy would love a dog."
-    }
-  },
-  {
-    "model": "shelters.shelter",
-    "pk": 1,
-    "fields": {
-      "name": "SPCA",
-      "email": "spca@test.com",
-      "password": "123456",
-      "photo_url": null,
-      "description": "",
-      "website": "www.spca.com",
-      "country": "Canada",
-      "province": "BC",
-      "city": "Victoria",
-      "street": "3150 Napier Ln",
-      "postal_code": "V8T 4V5"
-    }
-  },
-  {
-    "model": "shelters.shelter",
-    "pk": 2,
-    "fields": {
-      "name": "King James Sanctuary for Animals",
-      "email": "kingjames@shelter.com",
-      "password": "kingjames",
-      "photo_url": null,
-      "description": "We (heart) animals",
-      "website": "KJSanctuary.com",
-      "country": "Canada",
-      "province": "BC",
-      "city": "Victoria",
-      "street": "1123 Hoochikoo Ave",
-      "postal_code": "G2G 7B1"
-    }
-  },
-  {
-    "model": "shelters.shelter",
-    "pk": 3,
-    "fields": {
-      "name": "Solomon's Temple",
-      "email": "ST@holypets.com",
-      "password": "jesuswasadog",
-      "photo_url": null,
-      "description": "Home for religiously inclined animals.",
-      "website": "solomonstemple.com",
-      "country": "Canada",
-      "province": "BC",
-      "city": "Victoria",
-      "street": "Dormant Volcano St",
-      "postal_code": "V9S1P9"
-    }
-  },
-  {
-    "model": "users.user",
-    "pk": 1,
-    "fields": {
-      "first_name": "max",
-      "last_name": "rosenthal",
-      "email": "s@s.com",
-      "password": ";laskjdf;alkjdf;a",
-      "photo_url": null,
-      "bio": ""
-    }
-  },
-  {
-    "model": "users.user",
-    "pk": 2,
-    "fields": {
-      "first_name": "Cassidy",
-      "last_name": "Quaite",
-      "email": "test@test.com",
-      "password": "12345",
-      "photo_url": null,
-      "bio": ""
-    }
-  },
-  {
-    "model": "users.user",
-    "pk": 3,
-    "fields": {
-      "first_name": "Shirley",
-      "last_name": "Temple",
-      "email": "movieStar@glamour.com",
-      "password": "action",
-      "photo_url": null,
-      "bio": ""
-    }
-  },
-  {
-    "model": "users.user",
-    "pk": 4,
-    "fields": {
-      "first_name": "LaBrista",
-      "last_name": "Stub",
-      "email": "7times5@35.com",
-      "password": "jerry",
-      "photo_url": null,
-      "bio": ""
-    }
-  },
-  {
-    "model": "users.user",
-    "pk": 5,
-    "fields": {
-      "first_name": "Auston",
-      "last_name": "Mathews",
-      "email": "hockeybro@nhl.com",
-      "password": "sticknpuck",
-      "photo_url": null,
-      "bio": "I skate good, and shoot gooder."
     }
   }
 ]

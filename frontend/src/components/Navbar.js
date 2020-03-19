@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
-import LoggedIn from './LoggedIn';
+import { Link, Route } from 'react-router-dom';
+// import LoggedIn from './LoggedIn';
 import LoggedOut from './LoggedOut';
-import About from './About';
+// import About from './About';
 import '../styles/Navbar.scss';
 import Logo from '../images/pawdopt_white_logo.png';
 
