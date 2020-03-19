@@ -24,6 +24,7 @@ class Home extends Component {
     return (
         <div>
         Welcome to Pawdopt!
+        <h1>filter:</h1>
         <h1>Recent: </h1>
         <Animals
           animals={this.state.animals}

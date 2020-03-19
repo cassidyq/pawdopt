@@ -10,7 +10,7 @@ class Navbar extends Component {
   render() {
     return (
     <nav className="navbar">
-          <Link to='/' className="navbar-logo"><img src={Logo}/></Link>
+          <Link to='/' className="navbar-logo"><img  src={Logo}/></Link>
         <span className="navbar-items">
           <Link to='/about' className="navbar-about">about</Link>
           <Route component={LoggedOut}/>

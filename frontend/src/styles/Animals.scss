@@ -1,9 +1,23 @@
-.animal-img {
-  width: 30%;
-  height: auto;
+.card-img-top {
+  height: 8rem;
+  width: unset;
 }
 
-.segment {
-  width: 45%;
+.imageclass { 
+  height: 100px; 
+  width: 200px; 
+  overflow: hidden; 
+  display: flex;
+  justify-content: center;
+  border: thin solid;
+}
 
+
+
+.temp {
+  display: grid;
+  justify-content: center;
+  flex-direction: col;
+  border: thin solid;
+  margin: 1rem;
 }
