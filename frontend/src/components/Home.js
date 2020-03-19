@@ -1,7 +1,7 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import '../styles/base-padding.scss';
 
-import Animals from './Animals';
+// import Animals from './Animals';
 
 class Home extends Component {
   state = {
