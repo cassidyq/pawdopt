@@ -11,7 +11,8 @@ class User(models.Model):
   bio = models.TextField(blank=True, null=True)
 
   def __str__(self):
-    return self.first_name + self.last_name
+    return '%d %s' % (self.first_name, self.last_name)
+   
 
 class SavedSearch(models.Model):
   user_id = models.ForeignKey(User, on_delete=models.CASCADE)
