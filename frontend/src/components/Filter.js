@@ -2,7 +2,7 @@ import React, { Component, useState } from 'react';
 
 
 export default function Filter (props) {
-  const [ animalType, setAnimalType ] = useState('Best Animal');
+  const [ animalType, setAnimalType ] = useState('');
   const [ breed, setBreed ] = useState('');
   const [ age, setAge ] = useState('');
   const [ gender, setGender ] = useState('');
@@ -33,13 +33,13 @@ export default function Filter (props) {
       <label htmlFor="animal_type">AnimalType</label>   
       <input onChange={e => setAnimalType(e.target.value)} type="text" name="animal-type" id="animal-type" value={animalType}/> 
       <label htmlFor="breed">Breed</label> 
-      <input onChange={e => setBreed(e.target.value)} type="text" name="breed" id="breed" />
+      <input onChange={e => setBreed(e.target.value)} type="text" name="breed" id="breed" value={breed}/>
       <label htmlFor="age">Age</label> 
-      <input onChange={setAge} type="text" name="age" id="age"  />    
+      <input onChange={e => setAge(e.target.value)} type="text" name="age" id="age" value={age}/>    
       <label htmlFor="gender">Gender</label>         
-      <input onChange={setGender} type="text" name="gender" id="gender"  />
+      <input onChange={e => setGender(e.target.value)} type="text" name="gender" id="gender" value={gender}/>
       <label htmlFor="shelter_id">Shelter ID</label>         
-      <input onChange={setShelterId} type="text" name="shelter-id" id="shelter-id"  />   
+      <input onChange={e => setShelterId(e.target.value)} type="text" name="shelter-id" id="shelter-id" value={shelterId}/>   
       <button onClick={onSubmit} type='submit'>Search</button>
     </form>  
   );
