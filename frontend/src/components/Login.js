@@ -1,66 +1,178 @@
+// import React from 'react';
+// import { Form, Input, Button, Checkbox } from 'antd';
+// import { UserOutlined, LockOutlined } from '@ant-design/icons';
+// import { Spin } from 'antd';
+// import { connect } from 'react-redux';
+// import { NavLink } from 'react-router-dom';
+// import * as actions from '../store/actions/auth';
+
+// const Login = () => {
+//   handleSubmit = (e) => {
+//     e.preventDefault();
+//     this.props.form.validateFields((err, values) => {
+//       if(!err) {
+//         console.log('Recieved: ', values);
+//         this.props.onAuth(values.userName, values.password)
+//       }
+//     });
+//     this.props.history.push('/');
+//   }
+
+//   render() {
+//     let errorMessage = null;
+//     if (this.props.error){
+//       errorMessage = (
+//         <p>{this.props.error.message}</p>
+//       )
+//     }
+//     const {getFieldDecorator} = this.props.form;
+
+//   return (
+//     <div>
+//       {errorMessage}
+//       {this.props.loading ?
+//         <Spin />
+//       :
+
+//         <Form
+//           name='normal_login'
+//           className='login-form'
+//           initialValues={{
+//             remember: true
+//           }}
+//           onFinish={onFinish}
+//         >
+//           <Form.Item
+//             name='username'
+//             rules={[
+//               {
+//                 required: true,
+//                 message: 'Please input your Username!'
+//               }
+//             ]}
+//           >
+//             <Input
+//               prefix={<UserOutlined className='site-form-item-icon' />}
+//               placeholder='Username'
+//             />
+//           </Form.Item>
+
+//           <Form.Item
+//             name='password'
+//             rules={[
+//               {
+//                 required: true,
+//                 message: 'Please input your Password!'
+//               }
+//             ]}
+//           >
+//             <Input
+//               prefix={<LockOutlined className='site-form-item-icon' />}
+//               type='password'
+//               placeholder='Password'
+//             />
+//           </Form.Item>
+
+//           <Form.Item>
+//             <Button
+//               type='primary'
+//               htmlType='submit'
+//               style={{ marginRight: '10px' }}
+//             >
+//               Login
+//             </Button>
+//             Or
+//             <NavLink style={{ marginRight: '10px' }} to='register'>
+//               Register
+//             </NavLink>
+//           </Form.Item>
+//         </Form>
+//       }
+//     </div>
+//   );
+// };
+
+// let WrappedNormalLoginForm = Form.create()(Login);
+// const mapStateToProps = (state) => {
+//   return {
+//     loading: state.loading,
+//     error: state.error
+//   }
+// }
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     onAuth: (username, password) => dispatch(actions.authLogin(username, password))
+//   }
+// }
+// export default connect(mapStateToProps, mapDispatchToProps)(WrappedNormalLoginForm);
 import React, { useState } from 'react';
 import '../styles/base-padding.scss';
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, Route, Redirect } from 'react-router-dom';
+// import axios from 'axios';
 
-export default function Login(props) {
-  const [email, setEmail] = useState('');
+export default function Login() {
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   function validateForm() {
-    return email.length > 0 && password.length > 0;
+    return username.length > 0 && password.length > 0;
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
+  // function handleSubmit(event) {
+  //   event.preventDefault();
+  // }
 
   // function registerNewUser() {
   //   console.log('submiting');
-  //   fetch('http://127.0.0.1:8000/api/users', {
+  //   fetch('http://127.0.0.1:8000/api/auth/users', {
   //     method: 'POST',
   //     headers: {
   //       Accept: 'application/json',
   //       'Content-Type': 'application/json'
   //     },
   //     body: JSON.stringify({
-  //       first_name: firstName,
-  //       last_name: lastName,
-  //       email: email,
+  //       username: username,
   //       password: password
   //     })
   //   });
   // }
 
-  function verifyLogin(email, password) {
-    return fetch('http://127.0.0.1:8000/api/users')
+  const handleSubmit = event => {
+    event.preventDefault();
+
+    const credentials = {
+      username: username,
+      password: password
+    };
+    console.log('credentials: ', credentials);
+    fetch('http://localhost:8000/api/auth/login', {
+      method: 'POST', // or 'PUT'
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(credentials)
+    })
       .then(response => response.json())
-      .then(userData => {
-        console.log(userData);
-        userData.filter(x => {
-          console.log(x);
-          if (x.password === password && x.email === email) {
-            return x;
-          }
-        });
+      .then(data => {
+        console.log('Success:', data);
       })
       .catch(error => {
-        console.log('user not in db');
-        console.error(error);
+        console.error('Error:', error);
       });
-  }
+  };
 
   return (
     <div className='Login'>
-      <form onSubmit={handleSubmit}>
-        <FormGroup controlId='email' bsSize='large'>
-          <ControlLabel>Email</ControlLabel>
+      <form>
+        <FormGroup controlId='username' bsSize='large'>
+          <ControlLabel>Username</ControlLabel>
           <FormControl
             autoFocus
-            type='email'
-            value={email}
-            onChange={e => setEmail(e.target.value)}
+            type='username'
+            value={username}
+            onChange={e => setUsername(e.target.value)}
           />
         </FormGroup>
         <FormGroup controlId='password' bsSize='large'>
@@ -77,7 +189,7 @@ export default function Login(props) {
             bsSize='large'
             disabled={!validateForm()}
             type='submit'
-            onClick={verifyLogin(email, password)}
+            onClick={handleSubmit}
           >
             Login
           </Button>

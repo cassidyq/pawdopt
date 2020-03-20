@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Route
+  // Hashrouter,
+  // Switch,
+  // Redirect
+} from 'react-router-dom';
 import Navbar from './Navbar';
 import Home from './Home';
 import About from './About';
@@ -7,8 +13,13 @@ import Register from './Register';
 import Shelter from './Shelter';
 import Login from './Login';
 import RegisterUser from './RegisterUser';
-
+// import PrivateRoute from './common/PrivateRoute';
+// import { loadUser } from '../actions/auth';
 class App extends Component {
+  // componentDidMount() {
+  //   store.dispatch(loadUser());
+  // }
+
   render() {
     return (
       <BrowserRouter>

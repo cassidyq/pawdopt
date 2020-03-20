@@ -1,60 +1,42 @@
 import React, { Component } from 'react';
+import { BrowswerRouter as Router } from 'react-router-dom';
+import { connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
+import BaseRouter from './routes';
+import * as actions from './store/actions/auth';
+// import 'antd/dist/antd.css'
+
+import CustomLayout from './containers/Layout';
 
 class App extends Component {
-  state = {
-    adopters: []
-  };
 
-  // function App() {
-  //   return (
-  //     <div className='App'>
-  //       <header className='App-header'>
-  //         <img src={logo} className='App-logo' alt='logo' />
-  //         <p>
-  //           Edit <code>src/App.js</code> and save to reload.
-  //         </p>
-  //         <a
-  //           className='App-link'
-  //           href='https://reactjs.org'
-  //           target='_blank'
-  //           rel='noopener noreferrer'
-  //         >
-  //           Learn React
-  //         </a>
-  //       </header>
-  //     </div>
-  //   );
-  // }
-
-  async componentDidMount() {
-    try {
-      const res = await fetch('http://127.0.0.1:8000/api/adopters'); // fetching the data from api, before the page loaded
-      const adopters = await res.json();
-      console.log('adopters: ', adopters);
-      this.setState({
-        adopters
-      });
-    } catch (e) {
-      console.log(e);
-    }
+  componentDidMount() {
+    this.props.onTryAutoSignup()
   }
-
   render() {
     return (
       <div>
-        {this.state.adopters.map(item => (
-          <div key={item.id}>
-            <h1>{item.first_name}</h1>
-            <h1>{item.last_name}</h1>
-            <h1>{item.email}</h1>
-            <h1>{item.password}</h1>
-          </div>
-        ))}
+        <Router>
+          <CustomLayout {...this.props}>
+            <BaseRouter />
+          </CustomLayout>
+        </Router>
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.token !== null
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onTryAutoSignup: () = dispatch(actions.authCheckState())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
