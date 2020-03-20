@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/base-padding.scss';
 import '../styles/Animals.scss';
 import { Grid } from 'semantic-ui-react';
-import {Image, Video, Transformation, CloudinaryContext} from 'cloudinary-react';
+
 
 export default function Animals(props) {
 
