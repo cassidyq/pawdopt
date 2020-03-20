@@ -110,6 +110,7 @@ import '../styles/base-padding.scss';
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import './Login.css';
 import { Link, Route, Redirect } from 'react-router-dom';
+import * as actions from '../store/actions/auth';
 // import axios from 'axios';
 
 export default function Login() {
@@ -119,25 +120,6 @@ export default function Login() {
   function validateForm() {
     return username.length > 0 && password.length > 0;
   }
-
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  // }
-
-  // function registerNewUser() {
-  //   console.log('submiting');
-  //   fetch('http://127.0.0.1:8000/api/auth/users', {
-  //     method: 'POST',
-  //     headers: {
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       username: username,
-  //       password: password
-  //     })
-  //   });
-  // }
 
   const handleSubmit = event => {
     event.preventDefault();
@@ -157,6 +139,9 @@ export default function Login() {
       .then(response => response.json())
       .then(data => {
         console.log('Success:', data);
+        if (data.token) {
+          dispatch(state, data.token);
+        }
       })
       .catch(error => {
         console.error('Error:', error);
@@ -194,9 +179,28 @@ export default function Login() {
             Login
           </Button>
         </Link>
+        Or
+        <Link to='/register'> Register</Link>
       </form>
     </div>
   );
 }
 
-// export default Login;
+// export default Login();
+// let WrappedNormalLoginForm = Form.create()(Login);
+// const mapStateToProps = state => {
+//   return {
+//     loading: state.loading,
+//     error: state.error
+//   };
+// };
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     onAuth: (username, password) =>
+//       dispatch(actions.authLogin(username, password))
+//   };
+// };
+// export default connect(
+//   mapStateToProps,
+//   mapDispatchToProps
+// )(WrappedNormalLoginForm);

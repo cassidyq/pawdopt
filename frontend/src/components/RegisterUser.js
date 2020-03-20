@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { authRegister } from '../store/actions/auth';
 // import { createMessage } from '../actions/messages';
 
-export class RegisterUser extends Component {
+class RegisterUser extends Component {
   state = {
     username: '',
     email: '',
@@ -29,7 +29,24 @@ export class RegisterUser extends Component {
         email,
         password
       };
-      this.props.register(newUser);
+      // this.props.register(newUser);
+      fetch('/api/auth/register', {
+        method: 'POST', // or 'PUT'
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newUser)
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('Success:', data);
+          if (data.token) {
+            this.props.history.push('/');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
     }
   };
 
@@ -100,13 +117,13 @@ export class RegisterUser extends Component {
     );
   }
 }
+export default RegisterUser;
+// const mapStateToProps = state => ({
+//   isAuthenticated: state.auth.isAuthenticated
+// });
 
-const mapStateToProps = state => ({
-  isAuthenticated: state.auth.isAuthenticated
-});
-
-export default connect(mapStateToProps, { authRegister })(RegisterUser);
-
+// export default connect(mapStateToProps, { authRegister })(RegisterUser);
+//###################
 // import React, { Component, useState } from 'react';
 // import '../styles/base-padding.scss';
 // import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
