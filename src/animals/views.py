@@ -18,7 +18,29 @@ class ListAnimal(generics.ListCreateAPIView):
     queryset = Animal.objects.all()
     serializer_class = AnimalSerializer
 
-
 class DetailAnimal(generics.RetrieveUpdateDestroyAPIView):
     queryset = Animal.objects.all()
     serializer_class = AnimalSerializer
+
+class FilterAnimals(generics.ListAPIView):
+    serializer_class = AnimalSerializer
+
+    def get_queryset(self):
+        queryset = Animal.objects.all()
+        animal_type = self.request.query_params.get('animal_type', None)
+        breed = self.request.query_params.get('breed', None)
+        age = self.request.query_params.get('age', None)
+        gender = self.request.query_params.get('gender', None)
+        shelter_id = self.request.query_params.get('shelter_id', None)
+        # refactor later -> use loop
+        if animal_type is not None:
+            queryset = queryset.filter(animal_type=animal_type)
+        if breed is not None:
+            queryset = queryset.filter(breed=breed)
+        if age is not None:
+            queryset = queryset.filter(age=age)
+        if gender is not None:
+            queryset = queryset.filter(gender=gender)
+        if shelter_id is not None:
+            queryset = queryset.filter(shelter_id=shelter_id)
+        return queryset
