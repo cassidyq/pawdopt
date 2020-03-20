@@ -22,3 +22,4 @@ class ListAnimal(generics.ListCreateAPIView):
 class DetailAnimal(generics.RetrieveUpdateDestroyAPIView):
     queryset = Animal.objects.all()
     serializer_class = AnimalSerializer
+

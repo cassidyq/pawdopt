@@ -21,3 +21,14 @@ class AnimalSerializer(serializers.ModelSerializer):
             'applications',
         )
         model = Animal
+
+# class FilterSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         fields = (
+#             "animal_type",
+#             "breed",
+#             "age",
+#             "gender",
+#             "shelter_id"
+#         )
+#         model = Animal
