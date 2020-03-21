@@ -5,9 +5,6 @@ import './Login.css';
 import { Link } from 'react-router-dom';
 
 export default function Login(props) {
-  // function handleSubmit(event) {
-  //   event.preventDefault();
-  // }
 
   return (
     <div className='LoginAs'>
@@ -26,4 +23,3 @@ export default function Login(props) {
   );
 }
 
-// export default Register;
