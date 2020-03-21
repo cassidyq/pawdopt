@@ -16,6 +16,5 @@ class ListAnimalTypes(generics.ListCreateAPIView):
     queryset = list(Animal.objects.values_list('animal_type', flat=True).annotate(handle_lower=Lower("animal_type")).distinct("handle_lower"))
     serializer_class = CategorySerializer
     # queryset = list(Animal.objects.values_list('gender', flat=True).annotate(handle_lower=Lower("gender")).distinct("handle_lower"))
-
     # queryset = Animal.objects.all()
     print(queryset)
