@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'animals',
     'applications',
     'accounts',
+    'categories',
 ]
 
 MIDDLEWARE = [

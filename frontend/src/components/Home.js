@@ -21,7 +21,6 @@ class Home extends Component {
   }
 
   getFilteredAnimals = (filterParams) => {
-    console.log(filterParams)
     let url = 'http://127.0.0.1:8000/api/animals/filter?';
     const activeParams = Object.keys(filterParams).filter(key => filterParams[key] !== '');
     activeParams.forEach(key => {
@@ -35,7 +34,6 @@ class Home extends Component {
       }
     }).then(response => response.json())
       .then(data => this.setState({ animals: data }));
-
   }
 
   render() {
@@ -44,7 +42,7 @@ class Home extends Component {
         Welcome to Pawdopt!
         <h1>filter:</h1>
         <Filter onFilterSubmit={this.getFilteredAnimals}/>
-        <h1>Recent: </h1>
+        <h1>Results: </h1>
         <Animals
           animals={this.state.animals}
         />

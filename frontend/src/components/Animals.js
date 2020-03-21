@@ -3,6 +3,7 @@ import '../styles/base-padding.scss';
 import '../styles/Animals.scss';
 import { Grid } from 'semantic-ui-react';
 
+
 export default function Animals(props) {
 
   return (
