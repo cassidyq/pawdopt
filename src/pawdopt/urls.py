@@ -21,10 +21,10 @@ urlpatterns = [
     path('api-token-auth/', obtain_auth_token, name='api_token_auth'),  # <-- And here
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('api/shelters', include('shelters.urls')),
-    path('api/animals', include('animals.urls')),
-    path('api/applications', include('applications.urls')),
-    path('api/login', include('applications.urls')),
+    path('api/shelters/', include('shelters.urls')),
+    path('api/animals/', include('animals.urls')),
+    path('api/applications/', include('applications.urls')),
+    path('api/login/', include('applications.urls')),
     path('', include('accounts.urls'))
 
     # path('api/users/saved-searches', include('users.urls')),
