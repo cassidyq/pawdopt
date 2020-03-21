@@ -3,14 +3,14 @@ import { Button } from 'react-bootstrap';
 import '../styles/base-padding.scss';
 import '../styles/shelter.scss';
 import EditAnimal from './EditAnimal';
+import EditShelter from './EditShelter';
 
 class Shelter extends Component {
   state = {
     shelters: [],
     current_shelter: [],
     animals: [],
-    showNewForm: false,
-    showEditForm: false,
+    showForm: false,
     key: 0
   };
 
@@ -32,58 +32,47 @@ class Shelter extends Component {
       console.log(e);
     }
   }
-  createAnimal = (params) => {
-    console.log("create", params);
-    fetch(`http://127.0.0.1:8000/api/animals`, {
-      method: 'POST',
+
+  updateDB = (url, action, params) => {
+
+    fetch(url, {
+      method: action,
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(params)
     }).then(response => {
-      this.setState({ showNewForm: false})
+      this.setState({ showForm: false})
       response.json()});
   }
-
-  editAnimal = (params) => {
-    console.log("editing", params);
-    fetch(`http://127.0.0.1:8000/api/animals/${params.id}`, {
-      method: 'PUT',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(params)
-    }).then(response => {
-      this.setState({ showEditForm: false})
-      response.json()});
-  }
-
+ 
   render() {
 
     return (
       <div>
         <div className='shelter-profile'>
           {this.state.current_shelter.map(item => (
-              <div key={item.id}>
+            <div key={item.id}>
                 <h1>{item.name}</h1>
                 <img src={item.photo_url} className='shelter-logo' alt='shelterlogo'></img>
                 <div>{item.description}</div>
               </div>
           ))}
         </div>
+          <Button onClick={() => this.setState({showForm: !this.state.showForm, key: this.state.current_shelter.id}) } variant="primary">Edit Shelter Info</Button>
+          {this.state.showForm && this.state.key === this.state.current_shelter.id ? <EditShelter shelter={this.state.current_shelter[0]} onEditSubmit={this.updateDB}/> : null}
         <div className='shelter-animals'>
-          <Button onClick={() => this.setState({showNewForm: !this.state.showNewForm}) } variant="primary">+ New Animal</Button>
-          {this.state.showNewForm ? <EditAnimal animal={{shelter_id: 2}} onCreateSubmit={this.createAnimal}/> : null}
+          <Button onClick={() => this.setState({showForm: !this.state.showForm, key: 0 }) } variant="primary">+ New Animal</Button>
+          {this.state.showForm && this.state.key === 0 ? <EditAnimal animal={{shelter_id: 2}} onCreateSubmit={this.updateDB}/> : null}
           <h1>Active Animals</h1>
           {this.state.animals.map(animal => (
               <div key={animal.id}>
                 <h1>{animal.name}</h1>
                 <img src={animal.photo_url} className='animalphoto' alt='animalphoto'></img>
                 <div>{animal.description}</div>
-                <Button onClick={() => this.setState({showEditForm: !this.state.showEditForm, key: animal.id}) } variant="primary">Edit {animal.name}'s Info</Button>
-                {this.state.showEditForm && this.state.key === animal.id ? <EditAnimal animal={animal} onEditSubmit={this.editAnimal}/> : null}
+                <Button onClick={() => this.setState({showForm: !this.state.showForm, key: animal.id}) } variant="primary">Edit {animal.name}'s Info</Button>
+                {this.state.showForm && this.state.key === animal.id ? <EditAnimal animal={animal} onEditSubmit={this.updateDB}/> : null}
               </div>
           ))}
         </div>

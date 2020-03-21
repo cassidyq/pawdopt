@@ -6,6 +6,7 @@ export default function EditAnimal (props) {
   const [ id, setId ] = useState(props.animal.id || '');
   const [ name, setName ] = useState(props.animal.name || '');
   const [ description, setDescription ] = useState(props.animal.description || '');
+  const [ photoUrl, setPhotoUrl ] = useState(props.animal.photo_url || '');
   const [ animalType, setAnimalType ] = useState(props.animal.animal_type || '');
   const [ breed, setBreed ] = useState(props.animal.breed || '');
   const [ age, setAge ] = useState(props.animal.age || '');
@@ -13,51 +14,31 @@ export default function EditAnimal (props) {
   const [ gender, setGender ] = useState(props.animal.gender || '');
   const [ shelterId, setShelterId ] = useState(props.animal.shelter_id || '');
 
-  // const reset = () => {
-  //   setName('');
-  //   setDescription('');
-  //   setAnimalType('');
-  //   setBreed('');
-  //   setAge('');
-  //   setSize('');
-  //   setGender('');
-  // }
-
   const onSubmit = (e) => {
     e.preventDefault();
+    const params = {
+      name,
+      description,
+      photo_url: photoUrl,
+      animal_type: animalType,
+      breed,
+      age,
+      size,
+      gender,
+      shelter_id: shelterId
+    };
 
-    if(id) {
-      const params = {
-        id,
-        name,
-        description,
-        animal_type: animalType,
-        breed,
-        age,
-        size,
-        gender,
-        shelter_id: shelterId
-      }
-      props.onEditSubmit(params)
-      
+    if(!id) {
+      props.onCreateSubmit(`http://127.0.0.1:8000/api/animals`, 'POST', params);
     } else {
-      const params = {
-        name,
-        description,
-        animal_type: animalType,
-        breed,
-        age,
-        size,
-        gender,
-        shelter_id: shelterId
-      }
-      props.onCreateSubmit(params)
+      params[id] = id;
+      props.onEditSubmit(`http://127.0.0.1:8000/api/animals/${id}`, 'PUT', params);
     }
   }
 
   return (
     <form>
-      <FormGroup controlId='email' bsSize='small'>
+      <FormGroup controlId='name' bsSize='small'>
         <ControlLabel>Name</ControlLabel>
         <FormControl
           autoFocus
@@ -73,6 +54,15 @@ export default function EditAnimal (props) {
           type='text'
           value={description}
           onChange={e => setDescription(e.target.value)}
+        />
+      </FormGroup>  
+      <FormGroup controlId='photo' bsSize='small'>
+        <ControlLabel>Photo URL</ControlLabel>
+        <FormControl
+          autoFocus
+          type='text'
+          value={photoUrl}
+          onChange={e => setPhotoUrl(e.target.value)}
         />
       </FormGroup>  
       <FormGroup controlId='type' bsSize='small'>
