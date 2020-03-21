@@ -17,8 +17,8 @@ class App extends Component {
         <Route exact path='/about' component={About} />
         <Route exact path='/register' component={Register} />
         <Route exact path='/shelter' component={Shelter} />
-        <Route exact path='/login' exact component={Login} />
-        <Route exact path='/RegisterUser' exact component={RegisterUser} />
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/RegisterUser' component={RegisterUser} />
       </BrowserRouter>
     );
   }
