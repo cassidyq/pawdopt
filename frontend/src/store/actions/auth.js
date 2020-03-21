@@ -28,14 +28,23 @@ export const logout = () => {
   };
 };
 
-export const authLogin = (username, password) => {
+export const authLogin = (userName, passWord) => {
+  console.log('logging in');
+  const credentials = {
+    username: userName,
+    password: passWord
+  };
   return dispatch => {
-    dispatch(authStart());
+    // dispatch(authStart());
+    console.log('dispatching')
     axios
-      .post('/rest-auth/login/', {
-        username: username,
-        password: password
-      })
+      .post(
+        'http://localhost:8000/api/auth/login'
+        // {
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify(credentials)
+        // }
+      )
       .then(res => {
         const token = res.data.key;
         localStorage.setItem('token', token);
@@ -51,7 +60,7 @@ export const authRegister = (username, email, password1, password2) => {
   return dispatch => {
     dispatch(authStart());
     axios
-      .post('/rest-auth/registration/', {
+      .post('http://localhost:8000/api/auth/register', {
         username: username,
         email: email,
         password1: password1,

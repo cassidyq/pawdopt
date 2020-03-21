@@ -30,7 +30,7 @@ class RegisterShelter extends Component {
         password
       };
       // this.props.register(newUser);
-      fetch('/api/auth/register', {
+      fetch('http://localhost:8000/api/auth/register', {
         method: 'POST', // or 'PUT'
         headers: {
           'Content-Type': 'application/json'
@@ -41,7 +41,7 @@ class RegisterShelter extends Component {
         .then(data => {
           console.log('Success:', data);
           if (data.token) {
-            this.props.history.push('/shelter');
+            this.props.history.push(`/shelter/${data.user.id}`);
           }
         })
         .catch(error => {
@@ -61,7 +61,7 @@ class RegisterShelter extends Component {
     return (
       <div className='col-md-6 m-auto'>
         <div className='card card-body mt-5'>
-          <h2 className='text-center'>Register</h2>
+          <h2 className='text-center'>Organization Registration</h2>
           <form onSubmit={this.onSubmit}>
             <div className='form-group'>
               <label>Username</label>
