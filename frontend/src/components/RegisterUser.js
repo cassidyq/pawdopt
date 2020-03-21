@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { authRegister } from '../store/actions/auth';
+// import { authRegister } from '../store/actions/auth';
 // import { createMessage } from '../actions/messages';
 
 class RegisterUser extends Component {
@@ -10,7 +10,10 @@ class RegisterUser extends Component {
     username: '',
     email: '',
     password: '',
-    confirmpassword: ''
+    confirmpassword: '',
+    auth: false,
+    token: null,
+    id: null
   };
 
   static propTypes = {
@@ -29,7 +32,6 @@ class RegisterUser extends Component {
         email,
         password
       };
-      // this.props.register(newUser);
       fetch('http://localhost:8000/api/auth/register', {
         method: 'POST', // or 'PUT'
         headers: {
@@ -41,7 +43,11 @@ class RegisterUser extends Component {
         .then(data => {
           console.log('Success:', data);
           if (data.token) {
-            this.props.history.push('/');
+            this.setState({
+              auth: true,
+              id: data.user.id,
+              token: data.token
+            });
           }
         })
         .catch(error => {
@@ -53,8 +59,8 @@ class RegisterUser extends Component {
   onChange = e => this.setState({ [e.target.name]: e.target.value });
 
   render() {
-    if (this.props.isAuthenticated) {
-      return <Redirect to='/' />;
+    if (this.state.auth) {
+      return <Redirect to={`/user/${this.state.id}`} />;
     }
     const { username, email, password, confirmpassword } = this.state;
 
@@ -118,6 +124,7 @@ class RegisterUser extends Component {
   }
 }
 export default RegisterUser;
+
 // const mapStateToProps = state => ({
 //   isAuthenticated: state.auth.isAuthenticated
 // });
