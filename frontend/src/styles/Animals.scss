@@ -1,23 +1,75 @@
 .card-img-top {
-  height: 8rem;
+  height: 13rem;
   width: unset;
+  border-bottom-left-radius: 10;
+  border-bottom-right-radius: 10;
+  
 }
 
 .imageclass { 
+  display: flex;
+  justify-content: center;
   height: 100px; 
   width: 200px; 
   overflow: hidden; 
   display: flex;
   justify-content: center;
-  border: thin solid;
+  
+
 }
 
 
 
-.temp {
+.card {
   display: grid;
   justify-content: center;
   flex-direction: col;
+  text-align-last: center;
   border: thin solid;
   margin: 1rem;
+  width: 250px;
+  padding: 0px 5px;
+  border-radius: 10px;
+  background-color: lightskyblue;
+  opacity: 80%;
+  
+  &:hover {
+    opacity: 100;
+    // box-shadow: 2px 2px grey;
+  }
+  
 }
+
+// .card-body {
+//   display: flex;
+//   align-items: center;
+// }
+
+.animal-grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+
+ }
+
+ svg {
+   margin: 8px;
+   color: black;
+
+   // background-size: 200px 300px;
+  &:hover {
+    color: pink;
+  }
+  &:active {
+    color: red;
+  }
+}
+// #heart {
+//   color: rgb(245, 104, 69);
+//   // background-size: 200px 300px;
+//   &:hover {
+//     color: red;
+
+//   }
+// }

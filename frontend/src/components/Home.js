@@ -6,7 +6,8 @@ import Filter from './Filter';
 
 class Home extends Component {
   state = {
-    animals: []
+    animals: [],
+    favourites: []
   };
 
   async componentDidMount() {
@@ -28,7 +29,7 @@ class Home extends Component {
     activeParams.forEach(key => {
       url += `${key}=${filterParams[key]}&`;
     });
-    fetch( url, {
+    fetch(url, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -41,15 +42,18 @@ class Home extends Component {
 
   render() {
     return (
-        <div>
+      <div>
         Welcome to Pawdopt!
         <h1>filter:</h1>
-        <Filter onFilterSubmit={this.getFilteredAnimals}/>
+        <Filter onFilterSubmit={this.getFilteredAnimals} />
         <h1>Recent: </h1>
-        <Animals
-          animals={this.state.animals}
-        />
+        <div className="animal-container">
+          <Animals
+            animals={this.state.animals}
+            favourites={this.state.favourites}
+          />
         </div>
+      </div>
     )
   }
 }

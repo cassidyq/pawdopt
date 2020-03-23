@@ -1,12 +1,21 @@
 import React from 'react';
 import '../styles/base-padding.scss';
 import '../styles/Animals.scss';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Icon, Button } from 'semantic-ui-react';
+import { IoIosHeart } from 'react-icons/io';
+
 export default function Animals(props) {
+  const { animals, favourites } = props
+
+  const addToFavorites = function (id) {
+    console.log(`favouriting animal with id: ${id}`)
+  }
+
+
   return (
-    <div>
-      {props.animals.map(animal => (
-        <div className="temp" key={animal.id}>
+    <div className="animal-grid">
+      {animals.map(animal => (
+        <div className="card" key={animal.id}>
           <div className="imageclass">
             <img className="card-img-top" src={animal.photo_url} alt="Card image cap" />
           </div>
@@ -15,6 +24,7 @@ export default function Animals(props) {
             <p className="card-text">
               {animal.breed} <br />
               {animal.animal_type} <br />
+              <IoIosHeart size={40} onClick={addToFavorites} />
             </p>
           </div>
         </div>
