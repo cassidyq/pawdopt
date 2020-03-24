@@ -3,7 +3,7 @@ import '../styles/base-padding.scss';
 import '../styles/Animals.scss';
 // import { Grid, Icon, Button } from 'semantic-ui-react';
 import { IoIosHeart } from 'react-icons/io';
-import { addToFavourites } from '../helpers';
+// import { addToFavourites } from '../helpers';
 
 
 export default function Animals(props) {
@@ -25,7 +25,7 @@ export default function Animals(props) {
               {animal.breed} <br />
               {animal.animal_type} <br />
               {animal.age} years old.<br />
-              <IoIosHeart size={40} onClick={addToFavourites} />
+              <IoIosHeart size={40} />
             </p>
           </div>
         </div>

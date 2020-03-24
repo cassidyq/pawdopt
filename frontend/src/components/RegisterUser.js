@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 // import { authRegister } from '../store/actions/auth';
 // import { createMessage } from '../actions/messages';
 import Cookies from 'universal-cookie';
-
+// import cookies from '../helpers';
 
 class RegisterUser extends Component {
   state = {

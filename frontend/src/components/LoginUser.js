@@ -58,7 +58,7 @@ class LoginUser extends Component {
   }
   render() {
     if (this.state.auth) {
-      return <Redirect to={`/user/${this.state.id}`} />
+      return <Redirect to={`/`} />
     }
 
     const { username, password } = this.state;

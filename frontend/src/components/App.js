@@ -25,7 +25,7 @@ class App extends Component {
   //   store.dispatch(loadUser());
   // }
 
-  // cookies = new Cookies();
+  cookies = new Cookies();
 
 
   render() {
