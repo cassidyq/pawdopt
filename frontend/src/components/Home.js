@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import '../styles/base-padding.scss';
+
 import Animals from './Animals';
 import Filter from './Filter';
 
@@ -22,7 +23,7 @@ class Home extends Component {
     } catch (e) {
       console.log(e);
     }
-  }
+  };
 
   getFilteredAnimals = (filterParams) => {
     let url = 'http://127.0.0.1:8000/api/animals/filter?';
@@ -30,7 +31,7 @@ class Home extends Component {
     activeParams.forEach(key => {
       url += `${key}=${filterParams[key]}&`;
     });
-    fetch( url, {
+    fetch(url, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
@@ -42,15 +43,15 @@ class Home extends Component {
 
   render() {
     return (
-        <div>
+      <div>
         Welcome to Pawdopt!
-        <h1>filter:</h1>
+        <h1>Filter:</h1>
         <Filter onFilterSubmit={this.getFilteredAnimals} categories={this.state.categories}/>
         <h1>Results: </h1>
         <Animals
           animals={this.state.animals}
         />
-        </div>
+      </div>
     )
   }
 }

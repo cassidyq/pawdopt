@@ -25,4 +25,32 @@
     margin: 0 auto;
     max-width: 320px;
   }
+
+  .login-user {
+    padding: 60px 0;
+    margin: 0 auto;
+    max-width: 320px;
+  }
+
+  .login-shelter {
+    padding: 60px 0;
+    margin: 0 auto;
+    max-width: 320px;
+  }
+
+  .LoginAs {
+    padding: 60px 0;
+    margin: 0 auto;
+    max-width: 320px;
+  }
+
+  .page-title {
+    padding: 20px 0;
+    margin: 0 auto;
+    max-width: 320px;
+  }
+
+  h1 {
+    text-align: center;
+  }
 }

@@ -1,7 +1,5 @@
 from django.shortcuts import render
 from django.db.models.functions import Lower
-# from rest_framework import filters
-# import json
 
 # Create your views here.
 from rest_framework import generics
@@ -13,7 +11,6 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 
 class ListAnimal(generics.ListCreateAPIView):
-    # filter_backends = (DynamicSearchFilter,)
     queryset = Animal.objects.all()
     serializer_class = AnimalSerializer
 
