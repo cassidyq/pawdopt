@@ -3,23 +3,39 @@ import '../styles/base-padding.scss';
 
 import Animals from './Animals';
 import Filter from './Filter';
+import Cookies from 'universal-cookie';
 
 class Home extends Component {
   state = {
     animals: [],
+    user_logged_in: false,
+    shelter_logged_in: false,
+    user_id: null,
+    shelter_id: null,
     categories: []
   };
 
   async componentDidMount() {
     try {
+      if (document.cookie) {
+        const str = document.cookie.split('=')
+        if (str[0] === 'user_cookie') {
+          this.setState({ user_logged_in: true, user_id: Number(str[1]) })
+        }
+        if (str[0] === 'shelter_cookie') {
+          this.setState({ shelter_logged_in: true, shelter_id: Number(str[1]) })
+        }
+      }
+
       const res = await fetch('http://127.0.0.1:8000/api/animals'); // fetching the data from api, before the page loaded
-      const res2 = await fetch('http://127.0.0.1:8000/api/animals/categories'); 
+      const res2 = await fetch('http://127.0.0.1:8000/api/animals/categories');
       const animals = await res.json();
       const categories = await res2.json();
       this.setState({
         animals,
         categories
       });
+      console.log(this.state)
     } catch (e) {
       console.log(e);
     }
@@ -43,10 +59,11 @@ class Home extends Component {
 
   render() {
     return (
+      // <LoggedIn />
       <div>
         Welcome to Pawdopt!
         <h1>Filter:</h1>
-        <Filter onFilterSubmit={this.getFilteredAnimals} categories={this.state.categories}/>
+        <Filter onFilterSubmit={this.getFilteredAnimals} categories={this.state.categories} />
         <h1>Results: </h1>
         <Animals
           animals={this.state.animals}

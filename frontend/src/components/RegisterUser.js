@@ -4,6 +4,8 @@ import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 // import { authRegister } from '../store/actions/auth';
 // import { createMessage } from '../actions/messages';
+import Cookies from 'universal-cookie';
+
 
 class RegisterUser extends Component {
   state = {
@@ -16,10 +18,10 @@ class RegisterUser extends Component {
     id: null
   };
 
-  static propTypes = {
-    register: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool
-  };
+  // static propTypes = {
+  //   register: PropTypes.func.isRequired,
+  //   isAuthenticated: PropTypes.bool
+  // };
 
   onSubmit = e => {
     e.preventDefault();
@@ -41,13 +43,18 @@ class RegisterUser extends Component {
       })
         .then(response => response.json())
         .then(data => {
-          console.log('Success:', data);
+          // console.log('Success:', data.token);
           if (data.token) {
             this.setState({
               auth: true,
               id: data.user.id,
               token: data.token
             });
+            //setting cookie?
+            const cookies = new Cookies();
+            cookies.set('user_cookie', `${data.user.id}`, { path: '/' });
+            // console.log(cookies.get('user_cookie'));
+            // console.log('party time?');
           }
         })
         .catch(error => {

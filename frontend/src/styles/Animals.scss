@@ -1,5 +1,5 @@
 .card-img-top {
-  height: 20rem;
+  height: 22rem;
   border: thin solid;
 
   // width: unset;
@@ -52,7 +52,8 @@
 .animal-grid {
   display: flex;
   flex-wrap: wrap;
-  width: 80%;
+  justify-content: center;
+  width: 90%;
   margin: auto;
 
  }

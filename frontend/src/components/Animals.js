@@ -24,7 +24,8 @@ export default function Animals(props) {
             <p className="card-text">
               {animal.breed} <br />
               {animal.animal_type} <br />
-              <IoIosHeart size={40} onClick={addToFavourites(animal["id"])} />
+              {animal.age} years old.<br />
+              <IoIosHeart size={40} onClick={addToFavourites} />
             </p>
           </div>
         </div>

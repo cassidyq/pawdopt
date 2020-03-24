@@ -5,8 +5,9 @@ import './Login.css';
 import { Link, NavLink, Redirect } from 'react-router-dom';
 // import * as actions from '../store/actions/auth';
 import PropTypes from 'prop-types';
+import Cookies from 'universal-cookie';
 
-class LoginShelter extends Component {
+class LoginUser extends Component {
   state = {
     username: '',
     password: '',
@@ -47,6 +48,8 @@ class LoginShelter extends Component {
             id: data.user.id,
             token: data.token
           });
+          const cookies = new Cookies();
+          cookies.set('user_cookie', `${data.user.id}`, { path: '/' });
         }
       })
       .catch(error => {
@@ -99,7 +102,7 @@ class LoginShelter extends Component {
     );
   }
 }
-export default LoginShelter;
+export default LoginUser;
 
 // import React from 'react';
 // import { Form, Input, Button, Checkbox } from 'antd';
