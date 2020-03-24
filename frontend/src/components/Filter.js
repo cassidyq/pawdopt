@@ -1,46 +1,60 @@
-import React, { Component, useState } from 'react';
-
+import React, { useState } from 'react';
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
+import '../styles/Filter.scss';
 
 export default function Filter (props) {
-  const [ animalType, setAnimalType ] = useState('Best Animal');
-  const [ breed, setBreed ] = useState('');
-  const [ age, setAge ] = useState('');
-  const [ gender, setGender ] = useState('');
-  const [ shelterId, setShelterId ] = useState('');
+  const [ animalType, setAnimalType ] = useState([]);
+  const [ breed, setBreed ] = useState([]);
+  const [ age, setAge ] = useState([]);
+  const [ gender, setGender ] = useState([]);
+  const [ shelterId, setShelterId ] = useState([]);
+
+  const formatOptions = (optionsArray) => {
+    let output = [{'value': '', 'label': 'any'}]
+    if(optionsArray) {
+      optionsArray.forEach( val => {
+        output.push({ 'value': val, 'label': val })
+      });
+    }
+    return output;
+  }
 
   const reset = () => {
-    setAnimalType('');
-    setBreed('');
-    setAge('');
-    setGender('');
-    setShelterId('');
+    setAnimalType([]);
+    setBreed([]);
+    setAge([]);
+    setGender([]);
+    setShelterId([]);
   }
+
   const onSubmit = (e) => {
     e.preventDefault();
+
     const params = {
-      animal_type: animalType,
-      breed,
-      age,
-      gender,
-      shelter_id: shelterId
+      animal_type: animalType.value,
+      breed: breed.value,
+      age: age.value,
+      gender: gender.value,
+      shelter_id_id: Number(shelterId.value),
     }
+    for(const p in params) {
+      if (params[p] === undefined) params[p] = ""
+    }
+    console.log("params", params)
     props.onFilterSubmit(params)
     reset();
   }
 
   return (
-    <form>            
-      <label htmlFor="animal_type">AnimalType</label>   
-      <input onChange={e => setAnimalType(e.target.value)} type="text" name="animal-type" id="animal-type" value={animalType}/> 
-      <label htmlFor="breed">Breed</label> 
-      <input onChange={e => setBreed(e.target.value)} type="text" name="breed" id="breed" />
-      <label htmlFor="age">Age</label> 
-      <input onChange={setAge} type="text" name="age" id="age"  />    
-      <label htmlFor="gender">Gender</label>         
-      <input onChange={setGender} type="text" name="gender" id="gender"  />
-      <label htmlFor="shelter_id">Shelter ID</label>         
-      <input onChange={setShelterId} type="text" name="shelter-id" id="shelter-id"  />   
-      <button onClick={onSubmit} type='submit'>Search</button>
-    </form>  
+    <div className="set-filter">
+      <Select options={formatOptions(props.categories.typeList)} placeholder='type' onChange={setAnimalType} isSearchable={false} className="category-selector" />
+      <Select options={formatOptions(props.categories.breedList)} placeholder='breed' onChange={setBreed} value={breed} isSearchable={false} className="category-selector"/>
+      <Select options={formatOptions(props.categories.ageList)} placeholder='age' onChange={setAge} value={age} isSearchable={false} className="category-selector"/>
+      <Select options={formatOptions(props.categories.genderList)} placeholder='gender' onChange={setGender} value={gender} isSearchable={false} className="category-selector"/>
+      <Select options={formatOptions(props.categories.shelterList)} placeholder='shelter' onChange={setShelterId} value={shelterId} isSearchable={false} className="category-selector"/>
+      <button onClick={onSubmit} type='submit' className="category-selector">search</button>
+    </div>
   );
 }; 
+

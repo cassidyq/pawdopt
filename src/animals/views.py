@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.db.models.functions import Lower
 
 # Create your views here.
 from rest_framework import generics
@@ -9,11 +10,6 @@ from .serializers import AnimalSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-class HelloView(APIView):
-    def get(self, request):
-        content = {'message': 'Hello, World!'}
-        return Response(content)
-        
 class ListAnimal(generics.ListCreateAPIView):
     queryset = Animal.objects.all()
     serializer_class = AnimalSerializer
@@ -34,13 +30,23 @@ class FilterAnimals(generics.ListAPIView):
         shelter_id = self.request.query_params.get('shelter_id', None)
         # refactor later -> use loop
         if animal_type is not None:
-            queryset = queryset.filter(animal_type=animal_type)
+            queryset = queryset.filter(animal_type__iexact=animal_type)
         if breed is not None:
-            queryset = queryset.filter(breed=breed)
+            queryset = queryset.filter(breed__iexact=breed)
         if age is not None:
-            queryset = queryset.filter(age=age)
+            queryset = queryset.filter(age__iexact=age)
         if gender is not None:
-            queryset = queryset.filter(gender=gender)
+            queryset = queryset.filter(gender__iexact=gender)
         if shelter_id is not None:
-            queryset = queryset.filter(shelter_id=shelter_id)
+            queryset = queryset.filter(shelter_id__iexact=shelter_id)
         return queryset
+
+class ListAnimalCategories(APIView):
+    def get(self, request):
+        animalType = Animal.objects.values_list('animal_type', flat=True).annotate(handle_lower=Lower("animal_type")).distinct("handle_lower")
+        breed = Animal.objects.values_list('breed', flat=True).annotate(handle_lower=Lower("breed")).distinct("handle_lower")
+        age = Animal.objects.values_list('age', flat=True).annotate(handle_lower=Lower("age")).distinct("handle_lower")
+        gender = Animal.objects.values_list('gender', flat=True).annotate(handle_lower=Lower("gender")).distinct("handle_lower")
+        shelter = Animal.objects.values_list('shelter_id', flat=True).distinct().order_by('shelter_id')
+        categories = {"typeList": animalType, "breedList": breed, "ageList": age, "genderList": gender, "shelterList": shelter}
+        return Response(categories)

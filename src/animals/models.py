@@ -1,7 +1,6 @@
 from django.db import models
 from shelters.models import Shelter
 
-
 # Create your models here.
 class Animal(models.Model):
   name = models.CharField(max_length=100)
