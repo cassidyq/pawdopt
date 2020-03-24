@@ -2,6 +2,7 @@
 from rest_framework import serializers
 from .models import Animal
 from applications.serializers import ApplicationSerializer
+# from categories.serializers import CategorySerializer
 
 
 class AnimalSerializer(serializers.ModelSerializer):
@@ -19,16 +20,6 @@ class AnimalSerializer(serializers.ModelSerializer):
             'gender',
             'shelter_id',
             'applications',
+        
         )
         model = Animal
-
-# class FilterSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         fields = (
-#             "animal_type",
-#             "breed",
-#             "age",
-#             "gender",
-#             "shelter_id"
-#         )
-#         model = Animal

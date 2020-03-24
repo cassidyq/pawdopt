@@ -11,21 +11,14 @@ class Home extends Component {
     user_logged_in: false,
     shelter_logged_in: false,
     user_id: null,
-    shelter_id: null
+    shelter_id: null,
+    categories: []
   };
 
   async componentDidMount() {
     try {
-      const res = await fetch('http://127.0.0.1:8000/api/animals'); // fetching the data from api, before the page loaded
-      // const user_cookie = cookies.get('user_cookie');
-      // const shelter_cookie = cookies.get('shelter_cookie')
-      // console.log(req.headers.user_cookie)
-      // const saved_cookie = new Cookies(req.headers.user_cookie);
-
-      // console.log('getting cookie?', saved_cookie)
       if (document.cookie) {
         const str = document.cookie.split('=')
-        // console.log('str: ', str)
         if (str[0] === 'user_cookie') {
           this.setState({ user_logged_in: true, user_id: Number(str[1]) })
         }
@@ -33,9 +26,14 @@ class Home extends Component {
           this.setState({ shelter_logged_in: true, shelter_id: Number(str[1]) })
         }
       }
+
+      const res = await fetch('http://127.0.0.1:8000/api/animals'); // fetching the data from api, before the page loaded
+      const res2 = await fetch('http://127.0.0.1:8000/api/animals/categories');
       const animals = await res.json();
+      const categories = await res2.json();
       this.setState({
-        animals
+        animals,
+        categories
       });
       console.log(this.state)
     } catch (e) {
@@ -44,7 +42,6 @@ class Home extends Component {
   };
 
   getFilteredAnimals = (filterParams) => {
-    console.log(filterParams)
     let url = 'http://127.0.0.1:8000/api/animals/filter?';
     const activeParams = Object.keys(filterParams).filter(key => filterParams[key] !== '');
     activeParams.forEach(key => {
@@ -58,7 +55,6 @@ class Home extends Component {
       }
     }).then(response => response.json())
       .then(data => this.setState({ animals: data }));
-
   }
 
   render() {
@@ -66,14 +62,12 @@ class Home extends Component {
       // <LoggedIn />
       <div>
         Welcome to Pawdopt!
-        <h1>Filter</h1>
-        <div className="filter-bar"><Filter onFilterSubmit={this.getFilteredAnimals} /></div>
-        <h1>Recently Added</h1>
-        <div className="animal-container">
-          <Animals
-            animals={this.state.animals}
-          />
-        </div>
+        <h1>Filter:</h1>
+        <Filter onFilterSubmit={this.getFilteredAnimals} categories={this.state.categories} />
+        <h1>Results: </h1>
+        <Animals
+          animals={this.state.animals}
+        />
       </div>
     )
   }

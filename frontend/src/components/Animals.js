@@ -5,6 +5,7 @@ import '../styles/Animals.scss';
 import { IoIosHeart } from 'react-icons/io';
 import { addToFavourites } from '../helpers';
 
+
 export default function Animals(props) {
   const { animals } = props
 
