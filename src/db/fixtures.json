@@ -7,7 +7,7 @@
       "email": "spca@test.com",
       "password": "123456",
       "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584574444/Pawdopt/spca_400x400_gkpi52.png",
-      "description": "",
+      "description": "The SPCA rescues animals from abuse and works to protect and enhance the quality of life for all animals in B.C. Join our fight to end animal cruelty!",
       "website": "www.spca.com",
       "country": "Canada",
       "province": "BC",
@@ -56,10 +56,10 @@
     "fields": {
       "name": "Boris",
       "description": "Cheeky little schnauzer. Loves belly rubs.",
-      "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584492812/Pawdopt/SchnauzerStanley-1_todyvk.jpg", 
+      "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584492812/Pawdopt/SchnauzerStanley-1_todyvk.jpg",
       "animal_type": "dog",
       "breed": "schnauzer",
-      "age": "elderly",
+      "age": "10+",
       "size": "medium",
       "gender": "male",
       "shelter_id": 1
@@ -73,10 +73,10 @@
       "description": "Poodle with sass. Does bite. Super ugly. Sheds a lot.",
       "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584492976/Pawdopt/4064c477e627a632936425e89596bd7b_ssh9w0.jpg",
       "animal_type": "dog",
-      "breed": "Shitzhu",
-      "age": "mid-life",
+      "breed": "shitzhu",
+      "age": "3-5",
       "size": "small",
-      "gender": "Female",
+      "gender": "female",
       "shelter_id": 1
     }
   },
@@ -88,10 +88,10 @@
       "description": "Loveable stray we took in. She seems obsessed with the tv remote.",
       "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584493111/Pawdopt/357470e4c6e853a9eeb57b53a2fc811e_gytb5u.png",
       "animal_type": "dog",
-      "breed": "pit bull",
-      "age": "puppy",
+      "breed": "pitbull",
+      "age": "0-1",
       "size": "medium",
-      "gender": "Female",
+      "gender": "female",
       "shelter_id": 1
     }
   },
@@ -103,9 +103,9 @@
       "description": "Fantistic hunting dog. Great nose. Hates bread.",
       "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584569891/Pawdopt/german-shepherd_tnt6pi.jpg",
       "animal_type": "dog",
-      "breed": "German Sheppard",
-      "age": "Teenager",
-      "size": "big",
+      "breed": "german sheppard",
+      "age": "1-3",
+      "size": "large",
       "gender": "male",
       "shelter_id": 2
     }
@@ -118,10 +118,10 @@
       "description": "Fuzzy wuzzy itty bitty kitten",
       "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584569799/Pawdopt/How-to-Care-for-Siamese-Kittens-min_oigubo.jpg",
       "animal_type": "cat",
-      "breed": "Siamese",
-      "age": "kitten",
+      "breed": "siamese",
+      "age": "0-1",
       "size": "small",
-      "gender": "Male",
+      "gender": "male",
       "shelter_id": 2
     }
   },
@@ -133,10 +133,10 @@
       "description": "super moist lips",
       "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584493345/Pawdopt/e69b6feb89a524682cf149d527026893_ogo1cd.jpg",
       "animal_type": "cat",
-      "breed": "Tabby",
-      "age": "elderly",
+      "breed": "tabby",
+      "age": "5-8",
       "size": "small",
-      "gender": "Female",
+      "gender": "female",
       "shelter_id": 2
     }
   },
@@ -147,11 +147,11 @@
       "name": "The Duchess",
       "description": "Queen-like. Many enemies in the community. Not to be trusted with any amount of money.",
       "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584493449/Pawdopt/1200px-Oryctolagus_cuniculus_Rcdo_jz1n2w.jpg",
-      "animal_type": "Rabbit",
-      "breed": "Jackrabbit",
+      "animal_type": "rabbit",
+      "breed": "jackrabbit",
       "age": "unknown",
       "size": "big",
-      "gender": "Female",
+      "gender": "female",
       "shelter_id": 3
     }
   },
@@ -162,9 +162,9 @@
       "name": "Bobby Christo",
       "description": "Absolutely no ability to see or hear. Can play the piano beautifully.",
       "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584493526/Pawdopt/photo-1504450874802-0ba2bcd9b5ae_gqkaxx.jpg",
-      "animal_type": "Lizard",
-      "breed": "Bearded Dragon",
-      "age": "4",
+      "animal_type": "lizard",
+      "breed": "bearded dragon",
+      "age": "3-5",
       "size": "small",
       "gender": "male",
       "shelter_id": 3
@@ -177,11 +177,11 @@
       "name": "Ubiquitous",
       "description": "Keeps escaping her cage. Somehow appears in a new place every time.",
       "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584493510/Pawdopt/249px-Congo_African_Grey_pet_on_a_perch_roll6e.jpg",
-      "animal_type": "Bird",
-      "breed": "Parrot",
-      "age": "14",
+      "animal_type": "bird",
+      "breed": "parrot",
+      "age": "10+",
       "size": "small",
-      "gender": "Female",
+      "gender": "female",
       "shelter_id": 3
     }
   },
@@ -198,7 +198,7 @@
     "model": "applications.application",
     "pk": 2,
     "fields": {
-      "user_id": 2,
+      "user_id": 1,
       "animal_id": 5,
       "info": "Please, oh please, pick me!"
     }
@@ -207,7 +207,7 @@
     "model": "applications.application",
     "pk": 3,
     "fields": {
-      "user_id": 2,
+      "user_id": 1,
       "animal_id": 8,
       "info": "This one will go great on my wall!"
     }
@@ -216,7 +216,7 @@
     "model": "applications.application",
     "pk": 4,
     "fields": {
-      "user_id": 2,
+      "user_id": 1,
       "animal_id": 2,
       "info": "My boy would love a dog."
     }
