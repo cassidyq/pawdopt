@@ -5,6 +5,7 @@ import './Login.css';
 import { Link, Redirect } from 'react-router-dom';
 // import * as actions from '../store/actions/auth';
 import PropTypes from 'prop-types';
+import Cookies from 'universal-cookie';
 
 class LoginShelter extends Component {
   state = {
@@ -47,6 +48,8 @@ class LoginShelter extends Component {
             id: data.user.id,
             token: data.token
           });
+          const cookies = new Cookies();
+          cookies.set('shelter_cookie', `${data.user.id}`, { path: '/' });
         }
       })
       .catch(error => {
