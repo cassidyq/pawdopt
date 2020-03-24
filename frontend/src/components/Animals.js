@@ -4,6 +4,8 @@ import '../styles/Animals.scss';
 // import { Grid, Icon, Button } from 'semantic-ui-react';
 import { IoIosHeart } from 'react-icons/io';
 // import { addToFavourites } from '../helpers';
+import { NavLink } from 'react-router-dom';
+
 
 
 export default function Animals(props) {
@@ -16,9 +18,12 @@ export default function Animals(props) {
     <div className="animal-grid">
       {animals.map(animal => (
         < div className="card" key={animal.id} >
-          <div className="imageclass">
-            <img className="card-img-top" src={animal.photo_url} alt="Card image cap" />
-          </div>
+          <NavLink to={`/animals/${animal.id}`} props={animal}>
+            <div className="imageclass">
+              <img className="card-img-top" src={animal.photo_url} alt="Card image cap" />
+            </div>
+          </NavLink>
+
           <div className="card-body">
             <h1 className="card-title">{animal.name} </h1>
             <p className="card-text">

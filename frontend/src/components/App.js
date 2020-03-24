@@ -17,6 +17,7 @@ import LoginShelter from './LoginShelter';
 import RegisterUser from './RegisterUser';
 import RegisterShelter from './RegisterShelter';
 import Cookies from 'universal-cookie';
+import AnimalProfile from './AnimalProfile';
 
 // import PrivateRoute from './common/PrivateRoute';
 // import { loadUser } from '../actions/auth';
@@ -39,13 +40,13 @@ class App extends Component {
         <Route exact path='/login' exact component={Login} />
         <Route exact path='/loginShelter' exact component={LoginShelter} />
         <Route exact path='/loginUser' exact component={LoginUser} />
-        <Route exact path='/RegisterUser' exact component={RegisterUser} />
         <Route
           exact
           path='/RegisterShelter'
           exact
           component={RegisterShelter}
         />
+        <Route exact path='/animals/:id' exact component={AnimalProfile} />
       </BrowserRouter>
     );
   }
