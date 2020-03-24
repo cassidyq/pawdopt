@@ -56,7 +56,7 @@
     "fields": {
       "name": "Boris",
       "description": "Cheeky little schnauzer. Loves belly rubs.",
-      "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584492812/Pawdopt/SchnauzerStanley-1_todyvk.jpg", 
+      "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584492812/Pawdopt/SchnauzerStanley-1_todyvk.jpg",
       "animal_type": "dog",
       "breed": "schnauzer",
       "age": "elderly",
@@ -198,7 +198,7 @@
     "model": "applications.application",
     "pk": 2,
     "fields": {
-      "user_id": 2,
+      "user_id": 1,
       "animal_id": 5,
       "info": "Please, oh please, pick me!"
     }
@@ -207,7 +207,7 @@
     "model": "applications.application",
     "pk": 3,
     "fields": {
-      "user_id": 2,
+      "user_id": 1,
       "animal_id": 8,
       "info": "This one will go great on my wall!"
     }
@@ -216,7 +216,7 @@
     "model": "applications.application",
     "pk": 4,
     "fields": {
-      "user_id": 2,
+      "user_id": 1,
       "animal_id": 2,
       "info": "My boy would love a dog."
     }

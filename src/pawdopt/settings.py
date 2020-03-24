@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'animals',
     'applications',
     'accounts',
+    'favourites',
 ]
 
 MIDDLEWARE = [
@@ -90,9 +91,9 @@ WSGI_APPLICATION = 'pawdopt.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cryjlree',
-        'USER': 'cryjlree',
-        'PASSWORD': 'kfnpGaAe4bmY5Xj9eIWI9TsG5a-SYJUq',
+        'NAME': 'xrgwbdja',
+        'USER': 'xrgwbdja',
+        'PASSWORD': 'Hk16k1sfWM7qTsVT4fni6tVGPm2qJXQB',
         'HOST': 'drona.db.elephantsql.com',
         'PORT': '5432'
     }

@@ -1,16 +1,20 @@
 .card-img-top {
-  height: 13rem;
-  width: unset;
-  border-bottom-left-radius: 10;
-  border-bottom-right-radius: 10;
+  height: 20rem;
+  border: thin solid;
+
+  // width: unset;
+  // border-bottom-left-radius: 10;
+  // border-bottom-right-radius: 10;
   
 }
 
 .imageclass { 
   display: flex;
+  margin: 10px auto 0 auto;
   justify-content: center;
-  height: 100px; 
-  width: 200px; 
+  align-items: center;
+  height: 200px; 
+  width: 220px; 
   overflow: hidden; 
   display: flex;
   justify-content: center;

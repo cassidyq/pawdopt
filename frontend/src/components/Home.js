@@ -7,7 +7,6 @@ import Filter from './Filter';
 class Home extends Component {
   state = {
     animals: [],
-    favourites: []
   };
 
   async componentDidMount() {
@@ -44,13 +43,12 @@ class Home extends Component {
     return (
       <div>
         Welcome to Pawdopt!
-        <h1>filter:</h1>
-        <Filter onFilterSubmit={this.getFilteredAnimals} />
-        <h1>Recent: </h1>
+        <h1>Filter</h1>
+        <div className="filter-bar"><Filter onFilterSubmit={this.getFilteredAnimals} /></div>
+        <h1>Recently Added</h1>
         <div className="animal-container">
           <Animals
             animals={this.state.animals}
-            favourites={this.state.favourites}
           />
         </div>
       </div>
