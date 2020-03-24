@@ -16,6 +16,7 @@ import LoginUser from './LoginUser';
 import LoginShelter from './LoginShelter';
 import RegisterUser from './RegisterUser';
 import RegisterShelter from './RegisterShelter';
+import Cookies from 'universal-cookie';
 
 // import PrivateRoute from './common/PrivateRoute';
 // import { loadUser } from '../actions/auth';
@@ -23,6 +24,9 @@ class App extends Component {
   // componentDidMount() {
   //   store.dispatch(loadUser());
   // }
+
+  // cookies = new Cookies();
+
 
   render() {
     return (

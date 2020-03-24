@@ -25,10 +25,9 @@ class Home extends Component {
       // console.log('getting cookie?', saved_cookie)
       if (document.cookie) {
         const str = document.cookie.split('=')
-        console.log('str: ', str)
+        // console.log('str: ', str)
         if (str[0] === 'user_cookie') {
           this.setState({ user_logged_in: true, user_id: Number(str[1]) })
-
         }
         if (str[0] === 'shelter_cookie') {
           this.setState({ shelter_logged_in: true, shelter_id: Number(str[1]) })
@@ -64,6 +63,7 @@ class Home extends Component {
 
   render() {
     return (
+      // <LoggedIn />
       <div>
         Welcome to Pawdopt!
         <h1>Filter</h1>
