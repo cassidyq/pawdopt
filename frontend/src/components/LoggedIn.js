@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink, Redirect, Route } from 'react-router-dom';
+import { NavLink, Redirect, Route, Link, NavItem } from 'react-router-dom';
 import '../styles/Navbar.scss';
 import Cookies from 'universal-cookie';
 
@@ -25,7 +25,7 @@ class LoggedIn extends Component {
         user_id: null,
         shelter_id: null
       })
-
+      window.location.reload(true);
     }
   }
 
@@ -47,9 +47,7 @@ class LoggedIn extends Component {
 
     return (
       <nav>
-        <NavLink to='/' className="navbar-login" onClick={this.logout}>
-          Logout
-          </NavLink>
+        <Link to='/login' onClick={this.logout}>Logout</Link>
       </nav>
     )
   }
