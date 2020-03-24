@@ -5,15 +5,19 @@ import Filter from './Filter';
 
 class Home extends Component {
   state = {
-    animals: []
+    animals: [],
+    categories: []
   };
 
   async componentDidMount() {
     try {
       const res = await fetch('http://127.0.0.1:8000/api/animals'); // fetching the data from api, before the page loaded
+      const res2 = await fetch('http://127.0.0.1:8000/api/animals/categories'); 
       const animals = await res.json();
+      const categories = await res2.json();
       this.setState({
-        animals
+        animals,
+        categories
       });
     } catch (e) {
       console.log(e);
@@ -41,7 +45,7 @@ class Home extends Component {
         <div>
         Welcome to Pawdopt!
         <h1>filter:</h1>
-        <Filter onFilterSubmit={this.getFilteredAnimals}/>
+        <Filter onFilterSubmit={this.getFilteredAnimals} categories={this.state.categories}/>
         <h1>Results: </h1>
         <Animals
           animals={this.state.animals}

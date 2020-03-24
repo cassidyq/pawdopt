@@ -8,49 +8,24 @@ export default function Filter (props) {
   const [ breed, setBreed ] = useState([]);
   const [ age, setAge ] = useState([]);
   const [ gender, setGender ] = useState([]);
-  // const [ shelterId, setShelterId ] = useState([]);
+  const [ shelterId, setShelterId ] = useState([]);
 
-  // Temp data - hard coded values
-  const typeList = [
-    {value: '', label: 'any'},
-    {value: 'dog', label: 'dog'},
-    {value: 'cat', label: 'cat'}
-  ];
-
-  const breedList = [
-    {value: '', label: 'any'},
-    {value: 'schnauzer', label: 'schnauzer'},
-    {value: 'Shitzhu', label: 'Shitzhu'},
-    {value: 'Siamese', label: 'Siamese'},
-    {value: 'Jackrabbit', label: 'Jackrabbit'},
-    {value: 'persian', label: 'persian'},
-  ];
-
-  const ageList = [
-    {value: '', label: 'any'},
-    {value: 'puppy', label: 'puppy'},
-    {value: 'kitten', label: 'kitten'},
-  ];
-
-  const genderList = [
-    {value: '', label: 'any'},
-    {value: 'male', label: 'male'},
-    {value: 'female', label: 'female'},
-  ];
-
-  const shelterList = [
-    {value: '', label: 'any'},
-    {value: '1', label: '1'},
-    {value: '2', label: '2'},
-    {value: '3', label: '3'},
-  ];
+  const formatOptions = (optionsArray) => {
+    let output = [{'value': '', 'label': 'any'}]
+    if(optionsArray) {
+      optionsArray.forEach( val => {
+        output.push({ 'value': val, 'label': val })
+      });
+    }
+    return output;
+  }
 
   const reset = () => {
     setAnimalType([]);
     setBreed([]);
     setAge([]);
     setGender([]);
-    // setShelterId([]);
+    setShelterId([]);
   }
 
   const onSubmit = (e) => {
@@ -61,7 +36,7 @@ export default function Filter (props) {
       breed: breed.value,
       age: age.value,
       gender: gender.value,
-      // shelter_id_id: Number(shelterId.value),
+      shelter_id_id: Number(shelterId.value),
     }
     for(const p in params) {
       if (params[p] === undefined) params[p] = ""
@@ -73,11 +48,11 @@ export default function Filter (props) {
 
   return (
     <div className="set-filter">
-      <Select options={typeList} placeholder='type' onChange={setAnimalType} isSearchable={false} className="category-selector" />
-      <Select options={breedList} placeholder='breed' onChange={setBreed} value={breed} isSearchable={false} className="category-selector"/>
-      <Select options={ageList} placeholder='age' onChange={setAge} value={age} isSearchable={false} className="category-selector"/>
-      <Select options={genderList} placeholder='gender' onChange={setGender} value={gender} isSearchable={false} className="category-selector"/>
-      {/* <Select options={shelterList} placeholder='shelter' onChange={setShelterId} value={shelterId} isSearchable={false} className="category-selector"/> */}
+      <Select options={formatOptions(props.categories.typeList)} placeholder='type' onChange={setAnimalType} isSearchable={false} className="category-selector" />
+      <Select options={formatOptions(props.categories.breedList)} placeholder='breed' onChange={setBreed} value={breed} isSearchable={false} className="category-selector"/>
+      <Select options={formatOptions(props.categories.ageList)} placeholder='age' onChange={setAge} value={age} isSearchable={false} className="category-selector"/>
+      <Select options={formatOptions(props.categories.genderList)} placeholder='gender' onChange={setGender} value={gender} isSearchable={false} className="category-selector"/>
+      <Select options={formatOptions(props.categories.shelterList)} placeholder='shelter' onChange={setShelterId} value={shelterId} isSearchable={false} className="category-selector"/>
       <button onClick={onSubmit} type='submit' className="category-selector">search</button>
     </div>
   );
