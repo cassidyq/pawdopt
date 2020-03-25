@@ -11,6 +11,7 @@ import Home from './Home';
 import About from './About';
 import Register from './Register';
 import Shelter from './Shelter';
+import User from './User';
 import Login from './Login';
 import LoginUser from './LoginUser';
 import LoginShelter from './LoginShelter';
@@ -37,6 +38,7 @@ class App extends Component {
         <Route exact path='/about' component={About} />
         <Route exact path='/register' exact component={Register} />
         <Route exact path='/shelter' exact component={Shelter} />
+        <Route exact path='/user' exact component={User} />
         <Route exact path='/login' exact component={Login} />
         <Route exact path='/loginShelter' exact component={LoginShelter} />
         <Route exact path='/loginUser' exact component={LoginUser} />
