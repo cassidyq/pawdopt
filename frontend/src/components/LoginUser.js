@@ -43,13 +43,16 @@ class LoginUser extends Component {
       .then(data => {
         console.log('Success1:', data);
         if (data.token) {
+
+          const cookies = new Cookies();
+          cookies.set('user_cookie', `${data.token}`, { path: '/' });
           this.setState({
             auth: true,
             id: data.user.id,
             token: data.token
           });
-          const cookies = new Cookies();
-          cookies.set('user_cookie', `${data.token}`, { path: '/' });
+          window.location.href = '/';
+
         }
       })
       .catch(error => {

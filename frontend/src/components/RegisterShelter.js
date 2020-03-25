@@ -72,19 +72,8 @@ class RegisterShelter extends Component {
 
     return (
       <div className='Register'>
-        <h1 className='register-page-title'>User Registration</h1>
+        <h1 className='register-page-title'>Organization Registration</h1>
         <form>
-          {/* onSubmit={this.onSubmit}> */}
-          {/* <div className='form-group'>
-            <label>Username</label>
-            <input
-              type='text'
-              className='form-control'
-              name='username'
-              onChange={this.onChange}
-              value={username}
-            />
-          </div> */}
           <FormGroup controlId='username' bsSize='large'>
             <ControlLabel>Username</ControlLabel>
             <FormControl

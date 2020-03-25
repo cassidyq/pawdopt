@@ -68,21 +68,9 @@ class RegisterUser extends Component {
     const { username, email, password, confirmpassword } = this.state;
 
     return (
-      // <div className='col-md-6 m-auto'>
       <div className='Register'>
         <h1 className='page-title'>User Registration</h1>
         <form>
-          {/* onSubmit={this.onSubmit}> */}
-          {/* <div className='form-group'>
-            <label>Username</label>
-            <input
-              type='text'
-              className='form-control'
-              name='username'
-              onChange={this.onChange}
-              value={username}
-            />
-          </div> */}
           <FormGroup controlId='username' bsSize='large'>
             <ControlLabel>Username</ControlLabel>
             <FormControl
@@ -130,47 +118,6 @@ class RegisterUser extends Component {
         <Link to='/login'> Login</Link>
         </form>
       </div>
-
-      /* <div className='form-group'>
-        <label>Email</label>
-        <input
-          type='email'
-          className='form-control'
-          name='email'
-          onChange={this.onChange}
-          value={email}
-        />
-      </div> */
-      //     <div className='form-group'>
-      //       <label>Password</label>
-      //       <input
-      //         type='password'
-      //         className='form-control'
-      //         name='password'
-      //         onChange={this.onChange}
-      //         value={password}
-      //       />
-      //     </div>
-      //     <div className='form-group'>
-      //       <label>Confirm Password</label>
-      //       <input
-      //         type='password'
-      //         className='form-control'
-      //         name='confirmpassword'
-      //         onChange={this.onChange}
-      //         value={confirmpassword}
-      //       />
-      //     </div>
-      //     <div className='form-group'>
-      //       <button type='submit' className='btn btn-primary'>
-      //         Register
-      //         </button>
-      //     </div>
-      //     <p>
-      //       Already have an account? <Link to='/login'>Login</Link>
-      //     </p>
-      //   </form>
-      // </div>
     );
   }
 }

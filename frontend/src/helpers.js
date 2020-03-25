@@ -17,7 +17,7 @@ export const addToFavourites = function (animalID) {
   console.log('new: ', newFavourite)
 
   //this line isn't waiting for the data.
-  newFavourite.user_id = getUserID(token);
+  // newFavourite.user_id = getUserID(token);
   console.log('new: ', newFavourite)
 
   // fetch('http://localhost:8000/api/auth/register', {

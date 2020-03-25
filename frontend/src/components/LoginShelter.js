@@ -43,13 +43,15 @@ class LoginShelter extends Component {
       .then(data => {
         console.log('Success1:', data);
         if (data.token) {
+          const cookies = new Cookies();
+          cookies.set('shelter_cookie', `${data.token}`, { path: '/' });
           this.setState({
             auth: true,
             id: data.user.id,
             token: data.token
           });
-          const cookies = new Cookies();
-          cookies.set('shelter_cookie', `${data.token}`, { path: '/' });
+          window.location.href = `/shelter/${this.state.id}`;
+
         }
       })
       .catch(error => {

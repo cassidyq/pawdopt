@@ -49,8 +49,8 @@ class Navbar extends Component {
 
     // this.checkForUser()
     let user = <Route component={LoggedOut} />;
-    console.log('testttt: ', this.state.user_id)
-    console.log('believe in christ: ', document.cookie)
+    // console.log('testttt: ', this.state.user_id)
+    // console.log('believe in christ: ', document.cookie)
     if (document.cookie) {
       user = <Route component={LoggedIn} />;
     }
