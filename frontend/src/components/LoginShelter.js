@@ -4,7 +4,7 @@ import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import './Login.css';
 import { Link, Redirect } from 'react-router-dom';
 // import * as actions from '../store/actions/auth';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Cookies from 'universal-cookie';
 
 class LoginShelter extends Component {
@@ -16,10 +16,10 @@ class LoginShelter extends Component {
     id: null
   }
 
-  static propTypes = {
-    register: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool
-  };
+  // static propTypes = {
+  //   register: PropTypes.func.isRequired,
+  //   isAuthenticated: PropTypes.bool
+  // };
 
   validateForm() {
     return this.state.username.length > 0 && this.state.password.length > 0;
@@ -49,7 +49,7 @@ class LoginShelter extends Component {
             token: data.token
           });
           const cookies = new Cookies();
-          cookies.set('shelter_cookie', `${data.user.id}`, { path: '/' });
+          cookies.set('shelter_cookie', `${data.token}`, { path: '/' });
         }
       })
       .catch(error => {

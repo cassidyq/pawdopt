@@ -13,26 +13,44 @@ class Navbar extends Component {
     user_logged_in: false,
     shelter_logged_in: false,
     user_id: null,
-    shelter_id: null
+    shelter_id: null,
   };
 
   checkForUser = () => {
     if (document.cookie) {
+      console.log('document.cookie: ', document.cookie)
       const str = document.cookie.split('=')
       console.log('str: ', str)
+      let userToken = str[1];
+      fetch('http://localhost:8000/api/auth/user', {
+        method: 'GET',
+        headers: {
+          'Authorization': `Token ${userToken}`
+        }
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log('response data: ', data)
+          if (data.username) {
+            if (str[0] === 'user_cookie') {
+              // this.setState({ user_logged_in: true, user_id: Number(data.id) })
+            }
+            if (str[0] === 'shelter_cookie') {
+              // this.setState({ shelter_logged_in: true, shelter_id: Number(str[1]) })
+            }
+          }
+        })
+        .catch(err => console.log(err))
 
-      if (str[0] === 'user_cookie') {
-        this.setState({ user_logged_in: true, user_id: Number(str[1]) })
-      }
-      if (str[0] === 'shelter_cookie') {
-        this.setState({ shelter_logged_in: true, shelter_id: Number(str[1]) })
-      }
     }
   }
 
   render() {
+
+    // this.checkForUser()
     let user = <Route component={LoggedOut} />;
-    console.log(this.state.user_id)
+    console.log('testttt: ', this.state.user_id)
+    console.log('believe in christ: ', document.cookie)
     if (document.cookie) {
       user = <Route component={LoggedIn} />;
     }

@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-// import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-// import { authRegister } from '../store/actions/auth';
-// import { createMessage } from '../actions/messages';
 import Cookies from 'universal-cookie';
-// const cookies = new Cookies();
+import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import './Login.css';
+import '../styles/base-padding.scss';
 
 class RegisterShelter extends Component {
-
   state = {
     username: '',
     email: '',
@@ -19,12 +16,11 @@ class RegisterShelter extends Component {
     id: null
   };
 
-  static propTypes = {
-    register: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool
-  };
+  validateForm() {
+    return this.state.username.length > 0 && this.state.password.length > 0;
+  }
 
-  onSubmit = e => {
+  handleSubmit = e => {
     e.preventDefault();
     const { username, email, password, confirmpassword } = this.state;
     if (password !== confirmpassword) {
@@ -46,7 +42,6 @@ class RegisterShelter extends Component {
       })
         .then(response => response.json())
         .then(data => {
-          // console.log('Success:', data);
           if (data.token) {
             this.setState({
               auth: true,
@@ -54,10 +49,11 @@ class RegisterShelter extends Component {
               token: data.token
             });
             //setting cookie?
+            console.log('shelter this.state: ', this.state)
             const cookies = new Cookies();
-            cookies.set('shelter_cookie', `${data.user.id}`, { path: '/' });
-            // console.log(cookies.get('user_cookie'));
-            // console.log('party time?');
+            cookies.set('shelter_cookie', `${data.token}`, { path: '/' });
+            window.location.href = `/shelter/${this.state.id}`;
+
           }
         })
         .catch(error => {
@@ -75,60 +71,66 @@ class RegisterShelter extends Component {
     const { username, email, password, confirmpassword } = this.state;
 
     return (
-      <div className='col-md-6 m-auto'>
-        <div className='card card-body mt-5'>
-          <h2 className='text-center'>Organization Registration</h2>
-          <form onSubmit={this.onSubmit}>
-            <div className='form-group'>
-              <label>Username</label>
-              <input
-                type='text'
-                className='form-control'
-                name='username'
-                onChange={this.onChange}
-                value={username}
-              />
-            </div>
-            <div className='form-group'>
-              <label>Email</label>
-              <input
-                type='email'
-                className='form-control'
-                name='email'
-                onChange={this.onChange}
-                value={email}
-              />
-            </div>
-            <div className='form-group'>
-              <label>Password</label>
-              <input
-                type='password'
-                className='form-control'
-                name='password'
-                onChange={this.onChange}
-                value={password}
-              />
-            </div>
-            <div className='form-group'>
-              <label>Confirm Password</label>
-              <input
-                type='password'
-                className='form-control'
-                name='confirmpassword'
-                onChange={this.onChange}
-                value={confirmpassword}
-              />
-            </div>
-            <div className='form-group'>
-              <button type='submit' className='btn btn-primary'>
-                Register
-              </button>
-            </div>
-            <p>
-              Already have an account? <Link to='/login'>Login</Link>
-            </p>
-          </form>
-        </div>
+      <div className='Register'>
+        <h1 className='register-page-title'>User Registration</h1>
+        <form>
+          {/* onSubmit={this.onSubmit}> */}
+          {/* <div className='form-group'>
+            <label>Username</label>
+            <input
+              type='text'
+              className='form-control'
+              name='username'
+              onChange={this.onChange}
+              value={username}
+            />
+          </div> */}
+          <FormGroup controlId='username' bsSize='large'>
+            <ControlLabel>Username</ControlLabel>
+            <FormControl
+              autoFocus
+              type='username'
+              value={username}
+              onChange={e => this.setState({ username: e.target.value })}
+            />
+          </FormGroup>
+          <FormGroup controlId='email' bsSize='large'>
+            <ControlLabel>Email</ControlLabel>
+            <FormControl
+              autoFocus
+              type='username'
+              value={email}
+              onChange={e => this.setState({ email: e.target.value })}
+            />
+          </FormGroup>
+          <FormGroup controlId='password' bsSize='large'>
+            <ControlLabel>Password</ControlLabel>
+            <FormControl
+              value={password}
+              onChange={e => this.setState({ password: e.target.value })}
+              type='password'
+            />
+          </FormGroup>
+          <FormGroup controlId='confirmpassword' bsSize='large'>
+            <ControlLabel>Confirm Password</ControlLabel>
+            <FormControl
+              value={confirmpassword}
+              onChange={e => this.setState({ confirmpassword: e.target.value })}
+              type='password'
+            />
+          </FormGroup>
+          <Button
+            block
+            bsSize='large'
+            disabled={!this.validateForm()}
+            type='submit'
+            onClick={this.handleSubmit}
+          >
+            Register
+          </Button>
+        Or
+        <Link to='/login'> Login</Link>
+        </form>
       </div>
     );
   }

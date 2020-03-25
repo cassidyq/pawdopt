@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink, Redirect, Route, Link, NavItem } from 'react-router-dom';
 import '../styles/Navbar.scss';
 import Cookies from 'universal-cookie';
+import { Button } from 'react-bootstrap'
 
 class LoggedIn extends Component {
   state = {
@@ -19,13 +20,14 @@ class LoggedIn extends Component {
       let toRemove = str[0];
       const cookies = new Cookies();
       cookies.remove(toRemove);
+      cookies.remove('csrftoken');
       this.setState({
         user_logged_in: false,
         shelter_logged_in: false,
         user_id: null,
         shelter_id: null
       })
-      window.location.reload(true);
+      window.location.href = '/';
     }
   }
 
@@ -47,7 +49,7 @@ class LoggedIn extends Component {
 
     return (
       <nav>
-        <Link to='/login' onClick={this.logout}>Logout</Link>
+        <Button onClick={this.logout}>Logout</Button>
       </nav>
     )
   }

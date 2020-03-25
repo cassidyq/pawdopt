@@ -46,6 +46,12 @@ class App extends Component {
           exact
           component={RegisterShelter}
         />
+        <Route
+          exact
+          path='/RegisterUser'
+          exact
+          component={RegisterUser}
+        />
         <Route exact path='/animals/:id' exact component={AnimalProfile} />
       </BrowserRouter>
     );
