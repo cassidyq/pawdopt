@@ -12,7 +12,7 @@ import AnimalProfile from './AnimalProfile';
 export default function Animals(props) {
   const { animals } = props
 
-  console.log(animals)
+  // console.log(animals)
 
 
   return (

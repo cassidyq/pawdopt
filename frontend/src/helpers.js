@@ -12,47 +12,35 @@ export const addToFavourites = function (animalID) {
     active: true
   };
   console.log('document: ', document.cookie)
-  let token = document.cookie.split('=')[1]
-  console.log('token: ', token)
-  console.log('new: ', newFavourite)
+  // let token = document.cookie.split('=')[1]
+  if (document.cookie) {
+    let str = document.cookie.split('=');
+    let userID = Number(str[2]);
+    let token = str[1].split(';')[0];
 
-  //this line isn't waiting for the data.
-  // newFavourite.user_id = getUserID(token);
-  console.log('new: ', newFavourite)
+    console.log('str: ', str)
+    console.log('token: ', token)
+    console.log('userID: ', userID)
+    newFavourite.user_id = userID;
+    console.log('newFave: ', newFavourite)
+  }
 
-  // fetch('http://localhost:8000/api/auth/register', {
-  //   method: 'POST', // or 'PUT'
-  //   headers: {
-  //     'Content-Type': 'application/json'
-  //   },
-  //   body: JSON.stringify(newFavourite)
-  // })
-  //   .then(response => response.json())
-  //   .catch(error => {
-  //     console.error('Error:', error);
-  //   });
-}
 
-export const getUserID = function (token) {
-  fetch('http://localhost:8000/api/auth/user', {
-    method: 'GET', // or 'PUT'
+
+  fetch('http://localhost:8000/api/favourites/', {
+    method: 'POST', // or 'PUT'
     headers: {
-      'Authorization': `Token ${token}`
-    }
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newFavourite)
   })
     .then(response => response.json())
     .then(data => {
-      // console.log(data)
-      if (data.id) {
-        let userID = data.id;
-        // console.log(userID)
-        return userID;
-      } else {
-        return undefined;
-      }
+      console.log('data:', data)
+      console.log('added')
     })
-    .then(addToFavourites)
     .catch(error => {
       console.error('Error:', error);
     });
 }
+

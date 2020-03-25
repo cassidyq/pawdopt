@@ -43,15 +43,17 @@ class LoginShelter extends Component {
       .then(data => {
         console.log('Success1:', data);
         if (data.token) {
+          // let cookie_obj = { "token": `${data.token}`, "id": `${data.user.id}` };
+          // console.log('cookie_obj: ', cookie_obj)
           const cookies = new Cookies();
           cookies.set('shelter_cookie', `${data.token}`, { path: '/' });
+          cookies.set('user_id', `${data.user.id}`, { path: '/' })
           this.setState({
             auth: true,
             id: data.user.id,
             token: data.token
           });
           window.location.href = `/shelter/${this.state.id}`;
-
         }
       })
       .catch(error => {
@@ -62,7 +64,7 @@ class LoginShelter extends Component {
 
   render() {
     if (this.state.auth) {
-      return <Redirect to={`/shelter/${this.state.id}`} />
+      return <Redirect to={`/ shelter / ${this.state.id} `} />
     }
 
     const { username, password } = this.state;
