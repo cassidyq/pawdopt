@@ -62,10 +62,9 @@ class Home extends Component {
     return (
       // <LoggedIn />
       <div>
-        Welcome to Pawdopt!
-        <h1>Filter:</h1>
+        <h1>Filter</h1>
         <Filter onFilterSubmit={this.getFilteredAnimals} categories={this.state.categories} />
-        <h1>Results: </h1>
+        <h1>Results</h1>
         <Animals
           animals={this.state.animals}
         />

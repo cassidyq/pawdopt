@@ -85,7 +85,6 @@ class LoginUser extends Component {
               type='password'
             />
           </FormGroup>
-          {/* <NavLink to='/' className='login-submit'> */}
           <Button
             block
             bsSize='large'
@@ -95,7 +94,6 @@ class LoginUser extends Component {
           >
             Login
           </Button>
-          {/* </NavLink> */}
         Or
         <Link to='/register'> Register</Link>
         </form>
