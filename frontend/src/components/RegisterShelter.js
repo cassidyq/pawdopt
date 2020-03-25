@@ -51,6 +51,7 @@ class RegisterShelter extends Component {
             //setting cookie?
             console.log('shelter this.state: ', this.state)
             const cookies = new Cookies();
+            cookies.set('user_id', `${data.user.id}`, { path: '/' })
             cookies.set('shelter_cookie', `${data.token}`, { path: '/' });
             window.location.href = `/shelter/${this.state.id}`;
 
