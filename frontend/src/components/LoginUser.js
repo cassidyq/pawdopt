@@ -50,6 +50,7 @@ class LoginUser extends Component {
           });
           const cookies = new Cookies();
           cookies.set('user_cookie', `${data.user.id}`, { path: '/' });
+          window.location.href = '/';
         }
       })
       .catch(error => {
@@ -84,17 +85,17 @@ class LoginUser extends Component {
               type='password'
             />
           </FormGroup>
-          <NavLink to='' className='login-submit'>
-            <Button
-              block
-              bsSize='large'
-              disabled={!this.validateForm()}
-              type='submit'
-              onClick={this.handleSubmit}
-            >
-              Login
+          {/* <NavLink to='/' className='login-submit'> */}
+          <Button
+            block
+            bsSize='large'
+            disabled={!this.validateForm()}
+            type='submit'
+            onClick={this.handleSubmit}
+          >
+            Login
           </Button>
-          </NavLink>
+          {/* </NavLink> */}
         Or
         <Link to='/register'> Register</Link>
         </form>

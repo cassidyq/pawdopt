@@ -1,5 +1,6 @@
 body {
   margin-top: 6rem;
+  background: none;
 }
 
 .filter-bar {
@@ -18,4 +19,12 @@ input {
 
 h1 {
   text-align: center;
+}
+
+html { 
+  background: url('../images/dog3.jpeg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
