@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Animal
+from .models import Animal, Favourite
 from animals.serializers import AnimalSerializer
 from django.contrib.auth.models import User 
 
@@ -16,6 +16,4 @@ class FavouriteSerializer(serializers.ModelSerializer):
         )
         model = Favourite
 
-    def create(self):
-    favourite = Favourite.objects.create_favourite()
-    return favourite
+   
