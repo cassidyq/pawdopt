@@ -9,9 +9,6 @@ import { addToFavourites } from '../helpers';
 export default function Animals(props) {
   const { animals } = props
 
-  console.log(animals)
-
-
   return (
     <div className="animal-grid">
       {animals.map(animal => (

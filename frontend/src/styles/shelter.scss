@@ -1,11 +1,23 @@
-.shelter-profile {
+.shelter-page {
   display: flex;
+}
+.shelter-profile {
+ 
   align-content: center;
   justify-content: center;
+
+}
+
+.shelter-animals {
+  height: 300px;
+  width: 100vw;
+  overflow: scroll;
+  white-space: nowrap;
+  margin: 10px;
 }
 
 .shelter-animal-img {
-  border: 1px solid #ddd;
+  border: 1px solid rgb(151, 151, 151);
   border-radius: 2px;
   padding: 5px;
   width: 150px;
@@ -17,7 +29,35 @@
   height: auto;
 }
 
+.title {
+  font-size: 30px;
+  font-family: 'Fredoka One', sans-serif;
+  height: 80px;
+  color: rgb(88, 88, 88);
+  margin: 10px;
+}
+.animal-card {
+  width: 220px;
+  height: 80%;
+  display: inline-block;
+  text-align: center;
+  flex-direction: column;
+  margin: 1em;
+  border: thin solid grey;
+  border-radius: 10px;
+}
+
 .animalphoto {
-  width: 200px;
-  height: auto;
+  width: auto;
+  height: 150px;
+  border: thin;
+  margin: 10px;
+}
+
+.card-header {
+  margin-top: 10px;
+}
+
+.edit-animal-button {
+  border-style: none;
 }

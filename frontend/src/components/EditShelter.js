@@ -5,8 +5,8 @@ import '../styles/base-padding.scss';
 export default function EditShelter (props) {
   const [ id, setId ] = useState(props.shelter.id || '');
   const [ name, setName ] = useState(props.shelter.name || '');
-  const [ email, setEmail ] = useState(props.shelter.name || '');
-  const [ password, setPassword ] = useState(props.shelter.name || '');
+  const [ email, setEmail ] = useState(props.shelter.email || '');
+  const [ password, setPassword ] = useState(props.shelter.password || '');
   const [ description, setDescription ] = useState(props.shelter.description || '');
   const [ photoUrl, setPhotoUrl ] = useState(props.shelter.photo_url || '');
   const [ website, setWebsite ] = useState(props.shelter.website || '');
@@ -42,7 +42,7 @@ export default function EditShelter (props) {
 
   return (
     <form>
-      <FormGroup controlId='email' bsSize='small'>
+      <FormGroup controlId='name' bsSize='small'>
         <ControlLabel>Name</ControlLabel>
         <FormControl
           autoFocus

@@ -10,6 +10,7 @@ class Shelter extends Component {
     shelters: [],
     current_shelter: [],
     animals: [],
+    applications: [],
     showForm: false,
     key: 0
   };
@@ -20,20 +21,64 @@ class Shelter extends Component {
       const shelters = await res.json();
       const current_shelter = shelters.filter(shelter => shelter.id === 2); // <--set this to be the shelter id from cookie
       const animals = current_shelter[0].animals;
-      // const applications = current_shelter[0].applications
-      console.log(current_shelter);
+      const applications= animals.map(val => val.applications).filter(item => item.length !== 0);
+      console.log('applications', applications);
       console.log('animals', animals);
       this.setState({
         shelters,
         current_shelter,
-        animals
+        animals,
+        applications
       });
     } catch (e) {
       console.log(e);
     }
   }
 
-  updateDB = (url, action, params) => {
+  updateAnimal = (url, action, params) => {
+    
+    fetch(url, {
+      method: action,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(params)
+    }).then(response => response.json())
+       .then (data => {
+          const animalsArr = this.state.animals
+          const index = animalsArr.findIndex(p => p.id == data.id)
+          animalsArr[index] = data
+         this.setState({ 
+           showForm: false,
+           animals: animalsArr
+         })
+    });
+  }
+
+  createAnimal = (url, action, params) => {
+    
+    fetch(url, {
+      method: action,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(params)
+    }).then(response => response.json())
+       .then (data => {
+         console.log("post response data", data)
+         let test = [ data, ...this.state.animals]
+         console.log(test)
+         this.setState({ 
+           showForm: false,
+           animals: test
+
+         })
+    });
+  }
+
+  updateShelter = (url, action, params) => {
 
     fetch(url, {
       method: action,
@@ -42,41 +87,56 @@ class Shelter extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(params)
-    }).then(response => {
-      this.setState({ showForm: false })
-      response.json()
+    }).then(response => response.json())
+       .then (data => {
+         console.log("data", data)
+         this.setState({ 
+          showForm: false,
+          shelter: data
+         })
     });
   }
 
   render() {
     return (
-      <div>
-        <div className='shelter-profile'>
-          {this.state.current_shelter.map(item => (
-            <div key={item.id}>
-              <h1>{item.name}</h1>
-              <img src={item.photo_url} className='shelter-logo' alt='shelterlogo'></img>
-              <div>{item.description}</div>
-            </div>
-          ))}
-        </div>
+      <article className='shelter-page'>
+        <div>
+          <div className='shelter-profile'>
+            {this.state.current_shelter.map(item => (
+              <div key={item.id}>
+                <img src={item.photo_url} className='shelter-logo' alt='shelterlogo'></img>
+                <div class='shelter-name title'>{item.name}</div>
+              </div>
+            ))}
+          </div>
         <Button onClick={() => this.setState({ showForm: !this.state.showForm, key: this.state.current_shelter.id })} variant="primary">Edit Shelter Info</Button>
-        {this.state.showForm && this.state.key === this.state.current_shelter.id ? <EditShelter shelter={this.state.current_shelter[0]} onEditSubmit={this.updateDB} /> : null}
-        <div className='shelter-animals'>
-          <Button onClick={() => this.setState({ showForm: !this.state.showForm, key: 0 })} variant="primary">+ New Animal</Button>
-          {this.state.showForm && this.state.key === 0 ? <EditAnimal animal={{ shelter_id: 2 }} onCreateSubmit={this.updateDB} /> : null}
-          <h1>Active Animals</h1>
+        {this.state.showForm && this.state.key === this.state.current_shelter.id ? <EditShelter shelter={this.state.current_shelter[0]} onEditSubmit={this.updateShelter} /> : null}
+       <br></br>
+          <span class='title'>Active Animals <Button onClick={() => this.setState({ showForm: !this.state.showForm, key: 0 })} variant="primary">+ New Animal</Button></span>
+          {this.state.showForm && this.state.key === 0 ? <EditAnimal animal={{ shelter_id: 2 }} onCreateSubmit={this.createAnimal} /> : null}
+        <div className='shelter-animals scrolling-wrapper-flexbox'>
           {this.state.animals.map(animal => (
-            <div key={animal.id}>
-              <h1>{animal.name}</h1>
+            <div key={animal.id} class="animal-card">
+              <div className='card-header'>{animal.name}</div>
               <img src={animal.photo_url} className='animalphoto' alt='animalphoto'></img>
-              <div>{animal.description}</div>
-              <Button onClick={() => this.setState({ showForm: !this.state.showForm, key: animal.id })} variant="primary">Edit {animal.name}'s Info</Button>
-              {this.state.showForm && this.state.key === animal.id ? <EditAnimal animal={animal} onEditSubmit={this.updateDB} /> : null}
+              <br></br>
+              <Button className='edit-animal-button' onClick={() => this.setState({ showForm: !this.state.showForm, key: animal.id })} variant="primary">Edit {animal.name}'s Info</Button>
+              {this.state.showForm && this.state.key === animal.id ? <EditAnimal className='form' animal={animal} onEditSubmit={this.updateAnimal} /> : null}
             </div>
           ))}
+          </div>
+        <div className='shelter-applications'>
+          <div class='title'>Applications for your animals</div>
+          {this.state.applications.map(application => (
+            <div key={application[0].id}>
+              <div>{application[0].user_id}</div>
+              <div>{application[0].animal_id}</div>
+              <div>{application[0].info}</div>
+            </div>
+          ))}
+          </div>
         </div>
-      </div>
+      </article>
     )
   }
 }

@@ -27,9 +27,8 @@ export default function EditAnimal(props) {
       gender,
       shelter_id: shelterId
     };
-
     if (!id) {
-      props.onCreateSubmit(`http://127.0.0.1:8000/api/animals`, 'POST', params);
+      props.onCreateSubmit(`http://127.0.0.1:8000/api/animals/`, 'POST', params);
     } else {
       params[id] = id;
       props.onEditSubmit(`http://127.0.0.1:8000/api/animals/${id}`, 'PUT', params);
@@ -41,6 +40,7 @@ export default function EditAnimal(props) {
       <FormGroup controlId='name' bsSize='small'>
         <ControlLabel>Name</ControlLabel>
         <FormControl
+          required
           autoFocus
           type='text'
           value={name}
@@ -50,6 +50,7 @@ export default function EditAnimal(props) {
       <FormGroup controlId='description' bsSize='small'>
         <ControlLabel>Description</ControlLabel>
         <FormControl
+          required
           autoFocus
           type='text'
           value={description}
@@ -59,6 +60,7 @@ export default function EditAnimal(props) {
       <FormGroup controlId='photo' bsSize='small'>
         <ControlLabel>Photo URL</ControlLabel>
         <FormControl
+          required
           autoFocus
           type='text'
           value={photoUrl}
@@ -68,6 +70,7 @@ export default function EditAnimal(props) {
       <FormGroup controlId='type' bsSize='small'>
         <ControlLabel>Animal Type</ControlLabel>
         <FormControl
+          required
           autoFocus
           type='text'
           value={animalType}
@@ -77,24 +80,34 @@ export default function EditAnimal(props) {
       <FormGroup controlId='breed' bsSize='small'>
         <ControlLabel>Breed</ControlLabel>
         <FormControl
+          required
           autoFocus
           type='text'
           value={breed}
           onChange={e => setBreed(e.target.value)}
         />
       </FormGroup>
+
       <FormGroup controlId='age' bsSize='small'>
         <ControlLabel>Age</ControlLabel>
-        <FormControl
-          autoFocus
-          type='text'
-          value={age}
-          onChange={e => setAge(e.target.value)}
-        />
+        <FormControl 
+          required 
+          componentClass="select" 
+          placeholder="Choose..." 
+          value={"0-1"} 
+          onChange={e => setAge(e.target.value)} >
+            <option>0-1</option>
+            <option>1-3</option>
+            <option>3-6</option>
+            <option>6-10</option>
+            <option>10+</option>
+      </FormControl>
       </FormGroup>
+
       <FormGroup controlId='size' bsSize='small'>
         <ControlLabel>Size</ControlLabel>
         <FormControl
+          required
           autoFocus
           type='text'
           value={size}
@@ -104,6 +117,7 @@ export default function EditAnimal(props) {
       <FormGroup controlId='gender' bsSize='small'>
         <ControlLabel>Gender</ControlLabel>
         <FormControl
+          required
           autoFocus
           type='text'
           value={gender}

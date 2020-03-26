@@ -9,6 +9,9 @@ class ApplicationSerializer(serializers.ModelSerializer):
             'id',
             'user_id',
             'animal_id',
+            'created_at',
+            'updated_at',
+            'status',
             'info',
         )
         model = Application
