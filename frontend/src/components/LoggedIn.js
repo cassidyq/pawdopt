@@ -20,6 +20,7 @@ class LoggedIn extends Component {
       let toRemove = str[0];
       const cookies = new Cookies();
       cookies.remove(toRemove);
+      cookies.remove('user_id');
       cookies.remove('csrftoken');
       this.setState({
         user_logged_in: false,

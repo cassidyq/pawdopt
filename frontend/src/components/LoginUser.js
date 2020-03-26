@@ -46,6 +46,7 @@ class LoginUser extends Component {
 
           const cookies = new Cookies();
           cookies.set('user_cookie', `${data.token}`, { path: '/' });
+          cookies.set('user_id', `${data.user.id}`, { path: '/' })
           this.setState({
             auth: true,
             id: data.user.id,

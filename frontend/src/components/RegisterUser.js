@@ -49,6 +49,7 @@ class RegisterUser extends Component {
             });
             //setting cookie?
             const cookies = new Cookies();
+            cookies.set('user_id', `${data.user.id}`, { path: '/' })
             cookies.set('user_cookie', `${data.token}`, { path: '/' });
             window.location.href = '/';
           }
