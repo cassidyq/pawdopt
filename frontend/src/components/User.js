@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../styles/base-padding.scss';
 import '../styles/UserProfile.scss';
 import { Button } from 'react-bootstrap';
+import Animals from './Animals';
 
 class User extends Component {
 
@@ -9,6 +10,8 @@ class User extends Component {
     username: '',
     email: '',
     photo_url: '',
+    user_id: null,
+    favourites: [],
   }
 
   componentDidMount() {
@@ -16,8 +19,8 @@ class User extends Component {
     // const userID = Number(str[2]);
     const cookie1 = str[0].split('=');
     const cookie2 = str[1].split('=');
-    console.log("cookie1:", cookie1);
-    console.log("cookie2:", cookie2);
+    // console.log("cookie1:", cookie1);
+    // console.log("cookie2:", cookie2);
     let token = null;
     let userID = null;
 
@@ -40,13 +43,39 @@ class User extends Component {
         // console.log("data:", data)
         let profile_info = {};
         for (const profile of data) {
-          console.log(profile.user_id, userID)
+          // console.log(profile.user_id, userID)
           if (profile.user_id === userID) {
             this.setState({
-              photo_url: profile.photo_url
+              photo_url: profile.photo_url,
+              user_id: userID
             })
           }
         }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
+    fetch('http://localhost:8000/api/favourites/', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Token ${token}`
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("data:", data)
+        let favourites = [];
+        for (const animal of data) {
+          if (animal.user_id === this.state.user_id) {
+            favourites.push(animal.user_id);
+          }
+        }
+        // console.log('faves: ', favourited_animals)
+        this.setState({
+          favourites
+        })
+        console.log('state: ', this.state)
       })
       .catch(error => {
         console.error('Error:', error);
@@ -80,7 +109,11 @@ class User extends Component {
 
         <span className="user-bio">
           <div className="about-me">Favourites</div>
-          <p className="user-bio-text">Doggo ipsum shooberino bork what a nice floof fat boi tungg, corgo mlem. long woofer h*ck fat boi. Borkdrive what a nice floof shooberino bork doing me a frighten heckin angery woofer big ol pupper heckin angery woofer waggy wags wow such tempt, h*ck very good spot noodle horse doing me a frighten dat tungg tho very taste wow thicc. Noodle horse adorable doggo length boy corgo very taste wow, heckin good boys long doggo borking doggo. Long water shoob boofers sub woofer doggo fluffer waggy wags snoot, long woofer the neighborhood pupper porgo pupperino. Such treat pats stop it fren bork, you are doing me the shock aqua doggo.</p>
+          <p className="user-bio-text">
+            <Animals
+              animals={this.state.favourites}
+            />
+          </p>
           <div className="edit-bio"><Button>Edit Bio</Button></div>
         </span>
 
