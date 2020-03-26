@@ -38,7 +38,7 @@ class Home extends Component {
       this.setState({
         categories
       });
-      console.log(this.state)
+      console.log(this.state.animals)
     } catch (e) {
       console.log(e);
     }
@@ -61,6 +61,7 @@ class Home extends Component {
   }
 
   render() {
+
     return (
       // <LoggedIn />
       <div>

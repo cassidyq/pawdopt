@@ -11,12 +11,14 @@ import Home from './Home';
 import About from './About';
 import Register from './Register';
 import Shelter from './Shelter';
+import User from './User';
 import Login from './Login';
 import LoginUser from './LoginUser';
 import LoginShelter from './LoginShelter';
 import RegisterUser from './RegisterUser';
 import RegisterShelter from './RegisterShelter';
 import Cookies from 'universal-cookie';
+import AnimalProfile from './AnimalProfile';
 
 // import PrivateRoute from './common/PrivateRoute';
 // import { loadUser } from '../actions/auth';
@@ -25,7 +27,7 @@ class App extends Component {
   //   store.dispatch(loadUser());
   // }
 
-  // cookies = new Cookies();
+  cookies = new Cookies();
 
 
   render() {
@@ -36,16 +38,23 @@ class App extends Component {
         <Route exact path='/about' component={About} />
         <Route exact path='/register' exact component={Register} />
         <Route exact path='/shelter' exact component={Shelter} />
+        <Route exact path='/user' exact component={User} />
         <Route exact path='/login' exact component={Login} />
         <Route exact path='/loginShelter' exact component={LoginShelter} />
         <Route exact path='/loginUser' exact component={LoginUser} />
-        <Route exact path='/RegisterUser' exact component={RegisterUser} />
         <Route
           exact
           path='/RegisterShelter'
           exact
           component={RegisterShelter}
         />
+        <Route
+          exact
+          path='/RegisterUser'
+          exact
+          component={RegisterUser}
+        />
+        <Route exact path='/animals/:id' exact component={AnimalProfile} />
       </BrowserRouter>
     );
   }

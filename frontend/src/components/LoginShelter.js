@@ -4,7 +4,7 @@ import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import './Login.css';
 import { Link, Redirect } from 'react-router-dom';
 // import * as actions from '../store/actions/auth';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Cookies from 'universal-cookie';
 
 class LoginShelter extends Component {
@@ -16,10 +16,10 @@ class LoginShelter extends Component {
     id: null
   }
 
-  static propTypes = {
-    register: PropTypes.func.isRequired,
-    isAuthenticated: PropTypes.bool
-  };
+  // static propTypes = {
+  //   register: PropTypes.func.isRequired,
+  //   isAuthenticated: PropTypes.bool
+  // };
 
   validateForm() {
     return this.state.username.length > 0 && this.state.password.length > 0;
@@ -43,13 +43,17 @@ class LoginShelter extends Component {
       .then(data => {
         console.log('Success1:', data);
         if (data.token) {
+          // let cookie_obj = { "token": `${data.token}`, "id": `${data.user.id}` };
+          // console.log('cookie_obj: ', cookie_obj)
+          const cookies = new Cookies();
+          cookies.set('user_cookie', `${data.token}`, { path: '/' });
+          cookies.set('user_id', `${data.user.id}`, { path: '/' })
           this.setState({
             auth: true,
             id: data.user.id,
             token: data.token
           });
-          const cookies = new Cookies();
-          cookies.set('shelter_cookie', `${data.user.id}`, { path: '/' });
+          window.location.href = `/shelter/${this.state.id}`;
         }
       })
       .catch(error => {
@@ -60,7 +64,7 @@ class LoginShelter extends Component {
 
   render() {
     if (this.state.auth) {
-      return <Redirect to={`/shelter/${this.state.id}`} />
+      return <Redirect to={`/ shelter / ${this.state.id} `} />
     }
 
     const { username, password } = this.state;

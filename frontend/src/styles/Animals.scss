@@ -22,6 +22,7 @@
 }
 
 .card {
+  font-family: 'Fredoka One', cursive;
   display: grid;
   justify-content: center;
   flex-direction: col;
@@ -31,8 +32,8 @@
   width: 250px;
   padding: 0px 5px;
   border-radius: 10px;
-  background-color: lightskyblue;
-  opacity: 80%;
+  background-image: linear-gradient(rgb(0, 183, 255), rgb(112, 236, 245));
+  opacity: 85%;
   
   &:hover {
     opacity: 100;
@@ -55,7 +56,7 @@
   margin-top: 5em;
  }
 
- svg {
+svg {
    margin: 8px;
    color: black;
 
@@ -63,10 +64,13 @@
   &:hover {
     color: pink;
   }
-  &:active {
-    color: red;
-  }
+  
 }
+
+.favourited-animal {
+  color: red;
+}
+
 // #heart {
 //   color: rgb(245, 104, 69);
 //   // background-size: 200px 300px;
