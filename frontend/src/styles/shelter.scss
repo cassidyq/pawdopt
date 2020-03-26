@@ -1,11 +1,13 @@
 .shelter-page {
   display: flex;
+  top: 40px;
 }
 .shelter-profile {
- 
-  align-content: center;
+  top: 70px;
+  height: 350px;
+  text-align: center;
   justify-content: center;
-
+  background-color: rgba(240, 243, 245, 0.623);
 }
 
 .shelter-animals {
@@ -27,12 +29,16 @@
 .shelter-logo {
   width: 200px;
   height: auto;
+  margin-top: 20px;
+}
+
+.edit-shelter-button {
+  text-align: center;
 }
 
 .title {
   font-size: 30px;
   font-family: 'Fredoka One', sans-serif;
-  height: 80px;
   color: rgb(88, 88, 88);
   margin: 10px;
 }
@@ -60,4 +66,27 @@
 
 .edit-animal-button {
   border-style: none;
+}
+
+.popup {  
+  position: fixed;  
+  width: 80%;  
+  height: 80%;  
+  top: 100px;  
+  left: 10%;  
+  bottom: 0;  
+  margin: auto;
+  border: thin solid black;  
+  background-color: rgba(255, 255, 255, 0.959);  
+}  
+.popup-content{  
+  position: absolute;  
+  left: 5%;  
+  right: 5%;  
+  top: 5%;  
+  bottom: 5%;  
+  margin: auto;  
+  border-radius: 20px;  
+  background: white;  
+  overflow-y: scroll;
 }

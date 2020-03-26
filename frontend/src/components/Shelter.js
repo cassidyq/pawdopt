@@ -35,8 +35,13 @@ class Shelter extends Component {
     }
   }
 
+  togglePopup() {  
+    this.setState({  
+         showForm: !this.state.showForm 
+    });  
+  } 
+
   updateAnimal = (url, action, params) => {
-    
     fetch(url, {
       method: action,
       headers: {
@@ -57,7 +62,6 @@ class Shelter extends Component {
   }
 
   createAnimal = (url, action, params) => {
-    
     fetch(url, {
       method: action,
       headers: {
@@ -106,22 +110,51 @@ class Shelter extends Component {
               <div key={item.id}>
                 <img src={item.photo_url} className='shelter-logo' alt='shelterlogo'></img>
                 <div class='shelter-name title'>{item.name}</div>
+                <Button 
+                  className='edit-shelter-button' 
+                  onClick={() => this.setState({ showForm: !this.state.showForm, key: this.state.current_shelter.id })} 
+                  variant="primary"
+                >Edit Shelter Info</Button>
+                {this.state.showForm && this.state.key === this.state.current_shelter.id ? 
+                  <EditShelter 
+                    closePopup={this.togglePopup.bind(this)} 
+                    shelter={this.state.current_shelter[0]} 
+                    onEditSubmit={this.updateShelter} 
+                  /> : null}
               </div>
             ))}
           </div>
-        <Button onClick={() => this.setState({ showForm: !this.state.showForm, key: this.state.current_shelter.id })} variant="primary">Edit Shelter Info</Button>
-        {this.state.showForm && this.state.key === this.state.current_shelter.id ? <EditShelter shelter={this.state.current_shelter[0]} onEditSubmit={this.updateShelter} /> : null}
        <br></br>
-          <span class='title'>Active Animals <Button onClick={() => this.setState({ showForm: !this.state.showForm, key: 0 })} variant="primary">+ New Animal</Button></span>
-          {this.state.showForm && this.state.key === 0 ? <EditAnimal animal={{ shelter_id: 2 }} onCreateSubmit={this.createAnimal} /> : null}
-        <div className='shelter-animals scrolling-wrapper-flexbox'>
+          <span class='title'>Active Animals &nbsp; 
+            <Button 
+              onClick={() => this.setState({ showForm: !this.state.showForm, key: 0 })} 
+              variant="primary">
+              + New Animal
+            </Button>
+          </span>
+          {this.state.showForm && this.state.key === 0 ? 
+            <EditAnimal 
+              closePopup={this.togglePopup.bind(this)}  
+              animal={{ shelter_id: 2 }} 
+              onCreateSubmit={this.createAnimal} 
+            /> : null}
+        <div className='shelter-animals'>
           {this.state.animals.map(animal => (
             <div key={animal.id} class="animal-card">
               <div className='card-header'>{animal.name}</div>
               <img src={animal.photo_url} className='animalphoto' alt='animalphoto'></img>
               <br></br>
-              <Button className='edit-animal-button' onClick={() => this.setState({ showForm: !this.state.showForm, key: animal.id })} variant="primary">Edit {animal.name}'s Info</Button>
-              {this.state.showForm && this.state.key === animal.id ? <EditAnimal className='form' animal={animal} onEditSubmit={this.updateAnimal} /> : null}
+              <Button 
+                className='edit-animal-button' 
+                onClick={() => this.setState({ showForm: !this.state.showForm, key: animal.id })} 
+                variant="primary"
+              > Edit {animal.name}'s Info</Button>
+              {this.state.showForm && this.state.key === animal.id ? 
+              <EditAnimal 
+                closePopup={this.togglePopup.bind(this)} 
+                animal={animal} 
+                onEditSubmit={this.updateAnimal} 
+              /> : null}
             </div>
           ))}
           </div>

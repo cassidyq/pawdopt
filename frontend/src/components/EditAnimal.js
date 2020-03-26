@@ -29,14 +29,18 @@ export default function EditAnimal(props) {
     };
     if (!id) {
       props.onCreateSubmit(`http://127.0.0.1:8000/api/animals/`, 'POST', params);
+      props.closePopup()
     } else {
       params[id] = id;
       props.onEditSubmit(`http://127.0.0.1:8000/api/animals/${id}`, 'PUT', params);
+      props.closePopup()
     }
   }
 
   return (
-    <form>
+    <div className='popup'>  
+    <div className='popup-content'>  
+    <form > 
       <FormGroup controlId='name' bsSize='small'>
         <ControlLabel>Name</ControlLabel>
         <FormControl
@@ -125,6 +129,9 @@ export default function EditAnimal(props) {
         />
       </FormGroup>
       <Button onClick={onSubmit} variant="primary">Save</Button>
+      <Button onClick={props.closePopup} variant="primary">Cancel</Button>
     </form>
+    </div>
+    </div>
   );
 };

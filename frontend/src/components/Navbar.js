@@ -39,13 +39,13 @@ class Navbar extends Component {
     console.log('user: ', user)
 
     return (
-      <nav className="navbar">
+      <div className="navbar">
         <Link to='/' className="navbar-logo"><img src={Logo} /></Link>
-        <span className="navbar-items">
+        <div className="navbar-items">
           <Link to='/about' className="navbar-about">about</Link>
           {user}
-        </span>
-      </nav>
+        </div>
+      </div>
     )
   }
 }

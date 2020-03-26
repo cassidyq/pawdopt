@@ -19,10 +19,7 @@
   display: flex;
   justify-content: center;
   
-
 }
-
-
 
 .card {
   display: grid;
@@ -55,7 +52,7 @@
   justify-content: center;
   width: 90%;
   margin: auto;
-
+  margin-top: 5em;
  }
 
  svg {
@@ -78,3 +75,6 @@
 
 //   }
 // }
+.animal-article {
+  margin-top: 150px;
+}

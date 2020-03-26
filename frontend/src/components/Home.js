@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
 import '../styles/base-padding.scss';
+import '../styles/Animals.scss';
 
 import Animals from './Animals';
 import Filter from './Filter';
@@ -63,13 +64,12 @@ class Home extends Component {
     return (
       // <LoggedIn />
       <div>
-        Welcome to Pawdopt!
-        <h1>Filter:</h1>
-        <Filter onFilterSubmit={this.getFilteredAnimals} categories={this.state.categories} />
-        <h1>Results: </h1>
-        <Animals
-          animals={this.state.animals}
-        />
+        <div className='filter'>
+          <Filter onFilterSubmit={this.getFilteredAnimals} categories={this.state.categories} />
+        </div>
+        <div className='animal-article'>
+          <Animals animals={this.state.animals} />
+        </div>
       </div>
     )
   }
