@@ -5,10 +5,17 @@ class User extends Component {
 
   state = {
     username: '',
+    email: '',
+    photo_url: '',
   } 
 
   componentDidMount() {
-    const token = document.cookie.split('=')[1];
+    const str = document.cookie.split('=');
+    // const userID = Number(str[2]);
+    const userID = str[1].split(';')[0];
+    const token = str[2];
+    console.log("id:", userID);
+    console.log("str:", str);
     fetch('http://localhost:8000/api/auth/user', {
       method: 'GET',
       headers: {
@@ -19,7 +26,8 @@ class User extends Component {
     .then(data => {
       console.log("data:", data)
       this.setState({
-        username: data.username
+        username: data.username,
+        email: data.email,
       });
     })
     .catch(error => {
@@ -31,7 +39,8 @@ class User extends Component {
     return (
       <div>
       <h1>User Page</h1>
-      {this.state.username}
+      {this.state.username} <br/>
+      {this.state.email}
       </div>
     )
   }
