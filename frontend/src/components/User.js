@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../styles/base-padding.scss';
 import '../styles/UserProfile.scss';
+import { Button } from 'react-bootstrap';
+
 class User extends Component {
 
   state = {
@@ -79,8 +81,9 @@ class User extends Component {
         <span className="user-bio">
           <div className="about-me">Favourites</div>
           <p className="user-bio-text">Doggo ipsum shooberino bork what a nice floof fat boi tungg, corgo mlem. long woofer h*ck fat boi. Borkdrive what a nice floof shooberino bork doing me a frighten heckin angery woofer big ol pupper heckin angery woofer waggy wags wow such tempt, h*ck very good spot noodle horse doing me a frighten dat tungg tho very taste wow thicc. Noodle horse adorable doggo length boy corgo very taste wow, heckin good boys long doggo borking doggo. Long water shoob boofers sub woofer doggo fluffer waggy wags snoot, long woofer the neighborhood pupper porgo pupperino. Such treat pats stop it fren bork, you are doing me the shock aqua doggo.</p>
-
+          <div className="edit-bio"><Button>Edit Bio</Button></div>
         </span>
+
       </div>
 
     )
