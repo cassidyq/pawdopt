@@ -18,9 +18,9 @@ class Navbar extends Component {
 
   checkForUser = () => {
     if (document.cookie) {
-      console.log('document.cookie: ', document.cookie)
+      // console.log('document.cookie: ', document.cookie)
       const str = document.cookie.split('=')
-      console.log('str: ', str)
+      // console.log('str: ', str)
       let userToken = str[1];
       fetch('http://localhost:8000/api/auth/user', {
         method: 'GET',
@@ -30,7 +30,7 @@ class Navbar extends Component {
       })
         .then(response => response.json())
         .then(data => {
-          console.log('response data: ', data)
+          // console.log('response data: ', data)
           if (data.username) {
             if (str[0] === 'user_cookie') {
               // this.setState({ user_logged_in: true, user_id: Number(data.id) })
@@ -53,10 +53,20 @@ class Navbar extends Component {
     // console.log('testttt: ', this.state.user_id)
     // console.log('believe in christ: ', document.cookie)
     if (document.cookie) {
-      user = <Route component={LoggedIn} />;
-      profile = <Link to='/user' className="to-profile-page">Profile</Link>
+      const str = document.cookie.split(';');
+      const cookie1 = str[0].split('=')[0];
+      const cookie2 = str[1].split('=')[0];
+      console.log('cookie1: ', cookie1, typeof cookie1)
+      console.log('cookie2: ', cookie2)
+      if (cookie1.includes('user_cookie') || cookie2.includes('user_cookie')) {
+        user = <Route component={LoggedIn} />;
+        profile = <Link to='/user' className="to-profile-page">Profile</Link>
+      } else if (cookie1.includes('shelter_cookie') || cookie2.includes('shelter_cookie')) {
+        user = <Route component={LoggedIn} />;
+        profile = <Link to='/shelter' className="to-profile-page">Profile</Link>
+      }
     }
-    console.log('user: ', user)
+    // console.log('user: ', user)
 
     return (
       <nav className="navbar">

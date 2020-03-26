@@ -27,9 +27,12 @@ class User extends Component {
     if (cookie1[0] === 'user_cookie') {
       token = cookie1[1];
       userID = Number(cookie2[1]);
-    } else {
+    } else if (cookie2[0] === 'user_cookie') {
       token = cookie2[1];
       userID = Number(cookie1[1]);
+    } else {
+      token = null;
+
     }
 
     fetch('http://localhost:8000/api/profiles', {
@@ -83,6 +86,7 @@ class User extends Component {
   }
 
   render() {
+    console.log('user state: ', this.state)
     return (
       <div className="user-profile-container" >
         <div className="user-details">
