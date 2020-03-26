@@ -49,10 +49,12 @@ class Navbar extends Component {
 
     // this.checkForUser()
     let user = <Route component={LoggedOut} />;
+    let profile = null;
     // console.log('testttt: ', this.state.user_id)
     // console.log('believe in christ: ', document.cookie)
     if (document.cookie) {
       user = <Route component={LoggedIn} />;
+      profile = <Link to='/user' className="to-profile-page">Profile</Link>
     }
     console.log('user: ', user)
 
@@ -60,6 +62,7 @@ class Navbar extends Component {
       <nav className="navbar">
         <Link to='/' className="navbar-logo"><img src={Logo} /></Link>
         <span className="navbar-items">
+          {profile}
           <Link to='/about' className="navbar-about">about</Link>
           {user}
         </span>

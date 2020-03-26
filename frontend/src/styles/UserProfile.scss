@@ -1,0 +1,90 @@
+.user-profile-container {
+  font-family: 'Fredoka One', cursive;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin: 100px auto;
+  width: 90%;
+  height: 200%;
+  background-image: linear-gradient(rgb(0, 183, 255), rgb(112, 236, 245));
+  border-radius: 30px;
+}
+
+.user-details {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 50%;
+  margin-top: 50px;
+  height: 100%;
+  padding-right: 6%;
+  padding-left: 6%;
+}
+.user-note {
+  font-size: 3rem;
+margin-top: 15px;
+}
+
+.user-bio {
+  padding: 100px 40px;
+  width: 50%;
+}
+.user-profile-title {
+  font-size: 10rem;
+  text-align: center;
+}    
+
+.user-profile-img-top {
+  height: 40rem;
+  border: thin solid;  
+}
+
+.user-profile-imageclass { 
+  display: flex;
+  margin: 10px auto 0 auto;
+  justify-content: center;
+  // height: 200px; 
+  // width: 220px; 
+}
+
+.user-profile-caption {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.caption-categories {
+  font-size:3rem;
+  text-align: right;
+  margin-top: 25px;
+  width: 50%;
+  padding-right: 10px;
+
+}
+
+.user-profile-text {
+  font-size: 3rem;
+  display: flex;
+  flex-wrap: nowrap;
+  text-align: left;
+  width: 70%;
+  padding-left: 10px;
+  margin-top: 25px;
+}
+
+.about-me {
+  font-size: 4rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.pawdopt-me {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+
+}
+
+.user-bio-text {
+  font-size: 3rem;
+}

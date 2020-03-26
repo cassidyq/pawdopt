@@ -46,7 +46,7 @@ class LoginShelter extends Component {
           // let cookie_obj = { "token": `${data.token}`, "id": `${data.user.id}` };
           // console.log('cookie_obj: ', cookie_obj)
           const cookies = new Cookies();
-          cookies.set('shelter_cookie', `${data.token}`, { path: '/' });
+          cookies.set('user_cookie', `${data.token}`, { path: '/' });
           cookies.set('user_id', `${data.user.id}`, { path: '/' })
           this.setState({
             auth: true,
