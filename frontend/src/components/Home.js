@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
 import '../styles/base-padding.scss';
+import '../styles/Animals.scss';
 
 import Animals from './Animals';
 import Filter from './Filter';
@@ -32,11 +33,13 @@ class Home extends Component {
       // }
 
       const res = await fetch('http://127.0.0.1:8000/api/animals'); // fetching the data from api, before the page loaded
-      const res2 = await fetch('http://127.0.0.1:8000/api/animals/categories');
       const animals = await res.json();
+      this.setState({
+        animals
+      });
+      const res2 = await fetch('http://127.0.0.1:8000/api/animals/categories');
       const categories = await res2.json();
       this.setState({
-        animals,
         categories
       });
       console.log(this.state.animals)
@@ -66,12 +69,12 @@ class Home extends Component {
     return (
       // <LoggedIn />
       <div>
-        <h1>Filter</h1>
-        <Filter onFilterSubmit={this.getFilteredAnimals} categories={this.state.categories} />
-        <h1>Results</h1>
-        <Animals
-          animals={this.state.animals}
-        />
+        <div className='filter'>
+          <Filter onFilterSubmit={this.getFilteredAnimals} categories={this.state.categories} />
+        </div>
+        <div className='animal-article'>
+          <Animals animals={this.state.animals} />
+        </div>
       </div>
     )
   }

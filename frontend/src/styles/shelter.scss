@@ -1,11 +1,25 @@
-.shelter-profile {
+.shelter-page {
   display: flex;
-  align-content: center;
+  top: 40px;
+}
+.shelter-profile {
+  top: 70px;
+  height: 350px;
+  text-align: center;
   justify-content: center;
+  background-color: rgba(240, 243, 245, 0.623);
+}
+
+.shelter-animals {
+  height: 300px;
+  width: 100vw;
+  overflow: scroll;
+  white-space: nowrap;
+  margin: 10px;
 }
 
 .shelter-animal-img {
-  border: 1px solid #ddd;
+  border: 1px solid rgb(151, 151, 151);
   border-radius: 2px;
   padding: 5px;
   width: 150px;
@@ -15,9 +29,63 @@
 .shelter-logo {
   width: 200px;
   height: auto;
+  margin-top: 20px;
+}
+
+.edit-shelter-button {
+  text-align: center;
+}
+
+.title {
+  font-size: 30px;
+  font-family: 'Fredoka One', sans-serif;
+  color: rgb(88, 88, 88);
+  margin: 10px;
+}
+.animal-card {
+  width: 220px;
+  height: 80%;
+  display: inline-block;
+  text-align: center;
+  flex-direction: column;
+  margin: 1em;
+  border: thin solid grey;
+  border-radius: 10px;
 }
 
 .animalphoto {
-  width: 200px;
-  height: auto;
+  width: auto;
+  height: 150px;
+  border: thin;
+  margin: 10px;
+}
+
+.card-header {
+  margin-top: 10px;
+}
+
+.edit-animal-button {
+  border-style: none;
+}
+
+.popup {  
+  position: fixed;  
+  width: 80%;  
+  height: 80%;  
+  top: 100px;  
+  left: 10%;  
+  bottom: 0;  
+  margin: auto;
+  border: thin solid black;  
+  background-color: rgba(255, 255, 255, 0.959);  
+}  
+.popup-content{  
+  position: absolute;  
+  left: 5%;  
+  right: 5%;  
+  top: 5%;  
+  bottom: 5%;  
+  margin: auto;  
+  background: white;  
+  overflow-y: scroll;
 }

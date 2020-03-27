@@ -2,6 +2,7 @@
 from rest_framework import serializers
 from .models import Shelter
 from animals.serializers import AnimalSerializer
+from applications.serializers import ApplicationSerializer
 
 
 class ShelterSerializer(serializers.ModelSerializer):
@@ -22,5 +23,6 @@ class ShelterSerializer(serializers.ModelSerializer):
             'street',
             'postal_code',
             'animals',
+            
         )
         

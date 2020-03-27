@@ -12,9 +12,6 @@ import AnimalProfile from './AnimalProfile';
 export default function Animals(props) {
   const { animals } = props
 
-  // console.log(animals)
-
-
   return (
     <div className="animal-grid">
       {animals.map(animal => (
