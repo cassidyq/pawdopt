@@ -18,6 +18,7 @@ class Home extends Component {
 
   async componentDidMount() {
     try {
+<<<<<<< HEAD
       if (document.cookie) {
         const str = document.cookie.split('=')
         if (str[0] === 'user_cookie') {
@@ -27,6 +28,9 @@ class Home extends Component {
           this.setState({ shelter_logged_in: true, shelter_id: Number(str[1]) })
         }
       }
+=======
+
+>>>>>>> b6d34b967371aec4217147ffafeb804371aa6063
 
       const res = await fetch('http://127.0.0.1:8000/api/animals'); // fetching the data from api, before the page loaded
       const animals = await res.json();
@@ -63,7 +67,6 @@ class Home extends Component {
   render() {
 
     return (
-      // <LoggedIn />
       <div>
         <div className='filter'>
           <Filter onFilterSubmit={this.getFilteredAnimals} categories={this.state.categories} />
