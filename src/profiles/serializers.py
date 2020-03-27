@@ -9,6 +9,7 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'id',
             'user_id',
             'photo_url',
+            'bio',
         )
         model = UserProfile
 

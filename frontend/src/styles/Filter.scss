@@ -1,7 +1,13 @@
 .set-filter {
   display: flex;
+  width:100%;
   justify-content: center;
-
+  position: fixed;
+  z-index: 2;
+  background-color: white;
+  top: 60px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .category-selector {
