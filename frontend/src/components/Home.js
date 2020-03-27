@@ -42,7 +42,7 @@ class Home extends Component {
       this.setState({
         categories
       });
-      console.log(this.state.animals)
+      // console.log(this.state.animals)
     } catch (e) {
       console.log(e);
     }

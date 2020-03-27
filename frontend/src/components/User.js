@@ -3,6 +3,8 @@ import '../styles/base-padding.scss';
 import '../styles/UserProfile.scss';
 import { Button } from 'react-bootstrap';
 import Animals from './Animals';
+import { addToFavourites } from '../helpers';
+
 
 class User extends Component {
 
@@ -17,11 +19,8 @@ class User extends Component {
 
   componentDidMount() {
     const str = document.cookie.split(';');
-    // const userID = Number(str[2]);
     const cookie1 = str[0].split('=');
     const cookie2 = str[1].split('=');
-    // console.log("cookie1:", cookie1);
-    // console.log("cookie2:", cookie2);
     let token = null;
     let userID = null;
 
@@ -33,9 +32,9 @@ class User extends Component {
       userID = Number(cookie1[1]);
     } else {
       token = null;
-
     }
-
+    console.log('token: ', token)
+    console.log('id: ', userID)
     fetch('http://localhost:8000/api/profiles', {
       method: 'GET',
       headers: {
@@ -44,10 +43,10 @@ class User extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log("data:", data)
+        // console.log("data: ", data)
         let profile_info = {};
         for (const profile of data) {
-          console.log('profile: ', profile)
+          // console.log('profile: ', profile)
           if (profile.user_id === userID) {
 
             this.setState({
@@ -65,23 +64,15 @@ class User extends Component {
     fetch(`http://localhost:8000/api/favourites/get_favourited/${userID}`, {
       method: 'GET',
       headers: {
-        'Content-Typer': 'application/json'
+        'Content-Type': 'application/json'
       }
     })
       .then(response => response.json())
       .then(data => {
-        console.log("data:", data)
-        let favourites = [];
-        for (const animal of data) {
-          if (animal.user_id === this.state.user_id) {
-            favourites.push(animal.user_id);
-          }
-        }
-        // console.log('faves: ', favourited_animals)
+        console.log("fave data:", data)
         this.setState({
-          favourites
+          favourites: data
         })
-        // console.log('state: ', this.state)
       })
       .catch(error => {
         console.error('Error:', error);
@@ -89,7 +80,6 @@ class User extends Component {
   }
 
   render() {
-    console.log('user state: ', this.state)
     return (
       <div className="user-profile-container" >
         <div className="user-details">
