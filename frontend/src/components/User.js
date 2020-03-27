@@ -35,13 +35,26 @@ class User extends Component {
       userID = Number(cookie1[1]);
     }
 
-    // console.log('token: ', token)
     // console.log('id: ', userID)
-    fetch('http://localhost:8000/api/profiles', {
-      method: 'GET',
+    fetch('http://localhost:8000/api/auth/user', {
       headers: {
         'Authorization': `Token ${token}`
       }
+    })
+      .then(response => response.json())
+      .then(data => {
+        this.setState({
+          username: data.username,
+          email: data.email,
+        })
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+
+    fetch('http://localhost:8000/api/profiles', {
+      method: 'GET',
+      'Authorization': `Token ${token}`
     })
       .then(response => response.json())
       .then(data => {
@@ -85,7 +98,9 @@ class User extends Component {
     return (
       <div className="user-profile-container" >
         <div className="user-details">
-          <h1 className="user-profile-title">USERNAME </h1>
+          <h1 className="user-profile-title">{this.state.username}</h1>
+          <h1 className="user-profile-title">{this.state.email}</h1>
+
 
           <div className="user-profile-imageclass">
             <img className="user-profile-img-top" src={this.state.photo_url} alt="user profile image cap" />
