@@ -18,19 +18,6 @@ class Home extends Component {
 
   async componentDidMount() {
     try {
-<<<<<<< HEAD
-      if (document.cookie) {
-        const str = document.cookie.split('=')
-        if (str[0] === 'user_cookie') {
-          this.setState({ user_logged_in: true, user_id: Number(str[1]) })
-        }
-        if (str[0] === 'shelter_cookie') {
-          this.setState({ shelter_logged_in: true, shelter_id: Number(str[1]) })
-        }
-      }
-=======
-
->>>>>>> b6d34b967371aec4217147ffafeb804371aa6063
 
       const res = await fetch('http://127.0.0.1:8000/api/animals'); // fetching the data from api, before the page loaded
       const animals = await res.json();
