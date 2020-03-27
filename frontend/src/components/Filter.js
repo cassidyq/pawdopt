@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Select  from 'react-select';
 import { Button } from 'react-bootstrap';
 import makeAnimated from 'react-select/animated';
@@ -29,6 +29,8 @@ export default function Filter (props) {
     setShelterId([]);
   }
 
+  
+
   const onSubmit = (e) => {
     e.preventDefault();
 
@@ -48,8 +50,10 @@ export default function Filter (props) {
   }
 
   return (
-    <div className='header'>
+    <div>
+      <div className='header'>
       <p class='slogan'>Find your next best friend.</p>
+      </div>
       <div className="set-filter">
         <Select options={formatOptions(props.categories.typeList)} placeholder='type' onChange={setAnimalType} isSearchable={false} className="category-selector" />
         <Select options={formatOptions(props.categories.breedList)} placeholder='breed' onChange={setBreed} value={breed} isSearchable={false} className="category-selector"/>

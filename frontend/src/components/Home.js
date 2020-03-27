@@ -44,6 +44,22 @@ class Home extends Component {
     }
   };
 
+  useEffect = () => {
+    const filter = document.getElementsByClassName("set-filter");
+    const sticky = filter.offsetTop;
+    const scrollCallBack = window.addEventListener("scroll", () => {
+      if (window.pageYOffset > sticky) {
+        filter.classList.add(".sticky");
+      } else {
+        // filter.classList.remove("sticky");
+      }
+    });
+    return () => {
+      window.removeEventListener("scroll", scrollCallBack);
+    };
+  };
+  
+
   getFilteredAnimals = (filterParams) => {
     let url = 'http://127.0.0.1:8000/api/animals/filter?';
     const activeParams = Object.keys(filterParams).filter(key => filterParams[key] !== '');

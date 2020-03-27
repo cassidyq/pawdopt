@@ -2,17 +2,21 @@
   display: flex;
   width:100%;
   justify-content: center;
-  position: fixed;
-  z-index: 2;
+  z-index: 3;
   background-color: white;
-  top: 60px;
-  height: 320px;
   padding-top: 10px;
   padding-bottom: 10px;
+  
+}
+
+.header {
+  height: 320px;
   background: url('../images/pawdopt-cover-img.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom right;
+  z-index: 2s;
+  margin-top: 60px;
 }
 
 .category-selector {
@@ -26,13 +30,12 @@
 .slogan {
   display: flex;
   align-items: center;
-  position: fixed;
-  top: 150px;
-  left: 50px;
-  font-size: 30px;
+  position: relative;
+  top: 200px;
+  left: 10px;
+  font-size: 4vw;
   font-family: 'Fredoka One', sans-serif;
   color: #585858;
   margin: 10px;
   z-index: 3;
-  font-size: 40px;
 }
