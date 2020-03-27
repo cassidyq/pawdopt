@@ -10,6 +10,7 @@ export default function Filter (props) {
   const [ age, setAge ] = useState([]);
   const [ gender, setGender ] = useState([]);
   const [ shelterId, setShelterId ] = useState([]);
+  const [ filterClass, setFilterClass ] = useState('set-filter');
 
   const formatOptions = (optionsArray) => {
     let output = [{'value': '', 'label': 'any'}]
@@ -29,7 +30,21 @@ export default function Filter (props) {
     setShelterId([]);
   }
 
-  
+  useEffect(() => {
+    const filter = document.getElementsByClassName("set-filter");
+    
+    console.log(filter)
+    const scrollCallBack = window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 320) {
+        setFilterClass('set-filter sticky');
+      } else {
+        setFilterClass('set-filter');
+      }
+    });
+    return () => {
+      window.removeEventListener("scroll", scrollCallBack);
+    };
+  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -52,9 +67,9 @@ export default function Filter (props) {
   return (
     <div>
       <div className='header'>
-      <p class='slogan'>Find your next best friend.</p>
+      <p className='slogan'>Find your next best friend.</p>
       </div>
-      <div className="set-filter">
+      <div className={filterClass}>
         <Select options={formatOptions(props.categories.typeList)} placeholder='type' onChange={setAnimalType} isSearchable={false} className="category-selector" />
         <Select options={formatOptions(props.categories.breedList)} placeholder='breed' onChange={setBreed} value={breed} isSearchable={false} className="category-selector"/>
         <Select options={formatOptions(props.categories.ageList)} placeholder='age' onChange={setAge} value={age} isSearchable={false} className="category-selector"/>

@@ -18,19 +18,15 @@ class Home extends Component {
 
   async componentDidMount() {
     try {
-      // const str = document.cookie.split(';');
-      // const cookie1 = str[0].split('=');
-      // const cookie2 = str[1].split('=');
-
-      // if (document.cookie) {
-      //   const str = document.cookie.split('=')
-      //   if (str[0] === 'user_cookie') {
-      //     this.setState({ user_logged_in: true, user_id: Number(str[1]) })
-      //   }
-      //   if (str[0] === 'shelter_cookie') {
-      //     this.setState({ shelter_logged_in: true, shelter_id: Number(str[1]) })
-      //   }
-      // }
+      if (document.cookie) {
+        const str = document.cookie.split('=')
+        if (str[0] === 'user_cookie') {
+          this.setState({ user_logged_in: true, user_id: Number(str[1]) })
+        }
+        if (str[0] === 'shelter_cookie') {
+          this.setState({ shelter_logged_in: true, shelter_id: Number(str[1]) })
+        }
+      }
 
       const res = await fetch('http://127.0.0.1:8000/api/animals'); // fetching the data from api, before the page loaded
       const animals = await res.json();
@@ -42,27 +38,11 @@ class Home extends Component {
       this.setState({
         categories
       });
-      // console.log(this.state.animals)
+      console.log(this.state.animals)
     } catch (e) {
       console.log(e);
     }
   };
-
-  useEffect = () => {
-    const filter = document.getElementsByClassName("set-filter");
-    const sticky = filter.offsetTop;
-    const scrollCallBack = window.addEventListener("scroll", () => {
-      if (window.pageYOffset > sticky) {
-        filter.classList.add(".sticky");
-      } else {
-        // filter.classList.remove("sticky");
-      }
-    });
-    return () => {
-      window.removeEventListener("scroll", scrollCallBack);
-    };
-  };
-  
 
   getFilteredAnimals = (filterParams) => {
     let url = 'http://127.0.0.1:8000/api/animals/filter?';

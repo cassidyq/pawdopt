@@ -159,7 +159,7 @@ class Shelter extends Component {
           ))}
           </div>
         <div className='shelter-applications'>
-          <div class='title'>Applications for your animals</div>
+          <div className='title'>Applications for your animals</div>
           {this.state.applications.map(application => (
             <div key={application[0].id}>
               <div>{application[0].user_id}</div>

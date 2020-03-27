@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #24252A;
+  background-color: #7091E2;
   width: 100%;
   height: 60px;
   top: 0;
@@ -19,6 +19,11 @@
    img {
      height: 120%;
    }
+}
+
+.to-profile-page {
+  color: white;
+  font-style: none;
 }
 
 .navbar-items {
@@ -68,7 +73,7 @@
 }
 
 .set-default-text {
-  color: #edf0f1;
+  color: white;
   text-decoration: inherit;
 }
 
