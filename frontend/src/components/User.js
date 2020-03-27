@@ -10,6 +10,7 @@ class User extends Component {
     username: '',
     email: '',
     photo_url: '',
+    bio: '',
     user_id: null,
     favourites: [],
   }
@@ -43,14 +44,16 @@ class User extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        // console.log("data:", data)
+        console.log("data:", data)
         let profile_info = {};
         for (const profile of data) {
-          // console.log(profile.user_id, userID)
+          console.log('profile: ', profile)
           if (profile.user_id === userID) {
+
             this.setState({
               photo_url: profile.photo_url,
-              user_id: userID
+              user_id: userID,
+              bio: profile.bio,
             })
           }
         }
@@ -67,7 +70,7 @@ class User extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log("data:", data)
+        // console.log("data:", data)
         let favourites = [];
         for (const animal of data) {
           if (animal.user_id === this.state.user_id) {
@@ -78,7 +81,7 @@ class User extends Component {
         this.setState({
           favourites
         })
-        console.log('state: ', this.state)
+        // console.log('state: ', this.state)
       })
       .catch(error => {
         console.error('Error:', error);
@@ -118,6 +121,7 @@ class User extends Component {
               animals={this.state.favourites}
             />
           </p>
+          <p>{this.state.bio}</p>
           <div className="edit-bio"><Button>Edit Bio</Button></div>
         </span>
 
