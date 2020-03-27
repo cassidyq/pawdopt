@@ -28,7 +28,7 @@ urlpatterns = [
     path('api/login/', include('applications.urls')),
     path('', include('accounts.urls')),
     path('api/favourites/', include('favourites.urls')),
-
+    
     # path('api/users/saved-searches', include('users.urls')),
     # path('api/users/favourites', include('users.urls')),
 
