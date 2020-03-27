@@ -33,7 +33,6 @@ class User extends Component {
     } else {
       token = null;
     }
-<<<<<<< HEAD
 
     fetch('http://localhost:8000/api/auth/user', {
       method: 'GET',
@@ -52,10 +51,6 @@ class User extends Component {
       console.error('Error:', error);
     });
 
-=======
-    console.log('token: ', token)
-    console.log('id: ', userID)
->>>>>>> 54772336a5997ce8c0f35fc8eb522444830de7b0
     fetch('http://localhost:8000/api/profiles', {
       method: 'GET',
       headers: {
