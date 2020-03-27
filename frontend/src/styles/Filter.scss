@@ -6,12 +6,33 @@
   z-index: 2;
   background-color: white;
   top: 60px;
+  height: 320px;
   padding-top: 10px;
   padding-bottom: 10px;
+  background: url('../images/pawdopt-cover-img.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom right;
 }
 
 .category-selector {
   width: 16rem;
+  height: 54px;
   margin: 1rem;
+  align-self: flex-end;
   cursor: pointer !important;
+}
+
+.slogan {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 150px;
+  left: 50px;
+  font-size: 30px;
+  font-family: 'Fredoka One', sans-serif;
+  color: #585858;
+  margin: 10px;
+  z-index: 3;
+  font-size: 40px;
 }

@@ -7,7 +7,7 @@
   height: 350px;
   text-align: center;
   justify-content: center;
-  background-color: rgba(240, 243, 245, 0.623);
+  background-color: #EFEFEF;
 }
 
 .shelter-animals {
@@ -41,6 +41,7 @@
   font-family: 'Fredoka One', sans-serif;
   color: rgb(88, 88, 88);
   margin: 10px;
+  z-index: 3;
 }
 .animal-card {
   width: 220px;

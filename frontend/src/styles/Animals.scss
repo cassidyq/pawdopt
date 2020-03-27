@@ -22,17 +22,16 @@
 }
 
 .card {
-  font-family: 'Fredoka One', cursive;
+  
   display: grid;
   justify-content: center;
   flex-direction: col;
   text-align-last: center;
-  border: thin solid;
   margin: 1rem;
   width: 250px;
   padding: 0px 5px;
   border-radius: 10px;
-  background-image: linear-gradient(rgb(0, 183, 255), rgb(112, 236, 245));
+  background-color: #EFEFEF;
   opacity: 85%;
   
   &:hover {
@@ -42,6 +41,20 @@
   
 }
 
+.card-title {
+  font-size: 25px;
+  font-family: 'Fredoka One', cursive;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.p.card-text {
+  margin: 0px;
+}
 // .card-body {
 //   display: flex;
 //   align-items: center;
@@ -80,5 +93,5 @@ svg {
 //   }
 // }
 .animal-article {
-  margin-top: 150px;
+  margin-top: 400px;
 }

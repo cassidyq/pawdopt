@@ -22,13 +22,14 @@ export default function Animals(props) {
             </div>
           </NavLink>
           <div className="card-body">
-            <h1 className="card-title">{animal.name} </h1>
+            <div className="card-title">{animal.name} </div>
             <p className="card-text">
-              {animal.breed} <br />
-              {animal.animal_type} <br />
-              {animal.age} years old.<br />
-              <IoIosHeart size={40} onClick={() => addToFavourites(animal.id)} />
+              {animal.gender} | {animal.breed} <br />
+              Age: {animal.age}
             </p>
+            <div className='card-footer'>
+            <span>Victoria, BC</span><IoIosHeart size={40} onClick={() => addToFavourites(animal.id)} />
+            </div>
           </div>
         </div>
       )).reverse()
