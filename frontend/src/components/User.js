@@ -4,7 +4,7 @@ import '../styles/UserProfile.scss';
 import { Button } from 'react-bootstrap';
 import Animals from './Animals';
 import { addToFavourites } from '../helpers';
-
+import EditUserProfile from './EditUserProfile';
 
 class User extends Component {
 
@@ -15,15 +15,20 @@ class User extends Component {
     bio: '',
     user_id: null,
     favourites: [],
+    currentProfile: [],
+    // editProfile: false,
+    key: 0,
+    showForm: false,
+
   }
 
   componentDidMount() {
     const str = document.cookie.split('; ');
     const cookie1 = str[0].split('=');
     const cookie2 = str[1].split('=');
-    // console.log('str', str);
-    // console.log('cookie1', cookie1);
-    // console.log('cookie2', cookie2);
+    console.log('str', str);
+    console.log('cookie1', cookie1);
+    console.log('cookie2', cookie2);
     let token = null;
     let userID = null;
 
@@ -94,6 +99,30 @@ class User extends Component {
       });
   }
 
+  updateProfile = (url, action, params) => {
+
+    fetch(url, {
+      method: action,
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(params)
+    }).then(response => response.json())
+      .then(data => {
+        console.log("data", data)
+        this.setState({
+          showForm: false,
+          shelter: data
+        })
+      });
+  }
+
+  togglePopup() {
+    this.setState({
+      showForm: !this.state.showForm
+    });
+  }
   render() {
     return (
       <div className="user-profile-container" >
@@ -117,7 +146,25 @@ class User extends Component {
               BLUE <br />
               GIANT <br />
             </span>
-
+            <p>{this.state.bio}</p>
+            <div className="edit-bio">
+              <Button
+                className="edit-bio-button"
+                onClick={() => {
+                  this.setState({ showForm: !this.state.showForm, key: this.state.user_id })
+                  console.log('state set: ', this.state)
+                }}
+                variant="primary"
+              >Edit Info</Button>
+              {this.state.showForm ?
+                <EditUserProfile
+                  closePopup={this.togglePopup.bind(this)}
+                  photo_url={this.state.photo_url}
+                  bio={this.state.bio}
+                  user_id={this.state.user_id}
+                  onEditSubmit={this.updateProfile}
+                /> : null}
+            </div>
           </div>
         </div>
 
@@ -129,11 +176,9 @@ class User extends Component {
 
           <p className="user-bio-text"></p>
 
-          <p>{this.state.bio}</p>
-          <div className="edit-bio"><Button>Edit Bio</Button></div>
-        </span>
 
-      </div>
+        </span>
+      </div >
 
     )
   }
