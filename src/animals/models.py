@@ -1,5 +1,6 @@
 from django.db import models
 from shelters.models import Shelter
+# from django.db.models.options import Options
 
 # Create your models here.
 class Animal(models.Model):
@@ -13,5 +14,7 @@ class Animal(models.Model):
   gender = models.CharField(max_length=100)
   shelter_id = models.ForeignKey(Shelter, related_name='animals', on_delete=models.CASCADE)
 
-  def __str__(self):
-    return self.name
+  # def __str__(self):
+  #   return self.description
+  # def __str__(self):
+  #   return self.name

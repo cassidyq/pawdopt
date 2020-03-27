@@ -62,15 +62,15 @@ class User extends Component {
         console.error('Error:', error);
       });
 
-    fetch('http://localhost:8000/api/favourites/', {
+    fetch(`http://localhost:8000/api/favourites/get_favourited/${userID}`, {
       method: 'GET',
       headers: {
-        'Authorization': `Token ${token}`
+        'Content-Typer': 'application/json'
       }
     })
       .then(response => response.json())
       .then(data => {
-        // console.log("data:", data)
+        console.log("data:", data)
         let favourites = [];
         for (const animal of data) {
           if (animal.user_id === this.state.user_id) {

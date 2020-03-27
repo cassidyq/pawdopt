@@ -10,5 +10,5 @@ class Favourite(models.Model):
   animal_id = models.ForeignKey(Animal, related_name='animal_id', on_delete=models.CASCADE)
   active = models.BooleanField(default=False)
 
-  # def __str__(self):
-  #   return self.name
+  def __unicode__(self):
+    return self.animal.name
