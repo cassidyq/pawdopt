@@ -5,7 +5,7 @@ import Cookies from 'universal-cookie';
 
 
 export const addToFavourites = function (animalID) {
-  console.log('animal ID: ', animalID)
+  // console.log('animal ID: ', animalID)
   const newFavourite = {
     user_id: null,
     animal_id: animalID,
@@ -13,16 +13,17 @@ export const addToFavourites = function (animalID) {
   };
   console.log('document: ', document.cookie)
   // let token = document.cookie.split('=')[1]
-  if (document.cookie) {
-    let str = document.cookie.split('=');
-    let userID = Number(str[2]);
-    let token = str[1].split(';')[0];
+  if (document.cookie.includes('user_id')) {
+    const str = document.cookie.split('; ');
+    const cookie1 = str[0].split('=');
+    const cookie2 = str[1].split('=');
 
-    console.log('str: ', str)
-    console.log('token: ', token)
-    console.log('userID: ', userID)
-    newFavourite.user_id = userID;
-    console.log('newFave: ', newFavourite)
+    if (cookie1[0].includes('user_id')) {
+      newFavourite.user_id = Number(cookie1[1])
+    } else if (cookie2[0].includes('user_id')) {
+      newFavourite.user_id = Number(cookie2[1])
+    }
+    // console.log('newFave: ', newFavourite)
   }
 
 
@@ -36,8 +37,8 @@ export const addToFavourites = function (animalID) {
   })
     .then(response => response.json())
     .then(data => {
-      console.log('data:', data)
-      console.log('added')
+      console.log('added to Faves:', data)
+      // console.log('added')
     })
     .catch(error => {
       console.error('Error:', error);

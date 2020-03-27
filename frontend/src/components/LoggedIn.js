@@ -14,13 +14,10 @@ class LoggedIn extends Component {
 
   logout = () => {
     if (document.cookie) {
-      const str = document.cookie.split('=')
-      console.log('str: ', str)
-
-      let toRemove = str[0];
       const cookies = new Cookies();
-      cookies.remove(toRemove);
       cookies.remove('user_id');
+      cookies.remove('user_cookie');
+      cookies.remove('shelter_cookie');
       cookies.remove('csrftoken');
       this.setState({
         user_logged_in: false,

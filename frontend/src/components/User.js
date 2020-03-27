@@ -18,9 +18,12 @@ class User extends Component {
   }
 
   componentDidMount() {
-    const str = document.cookie.split(';');
+    const str = document.cookie.split('; ');
     const cookie1 = str[0].split('=');
     const cookie2 = str[1].split('=');
+    // console.log('str', str);
+    // console.log('cookie1', cookie1);
+    // console.log('cookie2', cookie2);
     let token = null;
     let userID = null;
 
@@ -30,11 +33,10 @@ class User extends Component {
     } else if (cookie2[0] === 'user_cookie') {
       token = cookie2[1];
       userID = Number(cookie1[1]);
-    } else {
-      token = null;
     }
-    console.log('token: ', token)
-    console.log('id: ', userID)
+
+    // console.log('token: ', token)
+    // console.log('id: ', userID)
     fetch('http://localhost:8000/api/profiles', {
       method: 'GET',
       headers: {
@@ -44,7 +46,7 @@ class User extends Component {
       .then(response => response.json())
       .then(data => {
         // console.log("data: ", data)
-        let profile_info = {};
+        // let profile_info = {};
         for (const profile of data) {
           // console.log('profile: ', profile)
           if (profile.user_id === userID) {
@@ -69,7 +71,7 @@ class User extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log("fave data:", data)
+        // console.log("fave data:", data)
         this.setState({
           favourites: data
         })
@@ -106,11 +108,12 @@ class User extends Component {
 
         <span className="user-bio">
           <div className="about-me">Favourites</div>
-          <p className="user-bio-text">
-            <Animals
-              animals={this.state.favourites}
-            />
-          </p>
+          <Animals
+            animals={this.state.favourites}
+          />
+
+          <p className="user-bio-text"></p>
+
           <p>{this.state.bio}</p>
           <div className="edit-bio"><Button>Edit Bio</Button></div>
         </span>
