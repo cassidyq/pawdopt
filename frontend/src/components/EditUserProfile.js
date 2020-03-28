@@ -4,24 +4,43 @@ import '../styles/base-padding.scss';
 
 export default function EditUserProfile(props) {
   console.log('edit user profile: ', props)
-  const { photo_url, bio, user_id, profile_id } = props;
+  const {
+    user_id,
+    profile_id,
+    // name,
+    // address,
+    // city,
+    // postalCode,
+    // phone,
+    // email,
+    // birthdate,
+    // house,
+    // kids,
+    // otherPets,
+    // allergic,
+    // animalStay,
+    // activityLevel,
+    // why,
+  } = props;
+
+  // console.log('name: ', name)
 
   const [profileId, setProfileId] = useState(profile_id || '');
-  const [name, setName] = useState('');
-  const [address, setAddress] = useState('');
-  const [city, setCity] = useState('');
-  const [postalCode, setPostalCode] = useState('');
-  const [phone, setPhone] = useState('');
-  const [email, setEmail] = useState('');
-  const [birthdate, setBirthdate] = useState('');
-  const [house, setHouse] = useState('');
-  const [kids, setKids] = useState('');
-  const [otherPets, setOtherPets] = useState('');
-  const [allergic, setAllergic] = useState('');
-  const [animalStay, setAnimalStay] = useState('');
-  const [activityLevel, setActivityLevel] = useState('');
-  const [why, setWhy] = useState('');
-
+  const [name, setName] = useState(props.name || '');
+  const [address, setAddress] = useState(props.address || '');
+  const [city, setCity] = useState(props.city || '');
+  const [postalCode, setPostalCode] = useState(props.postalCode || '');
+  const [phone, setPhone] = useState(props.phone || '');
+  const [email, setEmail] = useState(props.email || '');
+  const [birthdate, setBirthdate] = useState(props.birthdate || '');
+  const [house, setHouse] = useState(props.house || '');
+  const [kids, setKids] = useState(props.kids || '');
+  const [otherPets, setOtherPets] = useState(props.otherPets || '');
+  const [allergic, setAllergic] = useState(props.allergic || '');
+  const [animalStay, setAnimalStay] = useState(props.animalStay || '');
+  const [activityLevel, setActivityLevel] = useState(props.activityLevel || '');
+  const [why, setWhy] = useState(props.why || '');
+  // console.log('name: ', props.name)
   const onSubmit = (e) => {
     e.preventDefault();
     const params = {

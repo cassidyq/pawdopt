@@ -19,15 +19,29 @@ class User extends Component {
     currentProfile: [],
     key: 0,
     showForm: false,
+    user_name: '',
+    user_address: '',
+    user_city: '',
+    user_postalCode: '',
+    user_phone: '',
+    user_email: '',
+    user_birthdate: '',
+    user_house: '',
+    user_kids: '',
+    user_otherPets: '',
+    user_allergic: '',
+    user_animalStay: '',
+    user_activityLevel: '',
+    user_why: '',
   }
 
   componentDidMount() {
     const str = document.cookie.split('; ');
     const cookie1 = str[0].split('=');
     const cookie2 = str[1].split('=');
-    console.log('str', str);
-    console.log('cookie1', cookie1);
-    console.log('cookie2', cookie2);
+    // console.log('str', str);
+    // console.log('cookie1', cookie1);
+    // console.log('cookie2', cookie2);
     let token = null;
     let userID = null;
 
@@ -62,16 +76,29 @@ class User extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        // console.log("data: ", data)
+        // console.log("profile data: ", data)
         // let profile_info = {};
         for (const profile of data) {
           // console.log('profile: ', profile)
           if (profile.user_id === userID) {
-
+            console.log('profile: ', profile)
             this.setState({
               photo_url: profile.photo_url,
               user_id: userID,
-              bio: profile.bio,
+              user_name: profile.name,
+              user_address: profile.address,
+              user_city: profile.city,
+              user_postalCode: profile.postalCode,
+              user_phone: profile.phone,
+              user_email: profile.email,
+              user_birthdate: profile.birthdate,
+              user_house: profile.house,
+              user_kids: profile.kids,
+              user_otherPets: profile.otherPets,
+              user_allergic: profile.allergic,
+              user_animalStay: profile.animalStay,
+              user_activityLevel: profile.activityLevel,
+              user_why: profile.why,
               profile_id: profile.id
             })
           }
@@ -114,8 +141,20 @@ class User extends Component {
         console.log("data", data)
         this.setState({
           showForm: false,
-          photo_url: data.photo_url,
-          bio: data.bio,
+          user_name: data.name,
+          user_address: data.address,
+          user_city: data.city,
+          user_postalCode: data.postalCode,
+          user_phone: data.phone,
+          user_email: data.email,
+          user_birthdate: data.birthdate,
+          user_house: data.house,
+          user_kids: data.kids,
+          user_otherPets: data.otherPets,
+          user_allergic: data.allergic,
+          user_animalStay: data.animalStay,
+          user_activityLevel: data.activityLevel,
+          user_why: data.why,
         })
       });
   }
@@ -161,8 +200,20 @@ class User extends Component {
               {this.state.showForm ?
                 <EditUserProfile
                   closePopup={this.togglePopup.bind(this)}
-                  photo_url={this.state.photo_url}
-                  bio={this.state.bio}
+                  name={this.state.user_name}
+                  address={this.state.user_address}
+                  city={this.state.user_city}
+                  postalCode={this.state.user_postalCode}
+                  phone={this.state.user_phone}
+                  email={this.state.user_email}
+                  birthdate={this.state.user_birthdate}
+                  house={this.state.user_house}
+                  kids={this.state.user_kids}
+                  otherPets={this.state.user_otherPets}
+                  allergic={this.state.user_allergic}
+                  animalStay={this.state.user_animalStay}
+                  activityLevel={this.state.user_activityLevel}
+                  why={this.state.user_why}
                   user_id={this.state.user_id}
                   profile_id={this.state.profile_id}
                   onEditSubmit={this.updateProfile}
