@@ -11,8 +11,8 @@ class ListProfiles(generics.ListCreateAPIView):
   serializer_class = UserProfileSerializer
 
 class DetailProfiles(generics.RetrieveUpdateDestroyAPIView):
-  queryset = User.objects.all().select_related('userprofiles')
-  # queryset = UserProfile.objects.all()
+  # queryset = User.objects.all().select_related('userprofiles')
+  queryset = UserProfile.objects.all()
   serializer_class = UserProfileSerializer
 
   # def update_profile(self, request, user_id):

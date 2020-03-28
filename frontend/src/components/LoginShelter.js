@@ -41,7 +41,7 @@ class LoginShelter extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('Success1:', data);
+        // console.log('Success1:', data);
         if (data.token) {
           // let cookie_obj = { "token": `${data.token}`, "id": `${data.user.id}` };
           // console.log('cookie_obj: ', cookie_obj)
