@@ -148,7 +148,7 @@ class User extends Component {
               BLUE <br />
               GIANT <br />
             </span>
-            <p>{this.state.bio}</p>
+
             <div className="edit-bio">
               <Button
                 className="edit-bio-button"

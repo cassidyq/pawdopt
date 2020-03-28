@@ -30,7 +30,6 @@ export default function Animals(props) {
               Age: {animal.age}
               </p>
               <div className='card-footer'>
-
                 <span>Victoria, BC</span>{(favourite_animal_ids.includes(animal.id)) ? <IoIosHeart size={40} color={'red'} onClick={() => removeFromFavourites(animal.id)} /> : <IoIosHeart size={40} onClick={() => addToFavourites(animal.id)} />}
               </div>
             </div>

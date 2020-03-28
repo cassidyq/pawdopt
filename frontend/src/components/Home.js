@@ -32,8 +32,8 @@ class Home extends Component {
       cookie1 = str[0].split('=');
       cookie2 = str[1].split('=');
       console.log('str', str);
-      console.log('cookie1', cookie1);
-      console.log('cookie2', cookie2);
+      // console.log('cookie1', cookie1);
+      // console.log('cookie2', cookie2);
       token = null;
       userID = null;
 
