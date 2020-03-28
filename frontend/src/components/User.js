@@ -96,45 +96,50 @@ class User extends Component {
 
   render() {
     return (
-      <div className="user-profile-container" >
-        <div className="user-details">
-          <h1 className="user-profile-title">{this.state.username}</h1>
-          <h1 className="user-profile-title">{this.state.email}</h1>
-
-
-          <div className="user-profile-imageclass">
-            <img className="user-profile-img-top" src={this.state.photo_url} alt="user profile image cap" />
-          </div>
-          <div className="user-profile-caption">
-            <div className="caption-categories">
-              Pending Applications: <br />
-
+      <div className='user-profile'>
+        <h1 className="welcome">Welcome {this.state.username}</h1>
+          <div className="user-profile-container" >
+            <div className="user-details">
+              <div className="user-profile-imageclass">
+                <img src={this.state.photo_url} alt="user profile image cap" />
+              </div>
             </div>
-            <span className="user-profile-text">
-              RED <br />
-              GREEN <br />
-              SMALL <br />
-              BLUE <br />
-              GIANT <br />
-            </span>
 
+            <div className="user-profile-caption">
+              <div className="user-bio">
+                <div className="user-profile-title">Email: {this.state.email}</div>
+                <div className="user-bio-text">Edit your adoption application <Button>Edit Bio</Button></div>
+        
+              </div>
+            </div>
           </div>
-        </div>
-
-        <span className="user-bio">
-          <div className="about-me">Favourites</div>
-          <Animals
-            animals={this.state.favourites}
-          />
-
-          <p className="user-bio-text"></p>
-
-          <p>{this.state.bio}</p>
-          <div className="edit-bio"><Button>Edit Bio</Button></div>
-        </span>
-
+          <div className='profile-section'>
+            <div className="title">Your favourite animals</div>
+            <Animals
+              animals={this.state.favourites}
+            />
+          </div>  
+          <div className='profile-section-applications'>
+            <div className="title">Pending Applications</div>
+            <table >
+              <tr>
+                <th>Created At</th>
+                <th>Animal</th>
+                <th>Status</th>
+              </tr>
+              <tr>
+                <td>2020-01-22</td>
+                <td>Chapstick</td>
+                <td>Pending</td>
+              </tr>
+              <tr>
+                <td>2020-01-03</td>
+                <td>Jackson</td>
+                <td>Closed</td>
+              </tr>
+            </table>
+          </div>
       </div>
-
     )
   }
 }

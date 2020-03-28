@@ -1,90 +1,154 @@
-.user-profile-container {
-  font-family: 'Fredoka One', cursive;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  margin: 100px auto;
-  width: 90%;
-  height: 200%;
-  background-image: linear-gradient(rgb(0, 183, 255), rgb(112, 236, 245));
-  border-radius: 30px;
-}
+.user-profile {
 
-.user-details {
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  width: 50%;
-  margin-top: 50px;
-  height: 100%;
-  padding-right: 6%;
-  padding-left: 6%;
-}
-.user-note {
-  font-size: 3rem;
-margin-top: 15px;
-}
+  .welcome {
+    font-family: 'Fredoka One', sans-serif;
+    position: relative;
+    top: 70px;
 
-.user-bio {
-  padding: 100px 40px;
-  width: 50%;
-}
-.user-profile-title {
-  font-size: 10rem;
-  text-align: center;
-}    
+  }
 
-.user-profile-img-top {
-  height: 40rem;
-  border: thin solid;  
-}
+  .user-profile-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 20px auto;
+    width: 95%;
+    height: 200%;
+    background-color: #EFEFEF;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0px 5px 10px -2px rgb(160, 160, 160);
+  }
 
-.user-profile-imageclass { 
-  display: flex;
-  margin: 10px auto 0 auto;
-  justify-content: center;
-  // height: 200px; 
-  // width: 220px; 
-}
+  .user-details {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 30%;
+    margin: 50px;
+    height: 100%;
+    /* margin-right: 4%; */
+    /* margin-left: 4%; */
+    border-radius: 10px;
+  }
+  .user-note {
+    font-size: 3rem;
+    margin-top: 15px;
+  }
 
-.user-profile-caption {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-}
+  .user-bio {
+    padding: 100px 40px;
+  }
+  .user-profile-title {
+    font-size: 25px;
+    text-align: left;
+  }    
 
-.caption-categories {
-  font-size:3rem;
-  text-align: right;
-  margin-top: 25px;
-  width: 50%;
-  padding-right: 10px;
+  .user-profile-imageclass { 
+    display: inline-block;
+    position: relative;
+    height: 200px; 
+    width: 200px;
+    overflow: hidden;
+    border-radius: 50%;
 
-}
+  }
+  .user-profile-imageclass img {
+    width: auto;
+    height: 100%;
+  }
 
-.user-profile-text {
-  font-size: 3rem;
-  display: flex;
-  flex-wrap: nowrap;
-  text-align: left;
-  width: 70%;
-  padding-left: 10px;
-  margin-top: 25px;
-}
+  .user-profile-caption {
+    display: flex;
+    // flex-direction: row;
+    width: 100%;
+  }
 
-.about-me {
-  font-size: 4rem;
-  text-align: center;
-  margin-bottom: 10px;
-}
+  .caption-categories {
+    font-size:4rem;
+    text-align: left;
+    margin-bottom: 10px;
 
-.pawdopt-me {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
 
-}
+  }
 
-.user-bio-text {
-  font-size: 3rem;
+  .user-profile-text {
+    font-size: 25px;
+    display: flex;
+    flex-wrap: nowrap;
+    text-align: left;
+    width: 70%;
+    padding-left: 10px;
+    margin-top: 25px;
+  }
+
+  .about-me {
+    font-size: 4rem;
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .pawdopt-me {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+
+  }
+
+  .user-bio-text {
+    font-size: 25px;
+  }
+
+  .animal-grid {
+    margin-top: 0px;
+    white-space: nowrap;
+    overflow-x: auto;
+    height: 380px;
+    flex-wrap: nowrap;
+    justify-content: left;
+    width:95%;
+  }
+
+  .card {
+    display: inline-block;
+  }
+
+  .profile-section {
+    box-shadow: 0px 5px 10px -2px rgb(160, 160, 160);
+    width: 95%;
+    margin: auto;
+    height: 470px;
+    padding-top: 15px;
+  
+  }
+  .profile-section-applications {
+    box-shadow: 0px 5px 10px -2px rgb(160, 160, 160);
+    width: 95%;
+    margin: auto;
+    margin-top: 20px;
+    height: 470px;
+    padding-top: 15px;
+    background-color: #EFEFEF;
+   }
+
+  table {
+    border-collapse: collapse;
+    margin: 20px auto;
+    width: 90%;
+
+    td {
+      padding: 1rem;
+      border-top: 2px solid rgba(128, 128, 128, 0.658); 
+      font-size: 20px;
+    }
+
+    th {
+      padding: 1rem;
+      font-family: 'Fredoka One', sans-serif;
+      color: #585858;
+      font-size: 25px;
+    }
+  }
+  
+
 }

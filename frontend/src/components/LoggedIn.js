@@ -47,7 +47,7 @@ class LoggedIn extends Component {
 
     return (
       <nav>
-        <Button onClick={this.logout}>Logout</Button>
+        <Button id='logout-btn' onClick={this.logout}>Logout</Button>
       </nav>
     )
   }

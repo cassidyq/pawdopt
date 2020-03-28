@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
+import { Button, Row, Col, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
 import '../styles/base-padding.scss';
 
 export default function EditShelter (props) {
@@ -64,15 +64,6 @@ export default function EditShelter (props) {
           onChange={e => setEmail(e.target.value)}
         />
       </FormGroup>  
-      <FormGroup controlId='password' bsSize='small'>
-        <ControlLabel>Password</ControlLabel>
-        <FormControl
-          autoFocus
-          type='text'
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-      </FormGroup> 
       <FormGroup controlId='description' bsSize='small'>
         <ControlLabel>Description</ControlLabel>
         <FormControl

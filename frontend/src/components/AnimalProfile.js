@@ -10,7 +10,7 @@ import { Button } from 'react-bootstrap';
 class AnimalProfile extends Component {
   state = {
     animal: {}
-  }//   const animal = props.location.animal_info.animal;
+  }
 
 
   componentDidMount() {
@@ -48,27 +48,20 @@ class AnimalProfile extends Component {
     let animal = this.state.animal;
     return (
       <div className="animal-profile-container" >
+          <h1 className="animal-profile-title">Meet {animal.name} </h1>
         <div className="animal-details">
-          <h1 className="animal-profile-title">{animal.name} </h1>
 
           <div className="animal-profile-imageclass">
             <img className="animal-profile-img-top" src={animal.photo_url} alt="animal profile image cap" />
           </div>
           <div className="animal-profile-caption">
             <div className="caption-categories">
-              Type: <br />
-              Breed: <br />
-              Gender: <br />
-              Age: <br />
-              Note: <br />
+              Type: {animal.animal_type} <br />
+              Breed: {animal.breed}<br />
+              Gender: {animal.gender} <br />
+              Age: {animal.age}<br />
+              Description: {animal.description} <br />
             </div>
-            <span className="animal-profile-text">
-              {animal.animal_type} <br />
-              {animal.breed} <br />
-              {animal.gender} <br />
-              {animal.age} <br />
-              {animal.description} <br />
-            </span>
 
           </div>
           {/* <div className="animal-note">Note: {animal.description}</div> */}
@@ -78,7 +71,7 @@ class AnimalProfile extends Component {
           <div className="about-me">About Me</div>
           <p className="animal-bio-text">Doggo ipsum shooberino bork what a nice floof fat boi tungg, corgo mlem. long woofer h*ck fat boi. Borkdrive what a nice floof shooberino bork doing me a frighten heckin angery woofer big ol pupper heckin angery woofer waggy wags wow such tempt, h*ck very good spot noodle horse doing me a frighten dat tungg tho very taste wow thicc. Noodle horse adorable doggo length boy corgo very taste wow, heckin good boys long doggo borking doggo. Long water shoob boofers sub woofer doggo fluffer waggy wags snoot, long woofer the neighborhood pupper porgo pupperino. Such treat pats stop it fren bork, you are doing me the shock aqua doggo.</p>
           <div className="pawdopt-me">
-            <Button variant="primary">Pawdopt Me Please</Button>
+            <button className='adopt-me-button' variant="primary">Pawdopt Me</button>
           </div>
         </span>
       </div>

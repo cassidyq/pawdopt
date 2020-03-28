@@ -73,7 +73,7 @@ class Navbar extends Component {
         <Link to='/' className="navbar-logo"><img src={Logo} /></Link>
         <div className="navbar-items">
           {profile}
-          <Link to='/about' className="navbar-about">about</Link>
+          <Link to='/about' className="navbar-about">About</Link>
           {user}
         </div>
       </div>
