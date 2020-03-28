@@ -1,7 +1,9 @@
 
 import Cookies from 'universal-cookie';
 
-// const cookies = new Cookies();
+export const removeFromFavourites = function (animalID) {
+  console.log('need to remove: ', animalID)
+}
 
 
 export const addToFavourites = function (animalID) {
@@ -11,7 +13,7 @@ export const addToFavourites = function (animalID) {
     animal_id: animalID,
     active: true
   };
-  console.log('document: ', document.cookie)
+  // console.log('document: ', document.cookie)
   // let token = document.cookie.split('=')[1]
   if (document.cookie.includes('user_id')) {
     const str = document.cookie.split('; ');
@@ -28,6 +30,7 @@ export const addToFavourites = function (animalID) {
 
 
 
+
   fetch('http://localhost:8000/api/favourites/', {
     method: 'POST', // or 'PUT'
     headers: {
@@ -37,7 +40,7 @@ export const addToFavourites = function (animalID) {
   })
     .then(response => response.json())
     .then(data => {
-      console.log('added to Faves:', data)
+      // console.log('added to Faves:', data)
       // console.log('added')
     })
     .catch(error => {

@@ -14,12 +14,11 @@ class User extends Component {
     photo_url: '',
     bio: '',
     user_id: null,
+    profile_id: null,
     favourites: [],
     currentProfile: [],
-    // editProfile: false,
     key: 0,
     showForm: false,
-
   }
 
   componentDidMount() {
@@ -40,7 +39,7 @@ class User extends Component {
       userID = Number(cookie1[1]);
     }
 
-    // console.log('id: ', userID)
+    console.log('id: ', userID)
     fetch('http://localhost:8000/api/auth/user', {
       headers: {
         'Authorization': `Token ${token}`
@@ -73,6 +72,7 @@ class User extends Component {
               photo_url: profile.photo_url,
               user_id: userID,
               bio: profile.bio,
+              profile_id: profile.id
             })
           }
         }
@@ -80,7 +80,7 @@ class User extends Component {
       .catch(error => {
         console.error('Error:', error);
       });
-
+    console.log('user id: ', userID)
     fetch(`http://localhost:8000/api/favourites/get_favourited/${userID}`, {
       method: 'GET',
       headers: {
@@ -89,10 +89,11 @@ class User extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        // console.log("fave data:", data)
+        console.log("fave data:", data)
         this.setState({
           favourites: data
         })
+        console.log('what in the heck? ', this.state)
       })
       .catch(error => {
         console.error('Error:', error);
@@ -113,7 +114,8 @@ class User extends Component {
         console.log("data", data)
         this.setState({
           showForm: false,
-          shelter: data
+          photo_url: data.photo_url,
+          bio: data.bio,
         })
       });
   }
@@ -162,6 +164,7 @@ class User extends Component {
                   photo_url={this.state.photo_url}
                   bio={this.state.bio}
                   user_id={this.state.user_id}
+                  profile_id={this.state.profile_id}
                   onEditSubmit={this.updateProfile}
                 /> : null}
             </div>
@@ -170,9 +173,7 @@ class User extends Component {
 
         <span className="user-bio">
           <div className="about-me">Favourites</div>
-          <Animals
-            animals={this.state.favourites}
-          />
+          <Animals animals={this.state.favourites} />
 
           <p className="user-bio-text"></p>
 

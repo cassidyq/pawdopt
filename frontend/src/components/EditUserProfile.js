@@ -4,9 +4,9 @@ import '../styles/base-padding.scss';
 
 export default function EditUserProfile(props) {
   console.log('edit user profile: ', props)
-  const { photo_url, bio, user_id } = props;
+  const { photo_url, bio, user_id, profile_id } = props;
 
-  const [id, setId] = useState(user_id || '');
+  const [profileId, setProfileId] = useState(profile_id || '');
   const [photoURL, setPhotoURL] = useState(photo_url || '');
   const [userBio, setUserBio] = useState(bio || '');
   // const [photoUrl, setPhotoUrl] = useState(props.animal.photo_url || '');
@@ -20,17 +20,17 @@ export default function EditUserProfile(props) {
   const onSubmit = (e) => {
     e.preventDefault();
     const params = {
-      photoURL,
-      userBio,
-      profile_id: id
+      photo_url: photoURL,
+      bio: userBio,
+      user_id: user_id,
     };
     console.log('params: ', params)
-    if (!id) {
+    if (!profileId) {
       // props.onCreateSubmit(`http://127.0.0.1:8000/api/animals/`, 'POST', params);
       // props.closePopup()
     } else {
-      params[id] = id;
-      props.onEditSubmit(`http://127.0.0.1:8000/api/profiles/${id}`, 'PUT', params);
+      params["id"] = profileId;
+      props.onEditSubmit(`http://127.0.0.1:8000/api/profiles/${profileId}`, 'PUT', params);
       props.closePopup()
     }
   }

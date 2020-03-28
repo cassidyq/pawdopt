@@ -56,8 +56,8 @@ class Navbar extends Component {
       const str = document.cookie.split(';');
       const cookie1 = str[0].split('=')[0];
       const cookie2 = str[1].split('=')[0];
-      console.log('cookie1: ', cookie1, typeof cookie1)
-      console.log('cookie2: ', cookie2)
+      // console.log('cookie1: ', cookie1, typeof cookie1)
+      // console.log('cookie2: ', cookie2)
       if (cookie1.includes('user_cookie') || cookie2.includes('user_cookie')) {
         user = <Route component={LoggedIn} />;
         profile = <Link to='/user' className="to-profile-page">Profile</Link>

@@ -18,6 +18,6 @@ class DetailFavourites(generics.RetrieveUpdateDestroyAPIView):
     
 class UserFavourites(APIView):
     def get(self, request, userID):
-        animalsWeWant = Favourite.objects.filter(user_id = userID).values_list('animal_id', flat=True) #values_list('user_id', flat=True)
-        my_query = Animal.objects.filter(pk__in=animalsWeWant).values('name', 'description', 'photo_url', 'animal_type', 'breed', 'age', 'size', 'gender', 'shelter_id')
+        animalsWeWant = Favourite.objects.filter(user_id = userID, active = True).values_list('animal_id', flat=True) #values_list('user_id', flat=True)
+        my_query = Animal.objects.filter(pk__in=animalsWeWant).values('id','name', 'description', 'photo_url', 'animal_type', 'breed', 'age', 'size', 'gender', 'shelter_id')
         return Response(my_query)
