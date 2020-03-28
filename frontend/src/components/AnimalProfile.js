@@ -5,7 +5,6 @@ import '../styles/AnimalProfile.scss';
 import { IoIosHeart } from 'react-icons/io';
 import { Button } from 'react-bootstrap';
 
-// import { addToFavourites } from '../helpers';
 
 class AnimalProfile extends Component {
   state = {
