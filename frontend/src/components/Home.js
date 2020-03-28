@@ -16,6 +16,7 @@ class Home extends Component {
     shelter_id: null,
     categories: [],
     favourite_animal_ids: [],
+    // fave_obj_ids: [],
   };
 
 
@@ -59,21 +60,23 @@ class Home extends Component {
         categories
       });
       const res3 = await fetch(`http://127.0.0.1:8000/api/favourites/get_favourited/${userID}`);
+      // console.log('res3: ', res3)
       const favourites = await res3.json();
       console.log('favey: ', favourites)
 
       // console.log('fave from prop: ', favourites)
       const favourite_animal_ids = [];
       for (const favourite of favourites) {
-        console.log('item: ', favourite)
+        // console.log('item: ', favourite)
         favourite_animal_ids.push(favourite.id)
       }
-      console.log('fave animal id: ', favourite_animal_ids)
-      console.log('state before: ', this.state)
+      // console.log('fave animal id: ', favourite_animal_ids)
+      // console.log('state before: ', this.state)
       this.setState({
-        favourite_animal_ids
+        favourite_animal_ids,
+        // fave_obj_ids: favourites[0]
       })
-      console.log('state after: ', this.state)
+      // console.log('state after: ', this.state)
 
     } catch (e) {
       console.log(e);

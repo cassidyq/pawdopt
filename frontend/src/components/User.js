@@ -3,7 +3,7 @@ import '../styles/base-padding.scss';
 import '../styles/UserProfile.scss';
 import { Button } from 'react-bootstrap';
 import Animals from './Animals';
-import { addToFavourites } from '../helpers';
+import { updateFavourites } from '../helpers';
 import EditUserProfile from './EditUserProfile';
 
 class User extends Component {
@@ -16,6 +16,7 @@ class User extends Component {
     user_id: null,
     profile_id: null,
     favourites: [],
+    // fave_obj_ids: [],
     currentProfile: [],
     key: 0,
     showForm: false,
@@ -116,7 +117,8 @@ class User extends Component {
       .then(data => {
         console.log("fave data:", data)
         this.setState({
-          favourites: data
+          favourites: data,
+          // fave_obj_ids: data[1]
         })
         console.log('what in the heck? ', this.state)
       })

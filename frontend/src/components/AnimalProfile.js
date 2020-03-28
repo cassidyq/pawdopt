@@ -5,8 +5,6 @@ import '../styles/shelter.scss';
 // import { Grid, Icon, Button } from 'semantic-ui-react';
 import { IoIosHeart } from 'react-icons/io';
 import NewApplications from './NewApplications';
-
-
 import { addApplication } from '../helpers';
 
 class AnimalProfile extends Component {
