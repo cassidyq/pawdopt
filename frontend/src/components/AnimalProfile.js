@@ -1,19 +1,41 @@
 import React, { Component } from 'react';
 import '../styles/base-padding.scss';
 import '../styles/AnimalProfile.scss';
+import '../styles/shelter.scss';
 // import { Grid, Icon, Button } from 'semantic-ui-react';
 import { IoIosHeart } from 'react-icons/io';
-import { Button } from 'react-bootstrap';
+import NewApplications from './NewApplications';
 
-// import { addToFavourites } from '../helpers';
+
+import { addApplication } from '../helpers';
 
 class AnimalProfile extends Component {
   state = {
-    animal: {}
+    animal: {},
+    user_id: '',
+    app_info: '',
+    showForm: false
   }
 
-
   componentDidMount() {
+    const str = document.cookie.split('; ');
+    const cookie1 = str[0].split('=');
+    const cookie2 = str[1].split('=');
+  
+    let token = null;
+    let userID = null;
+
+    if (cookie1[0] === 'user_cookie') {
+      token = cookie1[1];
+      userID = Number(cookie2[1]);
+    } else if (cookie2[0] === 'user_cookie') {
+      token = cookie2[1];
+      userID = Number(cookie1[1]);
+    }
+    this.setState ({
+      user_id: userID
+    })
+
     console.log('this.props: ', this.props)
     if (this.props.location.animal_info) {
       this.setState({
@@ -40,6 +62,12 @@ class AnimalProfile extends Component {
     }
   }
 
+  togglePopup() {  
+    this.setState({  
+         showForm: !this.state.showForm 
+    });  
+  } 
+
   render() {
     console.log('this.state: ', this.state)
     if (!this.state.animal) {
@@ -60,7 +88,8 @@ class AnimalProfile extends Component {
               Breed: {animal.breed}<br />
               Gender: {animal.gender} <br />
               Age: {animal.age}<br />
-              Description: {animal.description} <br />
+              Size: {animal.size}
+    
             </div>
 
           </div>
@@ -69,9 +98,18 @@ class AnimalProfile extends Component {
 
         <span className="animal-bio">
           <div className="about-me">About Me</div>
-          <p className="animal-bio-text">Doggo ipsum shooberino bork what a nice floof fat boi tungg, corgo mlem. long woofer h*ck fat boi. Borkdrive what a nice floof shooberino bork doing me a frighten heckin angery woofer big ol pupper heckin angery woofer waggy wags wow such tempt, h*ck very good spot noodle horse doing me a frighten dat tungg tho very taste wow thicc. Noodle horse adorable doggo length boy corgo very taste wow, heckin good boys long doggo borking doggo. Long water shoob boofers sub woofer doggo fluffer waggy wags snoot, long woofer the neighborhood pupper porgo pupperino. Such treat pats stop it fren bork, you are doing me the shock aqua doggo.</p>
+          <p className="animal-bio-text">{animal.description}</p>
           <div className="pawdopt-me">
-            <button className='adopt-me-button' variant="primary">Pawdopt Me</button>
+            <button onClick={() => this.setState({ showForm: !this.state.showForm })} className='adopt-me-button' variant="primary">Pawdopt Me</button>
+            {this.state.showForm ?
+              <NewApplications
+                closePopup={this.togglePopup.bind(this)}  
+                animal_id
+                animal_name={animal.name}
+                user_id
+                status='new'
+                onApplicationSubmit={addApplication}
+              />: null}
           </div>
         </span>
       </div>
@@ -81,3 +119,4 @@ class AnimalProfile extends Component {
 
 export default AnimalProfile;
 
+// () => addApplication(animal.id, this.state.user_id, 'new')

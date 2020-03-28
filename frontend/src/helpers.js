@@ -48,3 +48,25 @@ export const addToFavourites = function (animalID) {
     });
 }
 
+export const addApplication = function (animalId, userId, status, applicationInfo) {
+  fetch('http://localhost:8000/api/applications/', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      user_id: userId,
+      animal_id: animalId,
+      status,
+      info: applicationInfo
+    })
+  })
+    .then(response => response.json())
+    .then(data => {
+      console.log('new app', data)
+      // console.log('added')
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+}

@@ -44,102 +44,102 @@ export default function EditShelter (props) {
 
   return (
     <div className='popup'>  
-    <div className='popup-content'>  
-    <form>
-      <FormGroup controlId='name' bsSize='small'>
-        <ControlLabel>Name</ControlLabel>
-        <FormControl
-          autoFocus
-          type='text'
-          value={name}
-          onChange={e => setName(e.target.value)}
-        />
-      </FormGroup> 
-      <FormGroup controlId='email' bsSize='small'>
-        <ControlLabel>Email</ControlLabel>
-        <FormControl
-          autoFocus
-          type='text'
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
-      </FormGroup>  
-      <FormGroup controlId='description' bsSize='small'>
-        <ControlLabel>Description</ControlLabel>
-        <FormControl
-          autoFocus
-          type='text'
-          value={description}
-          onChange={e => setDescription(e.target.value)}
-        />
-      </FormGroup>  
-      <FormGroup controlId='shelterPhoto' bsSize='small'>
-        <ControlLabel>Photo URL</ControlLabel>
-        <FormControl
-          autoFocus
-          type='text'
-          value={photoUrl}
-          onChange={e => setPhotoUrl(e.target.value)}
-        />
-      </FormGroup>  
-      <FormGroup controlId='website' bsSize='small'>
-        <ControlLabel>Website</ControlLabel>
-        <FormControl
-          autoFocus
-          type='text'
-          value={website}
-          onChange={e => setWebsite(e.target.value)}
-        />
-      </FormGroup>  
-      <FormGroup controlId='country' bsSize='small'>
-        <ControlLabel>Country</ControlLabel>
-        <FormControl
-          autoFocus
-          type='text'
-          value={country}
-          onChange={e => setCountry(e.target.value)}
-        />
-      </FormGroup>  
-      <FormGroup controlId='province' bsSize='small'>
-        <ControlLabel>Province</ControlLabel>
-        <FormControl
-          autoFocus
-          type='text'
-          value={province}
-          onChange={e => setProvince(e.target.value)}
-        />
-      </FormGroup>
-      <FormGroup controlId='city' bsSize='small'>
-        <ControlLabel>City</ControlLabel>
-        <FormControl
-          autoFocus
-          type='text'
-          value={city}
-          onChange={e => setCity(e.target.value)}
-        />
-      </FormGroup>
-      <FormGroup controlId='street' bsSize='small'>
-        <ControlLabel>Street</ControlLabel>
-        <FormControl
-          autoFocus
-          type='text'
-          value={street}
-          onChange={e => setStreet(e.target.value)}
-        />
-      </FormGroup>   
-      <FormGroup controlId='postalcode' bsSize='small'>
-        <ControlLabel>Postal Code</ControlLabel>
-        <FormControl
-          autoFocus
-          type='text'
-          value={postalCode}
-          onChange={e => setPostalCode(e.target.value)}
-        />
-      </FormGroup>          
-      <Button onClick={onSubmit} variant="primary">Save</Button>
-      <Button onClick={props.closePopup} variant="primary">Cancel</Button>
-    </form>  
-    </div>
+      <div className='popup-content'>  
+        <form>
+          <FormGroup controlId='name' bsSize='small'>
+            <ControlLabel>Name</ControlLabel>
+            <FormControl
+              autoFocus
+              type='text'
+              value={name}
+              onChange={e => setName(e.target.value)}
+            />
+          </FormGroup> 
+          <FormGroup controlId='email' bsSize='small'>
+            <ControlLabel>Email</ControlLabel>
+            <FormControl
+              autoFocus
+              type='text'
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+          </FormGroup>  
+          <FormGroup controlId='description' bsSize='small'>
+            <ControlLabel>Description</ControlLabel>
+            <FormControl
+              autoFocus
+              type='text'
+              value={description}
+              onChange={e => setDescription(e.target.value)}
+            />
+          </FormGroup>  
+          <FormGroup controlId='shelterPhoto' bsSize='small'>
+            <ControlLabel>Photo URL</ControlLabel>
+            <FormControl
+              autoFocus
+              type='text'
+              value={photoUrl}
+              onChange={e => setPhotoUrl(e.target.value)}
+            />
+          </FormGroup>  
+          <FormGroup controlId='website' bsSize='small'>
+            <ControlLabel>Website</ControlLabel>
+            <FormControl
+              autoFocus
+              type='text'
+              value={website}
+              onChange={e => setWebsite(e.target.value)}
+            />
+          </FormGroup>  
+          <FormGroup controlId='country' bsSize='small'>
+            <ControlLabel>Country</ControlLabel>
+            <FormControl
+              autoFocus
+              type='text'
+              value={country}
+              onChange={e => setCountry(e.target.value)}
+            />
+          </FormGroup>  
+          <FormGroup controlId='province' bsSize='small'>
+            <ControlLabel>Province</ControlLabel>
+            <FormControl
+              autoFocus
+              type='text'
+              value={province}
+              onChange={e => setProvince(e.target.value)}
+            />
+          </FormGroup>
+          <FormGroup controlId='city' bsSize='small'>
+            <ControlLabel>City</ControlLabel>
+            <FormControl
+              autoFocus
+              type='text'
+              value={city}
+              onChange={e => setCity(e.target.value)}
+            />
+          </FormGroup>
+          <FormGroup controlId='street' bsSize='small'>
+            <ControlLabel>Street</ControlLabel>
+            <FormControl
+              autoFocus
+              type='text'
+              value={street}
+              onChange={e => setStreet(e.target.value)}
+            />
+          </FormGroup>   
+          <FormGroup controlId='postalcode' bsSize='small'>
+            <ControlLabel>Postal Code</ControlLabel>
+            <FormControl
+              autoFocus
+              type='text'
+              value={postalCode}
+              onChange={e => setPostalCode(e.target.value)}
+            />
+          </FormGroup>          
+          <Button onClick={onSubmit} variant="primary">Save</Button>
+          <Button onClick={props.closePopup} variant="primary">Cancel</Button>
+        </form>  
+      </div>
     </div>
   );
 };

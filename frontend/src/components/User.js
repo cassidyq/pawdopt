@@ -39,9 +39,7 @@ class User extends Component {
     const str = document.cookie.split('; ');
     const cookie1 = str[0].split('=');
     const cookie2 = str[1].split('=');
-    // console.log('str', str);
-    // console.log('cookie1', cookie1);
-    // console.log('cookie2', cookie2);
+  
     let token = null;
     let userID = null;
 
@@ -175,12 +173,40 @@ class User extends Component {
               </div>
             </div>
 
-<<<<<<< HEAD
             <div className="user-profile-caption">
               <div className="user-bio">
                 <div className="user-profile-title">Email: {this.state.email}</div>
-                <div className="user-bio-text">Edit your adoption application <Button>Edit Bio</Button></div>
-        
+                <div className="user-bio-text">Edit your adoption application 
+                  <Button
+                    className='edit-bio-button'
+                    onClick={() => {
+                      this.setState({ showForm: !this.state.showForm, key: this.state.user_id })
+                      console.log('state set: ', this.state)
+                    }}
+                    variant="primary"
+                    >Edit Bio</Button>
+                  {this.state.showForm ?
+                    <EditUserProfile
+                      closePopup={this.togglePopup.bind(this)}
+                      name={this.state.user_name}
+                      address={this.state.user_address}
+                      city={this.state.user_city}
+                      postalCode={this.state.user_postalCode}
+                      phone={this.state.user_phone}
+                      email={this.state.user_email}
+                      birthdate={this.state.user_birthdate}
+                      house={this.state.user_house}
+                      kids={this.state.user_kids}
+                      otherPets={this.state.user_otherPets}
+                      allergic={this.state.user_allergic}
+                      animalStay={this.state.user_animalStay}
+                      activityLevel={this.state.user_activityLevel}
+                      why={this.state.user_why}
+                      user_id={this.state.user_id}
+                      profile_id={this.state.profile_id}
+                      onEditSubmit={this.updateProfile}
+                    /> : null}
+                </div>
               </div>
             </div>
           </div>
@@ -211,52 +237,6 @@ class User extends Component {
             </table>
           </div>
       </div>
-=======
-            <div className="edit-bio">
-              <Button
-                className="edit-bio-button"
-                onClick={() => {
-                  this.setState({ showForm: !this.state.showForm, key: this.state.user_id })
-                  console.log('state set: ', this.state)
-                }}
-                variant="primary"
-              >Edit Info</Button>
-              {this.state.showForm ?
-                <EditUserProfile
-                  closePopup={this.togglePopup.bind(this)}
-                  name={this.state.user_name}
-                  address={this.state.user_address}
-                  city={this.state.user_city}
-                  postalCode={this.state.user_postalCode}
-                  phone={this.state.user_phone}
-                  email={this.state.user_email}
-                  birthdate={this.state.user_birthdate}
-                  house={this.state.user_house}
-                  kids={this.state.user_kids}
-                  otherPets={this.state.user_otherPets}
-                  allergic={this.state.user_allergic}
-                  animalStay={this.state.user_animalStay}
-                  activityLevel={this.state.user_activityLevel}
-                  why={this.state.user_why}
-                  user_id={this.state.user_id}
-                  profile_id={this.state.profile_id}
-                  onEditSubmit={this.updateProfile}
-                /> : null}
-            </div>
-          </div>
-        </div>
-
-        <span className="user-bio">
-          <div className="about-me">Favourites</div>
-          <Animals animals={this.state.favourites} />
-
-          <p className="user-bio-text"></p>
-
-
-        </span>
-      </div >
-
->>>>>>> master
     )
   }
 }
