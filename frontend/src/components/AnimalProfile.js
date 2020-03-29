@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import '../styles/base-padding.scss';
 import '../styles/AnimalProfile.scss';
 import '../styles/shelter.scss';
-// import { Grid, Icon, Button } from 'semantic-ui-react';
-import { IoIosHeart } from 'react-icons/io';
 import NewApplications from './NewApplications';
 import { addApplication } from '../helpers';
 
@@ -35,12 +33,10 @@ class AnimalProfile extends Component {
         user_id: userID
       })
 
-      console.log('this.props: ', this.props)
       if (this.props.location.animal_info) {
         this.setState({
           animal: this.props.location.animal_info.animal
         })
-        console.log('this.state: ', this.state)
       } else {
         fetch(`http://127.0.0.1:8000/api/animals/${this.props.match.params.id}`, {
           method: 'GET',
@@ -51,11 +47,9 @@ class AnimalProfile extends Component {
         })
           .then(response => response.json())
           .then(data => {
-            console.log('data: ', data)
             this.setState({
               animal: data
             })
-            console.log('this.state: ', this.state)
           })
           .catch(err => console.log(err))
       }
@@ -72,7 +66,6 @@ class AnimalProfile extends Component {
   }
 
   render() {
-    console.log('this.state: ', this.state)
     if (!this.state.animal) {
       return <div></div>
     }
@@ -92,13 +85,9 @@ class AnimalProfile extends Component {
               Gender: {animal.gender} <br />
               Age: {animal.age}<br />
               Size: {animal.size}
-
             </div>
-
           </div>
-          {/* <div className="animal-note">Note: {animal.description}</div> */}
         </div>
-
         <span className="animal-bio">
           <div className="about-me">About Me</div>
           <p className="animal-bio-text">{animal.description}</p>
@@ -122,4 +111,3 @@ class AnimalProfile extends Component {
 
 export default AnimalProfile;
 
-// () => addApplication(animal.id, this.state.user_id, 'new')

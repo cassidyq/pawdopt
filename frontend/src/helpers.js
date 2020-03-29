@@ -43,7 +43,7 @@ export const updateFavourites = function (animalID) {
           .then(response => response.json())
           .then(data => { console.log(data) })
 
-        console.log('add new favourite: ', animalID)
+        // console.log('add new favourite: ', animalID)
       } else { //update existing favourite
         let opposite_of = user_favourite[0].active;
         let favourite_object_id = user_favourite[0].id;
@@ -61,7 +61,7 @@ export const updateFavourites = function (animalID) {
         })
           .then(response => response.json())
           .then(data => { console.log(data) })
-        console.log(`toggle active on animal ${animalID} to ${!opposite_of}`)
+        // console.log(`toggle active on animal ${animalID} to ${!opposite_of}`)
       }
     })
     .catch(error => {
@@ -72,7 +72,7 @@ export const updateFavourites = function (animalID) {
 
 export const addApplication = function (animalId, userId, status, applicationInfo) {
   fetch('http://localhost:8000/api/applications/', {
-    method: 'POST', 
+    method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -85,7 +85,7 @@ export const addApplication = function (animalId, userId, status, applicationInf
   })
     .then(response => response.json())
     .then(data => {
-      console.log('new app', data)
+      // console.log('new app', data)
       // console.log('added')
     })
     .catch(error => {

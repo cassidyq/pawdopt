@@ -3,7 +3,6 @@ import '../styles/base-padding.scss';
 import '../styles/UserProfile.scss';
 import { Button } from 'react-bootstrap';
 import Animals from './Animals';
-import { updateFavourites } from '../helpers';
 import EditUserProfile from './EditUserProfile';
 
 class User extends Component {
@@ -11,15 +10,13 @@ class User extends Component {
   state = {
     username: '',
     email: '',
-    bio: '',
     user_id: null,
     profile_id: null,
     favourites: [],
-    // fave_obj_ids: [],
     currentProfile: [],
     key: 0,
     showForm: false,
-    user_photoURL: '',
+    user_photo: '',
     user_name: '',
     user_address: '',
     user_city: '',
@@ -52,7 +49,6 @@ class User extends Component {
       userID = Number(cookie1[1]);
     }
 
-    console.log('id: ', userID)
     fetch('http://localhost:8000/api/auth/user', {
       headers: {
         'Authorization': `Token ${token}`
@@ -60,7 +56,7 @@ class User extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log("user id? ", data.id);
+        console.log("data after auth user? ", data);
         this.setState({
           username: data.username,
           email: data.email,
@@ -70,21 +66,17 @@ class User extends Component {
       .catch(error => {
         console.error('Error:', error);
       });
-    // console.log(this.state)
+
     fetch('http://localhost:8000/api/profiles', {
       method: 'GET',
       'Authorization': `Token ${token}`
     })
       .then(response => response.json())
       .then(data => {
-        // console.log("profile data: ", data)
-        // let profile_info = {};
         for (const profile of data) {
-          // console.log('profile: ', profile)
           if (profile.user_id === userID) {
-            console.log('profile: ', profile)
             this.setState({
-              // user_photoURL: profile.photo_url,
+              user_photo: profile.photo_url || 'https://res.cloudinary.com/dq4wzywzh/image/upload/v1585454063/computer-icons-user-profile-male-png-favpng-ZmC9dDrp9x27KFnnge0jKWKBs_pwdqfg.jpg',
               user_id: profile.user_id,
               user_name: profile.name,
               user_address: profile.address,
@@ -108,7 +100,7 @@ class User extends Component {
       .catch(error => {
         console.error('Error:', error);
       });
-    console.log('after setting state: ', this.state)
+
     fetch(`http://localhost:8000/api/favourites/get_favourited/${userID}`, {
       method: 'GET',
       headers: {
@@ -117,30 +109,18 @@ class User extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log("fave data:", data)
         this.setState({
           favourites: data,
           user_id: userID
-          // fave_obj_ids: data[1]
         })
-        console.log('what in the heck? ', this.state)
       })
       .catch(error => {
         console.error('Error:', error);
       });
-    console.log('after component mounts: ', this.state)
   }
 
   updateProfile = (url, action, params) => {
 
-    console.log('updateProfile: ', params)
-    // params = { ...params, "user_id": this.state.userID }
-    // console.log(JSON.stringify(params))
-    // params = JSON.stringify(params)
-    // params = { ...params, "user_id": this.state.userID }
-    // console.log('params after spread: ', params)
-    console.log('url: ', url)
-    // console.log('action: ', action)
     fetch(url, {
       method: action,
       headers: {
@@ -150,10 +130,9 @@ class User extends Component {
       body: JSON.stringify(params)
     }).then(response => response.json())
       .then(data => {
-        console.log("data", data)
         this.setState({
           showForm: false,
-          // user_photoURL: data.photo_url,
+          user_photo: data.photo_url,
           user_name: data.name,
           user_address: data.address,
           user_city: data.city,
@@ -169,9 +148,8 @@ class User extends Component {
           user_activityLevel: data.activityLevel,
           user_why: data.why,
         })
-      });
-    console.log('state at the end: ', this.state);
-    // console.log('this.state.user_photoURL: ', this.state.user_photoURL);
+      })
+      .catch(err => console.log(err));
   }
 
   togglePopup() {
@@ -186,7 +164,7 @@ class User extends Component {
         <div className="user-profile-container" >
           <div className="user-details">
             <div className="user-profile-imageclass">
-              <img src={this.state.user_photoURL} alt="user profile image cap" />
+              <img src={this.state.user_photo} alt="user profile image cap" />
             </div>
           </div>
 
@@ -205,7 +183,7 @@ class User extends Component {
                 {this.state.showForm ?
                   <EditUserProfile
                     closePopup={this.togglePopup.bind(this)}
-                    //photoURL={this.state.user_photoURL}
+                    photo={this.state.user_photo}
                     name={this.state.user_name}
                     address={this.state.user_address}
                     city={this.state.user_city}

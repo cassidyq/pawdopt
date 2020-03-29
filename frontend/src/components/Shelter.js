@@ -30,17 +30,13 @@ class Shelter extends Component {
       token = cookie2[1];
       shelterID = Number(cookie1[1]);
     }
-    console.log('shelterID: ', shelterID)
+
     try {
       const res = await fetch('http://127.0.0.1:8000/api/shelters'); // fetching the data from api, before the page loaded
       const shelters = await res.json();
-      console.log(shelters)
-
       const current_shelter = shelters.filter(shelter => shelter.id === shelterID); // <--set this to be the shelter id from cookie
       const animals = current_shelter[0].animals;
       const applications = animals.map(val => val.applications).filter(item => item.length !== 0);
-      console.log('applications', applications);
-      console.log('animals', animals);
       this.setState({
         shelters,
         current_shelter,
@@ -89,9 +85,7 @@ class Shelter extends Component {
       body: JSON.stringify(params)
     }).then(response => response.json())
       .then(data => {
-        console.log("post response data", data)
         let test = [data, ...this.state.animals]
-        console.log(test)
         this.setState({
           showForm: false,
           animals: test
@@ -111,7 +105,6 @@ class Shelter extends Component {
       body: JSON.stringify(params)
     }).then(response => response.json())
       .then(data => {
-        console.log("data", data)
         this.setState({
           showForm: false,
           shelter: data
