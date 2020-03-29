@@ -190,7 +190,7 @@
     "pk": 10,
     "fields": {
       "name": "Pizza Box",
-      "description": "We named him pizza box because he is obsessed with pizza. Obviously is weight is a concern but it's also really cute and he's so old we might as well let him have what he wants. Pizza sleeps most of the day and gives a few deep grumbles for food at night. Never seems bothered by anything except having to walk to his food. Occasionally the smaller cats will sleep on him.",
+      "description": "We named him pizza box because he is obsessed with pizza. Obviously his weight is a concern but it's also really cute and he's so old we might as well let him have what he wants. Pizza sleeps most of the day and gives a few deep grumbles for food at night. Never seems bothered by anything except having to walk to his food. Occasionally the smaller cats will sleep on him.",
       "photo_url": "https://res.cloudinary.com/dq4wzywzh/image/upload/v1585443778/5dcc613f1f00009304dee539_scg7xq.jpg",
       "animal_type": "Cat",
       "breed": "Short Hair",
@@ -221,7 +221,7 @@
     "fields": {
       "name": "Chuck",
       "description": "Chuck never seems to learn. Always going nose first into trouble. Last we he upturned the neighbor's garden trying to bury his toy. Yesterday he ate a bunch of cardboard and threw up next to the garbage. We think he's living his best life and we are looking for someone as reckless as he is to be his partner in crime.",
-      "photo_url": "https://res.cloudinary.com/dq4wzywzh/image/upload/v1585443713/chihuahua-dog-running-across-grass-royalty-free-image-1580743445.jpg_nmbgt3.jpg",
+      "photo_url": "https://res.cloudinary.com/dq4wzywzh/image/upload/v1585443717/photo_l_wdzkb4.jpg",
       "animal_type": "Dog",
       "breed": "Mixed",
       "age": "8",
@@ -295,7 +295,7 @@
     "pk": 17,
     "fields": {
       "name": "Rick Sanchez",
-      "description": "Scientific mastermind. Perfected space & time travel. Goes on wacky misssions with his grandson, Morty, where the collect rare crystals from other worlds, or party with glip glops on Woochester9. Don't worry about having a good time when Rick is around, he's for sure the life of the party. Grab a beer and chill out *burp*, bro. Life is meaningless.",
+      "description": "Scientific mastermind. Perfected space & time travel. Goes on wacky misssions with his grandson, Morty, where they collect rare crystals from other worlds, or party with glip glops on Woochester9. Don't worry about having a good time when Rick is around, he's for sure the life of the party. Grab a beer and chill out *burp*, bro. Life is meaningless.",
       "photo_url": "https://res.cloudinary.com/dq4wzywzh/image/upload/v1585444077/Dog-urinating-in-home-e1579911824367_vevubi.jpg",
       "animal_type": "Dog",
       "breed": "Genius",
@@ -311,7 +311,7 @@
     "fields": {
       "name": "Popcorn",
       "description": "Strange dog. Managed to open the door and get in over night. Tries to bark when the other dogs are barking but can't quite get it right. Looking for an animal speech pathologist to help this little buckaroo achieve his dreams and become one of the dogs. Tested negative for rabbies. Be careful leaving valuables out around Popcorn, we don't quite trust him yet.",
-      "photo_url": "https://res.cloudinary.com/dq4wzywzh/image/upload/v1585443931/_111369540_mediaitem111369539_zecpam.jpg",
+      "photo_url": "https://res.cloudinary.com/dq4wzywzh/image/upload/v1585516421/_111369540_mediaitem111369539_zecpam.jpg",
       "animal_type": "Dog",
       "breed": "Mixed",
       "age": "2",
@@ -351,39 +351,18 @@
     }
   },
   {
-    "model": "applications.application",
-    "pk": 1,
+    "model": "animals.animal",
+    "pk": 21,
     "fields": {
-      "user_id": 1,
-      "animal_id": 1,
-      "info": "I would like to apply for Boris. He is the beet to my borscht."
-    }
-  },
-  {
-    "model": "applications.application",
-    "pk": 2,
-    "fields": {
-      "user_id": 1,
-      "animal_id": 5,
-      "info": "Please, oh please, pick me!"
-    }
-  },
-  {
-    "model": "applications.application",
-    "pk": 3,
-    "fields": {
-      "user_id": 1,
-      "animal_id": 8,
-      "info": "This one will go great on my wall!"
-    }
-  },
-  {
-    "model": "applications.application",
-    "pk": 4,
-    "fields": {
-      "user_id": 1,
-      "animal_id": 2,
-      "info": "My boy would love a dog."
+      "name": "Abigale",
+      "description": "How could you say no to this face? We sure can't. Abigale has quickly won our hearts. A big sweetheart with an even bigger personality. Abigale came to us from Rhode Island where she was bred to be a show dog. She will show you why dogs make the best companions! We will be heavily scrutinizing any and all applicants because this beauty needs some good hearted, fun loving, wonderful folk.",
+      "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1585440861/Pawdopt/e28c9775a5dc14b6b57de2eba4d8dc47_qud1dk.jpg",
+      "animal_type": "Dog",
+      "breed": "Poodle",
+      "age": "3-6",
+      "size": "Small",
+      "gender": "Female",
+      "shelter_id": 3
     }
   }
 ]
