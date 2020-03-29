@@ -28,7 +28,7 @@ class Home extends Component {
     let cookie2;
     let token;
     let userID;
-    if (document.cookie) {
+    if (document.cookie.includes('user_id')) {
       str = document.cookie.split('; ');
       cookie1 = str[0].split('=');
       cookie2 = str[1].split('=');

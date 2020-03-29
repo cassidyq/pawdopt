@@ -7,25 +7,12 @@ export default function EditUserProfile(props) {
   const {
     user_id,
     profile_id,
-    // name,
-    // address,
-    // city,
-    // postalCode,
-    // phone,
-    // email,
-    // birthdate,
-    // house,
-    // kids,
-    // otherPets,
-    // allergic,
-    // animalStay,
-    // activityLevel,
-    // why,
   } = props;
 
-  // console.log('name: ', name)
+  console.log('props in editUserProfile: ', props)
 
   const [profileId, setProfileId] = useState(profile_id || '');
+  // const [photoURL, setPhotoURL] = useState(props.photoURL || 'https://res.cloudinary.com/dq4wzywzh/image/upload/v1585454063/computer-icons-user-profile-male-png-favpng-ZmC9dDrp9x27KFnnge0jKWKBs_pwdqfg.jpg');
   const [name, setName] = useState(props.name || '');
   const [address, setAddress] = useState(props.address || '');
   const [city, setCity] = useState(props.city || '');
@@ -44,6 +31,10 @@ export default function EditUserProfile(props) {
   const onSubmit = (e) => {
     e.preventDefault();
     const params = {
+      // "id": props.profile_id,
+      // "photo_url": photoURL,
+      // "user_id": props.user_id,
+      // "user": props.user_id,
       name,
       address,
       city,
@@ -59,13 +50,14 @@ export default function EditUserProfile(props) {
       activityLevel,
       why,
     };
-    console.log('params: ', params)
+    console.log('profile id: ', profile_id)
     if (!profileId) {
-      // props.onCreateSubmit(`http://127.0.0.1:8000/api/animals/`, 'POST', params);
-      // props.closePopup()
+      props.onCreateSubmit('http://127.0.0.1:8000/api/profiles/', 'POST', params);
+      props.closePopup()
     } else {
       params["id"] = profileId;
-      console.log('id: ', profileId)
+      console.log('params id: ', profileId)
+      // console.log('updating with params: ', params)
       props.onEditSubmit(`http://127.0.0.1:8000/api/profiles/${profileId}`, 'PUT', params);
       props.closePopup()
     }
@@ -75,6 +67,16 @@ export default function EditUserProfile(props) {
     <div className='popup' >
       <div className='popup-content'>
         <form >
+          {/* <FormGroup controlId='photoURL' bsSize='large'>
+            <ControlLabel>Profile pic URL</ControlLabel>
+            <FormControl
+              required
+              autoFocus
+              type='text'
+              value={photoURL}
+              onChange={e => setPhotoURL(e.target.value)}
+            />
+          </FormGroup> */}
           <FormGroup controlId='name' bsSize='large'>
             <ControlLabel>Name</ControlLabel>
             <FormControl
