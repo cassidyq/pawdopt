@@ -86,7 +86,6 @@ export const addApplication = function (animalId, userId, status, applicationInf
     .then(response => response.json())
     .then(data => {
       console.log('new app', data)
-      // console.log('added')
     })
     .catch(error => {
       console.error('Error:', error);

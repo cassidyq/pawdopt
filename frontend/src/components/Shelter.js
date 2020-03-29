@@ -125,7 +125,8 @@ class Shelter extends Component {
             ))}
           </div>
        <br></br>
-          <span class='title'>Active Animals &nbsp; 
+        <div className="shelter-animal-section">
+          <span className='title'>Active Animals &nbsp; 
             <Button 
               onClick={() => this.setState({ showForm: !this.state.showForm, key: 0 })} 
               variant="primary">
@@ -158,15 +159,30 @@ class Shelter extends Component {
             </div>
           ))}
           </div>
+          </div>
         <div className='shelter-applications'>
           <div className='title'>Applications for your animals</div>
-          {this.state.applications.map(application => (
-            <div key={application[0].id}>
-              <div>{application[0].user_id}</div>
-              <div>{application[0].animal_id}</div>
-              <div>{application[0].info}</div>
-            </div>
-          ))}
+            <table >
+              <thead>
+                <tr>
+                  <th>Created At</th>
+                  <th>Animal</th>
+                  <th>Status</th>
+                  <th></th>
+                </tr>
+              </thead>
+                <tbody>
+            {this.state.applications.map(application => (
+
+                <tr key={application[0].id} >
+                  <td>{Date(application[0].created_at).slice(0,25)}</td>
+                  <td>{this.state.animals.filter(item => item.id === application[0].animal_id).map(item => item.name)}</td>
+                  <td>{application[0].status}</td>
+                  <td><button>View</button></td>
+                </tr>
+            ))}  
+              </tbody>
+            </table>
           </div>
         </div>
       </article>

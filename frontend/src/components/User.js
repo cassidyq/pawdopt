@@ -16,7 +16,7 @@ class User extends Component {
     user_id: null,
     profile_id: null,
     favourites: [],
-    // fave_obj_ids: [],
+    applications: [],
     currentProfile: [],
     key: 0,
     showForm: false,
@@ -117,14 +117,15 @@ class User extends Component {
       .then(data => {
         console.log("fave data:", data)
         this.setState({
-          favourites: data,
-          // fave_obj_ids: data[1]
+          favourites: data.favourites,
+          applications: data.applications
         })
         console.log('what in the heck? ', this.state)
       })
       .catch(error => {
         console.error('Error:', error);
       });
+
   }
 
   updateProfile = (url, action, params) => {
@@ -221,21 +222,22 @@ class User extends Component {
           <div className='profile-section-applications'>
             <div className="title">Pending Applications</div>
             <table >
-              <tr>
-                <th>Created At</th>
-                <th>Animal</th>
-                <th>Status</th>
-              </tr>
-              <tr>
-                <td>2020-01-22</td>
-                <td>Chapstick</td>
-                <td>Pending</td>
-              </tr>
-              <tr>
-                <td>2020-01-03</td>
-                <td>Jackson</td>
-                <td>Closed</td>
-              </tr>
+              <thead>
+                <tr>
+                  <th>Created At</th>
+                  <th>Animal</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+              {this.state.applications.map(application => (
+                <tr key={application.id} >
+                  <td>{Date(application.created_at).slice(0,25)}</td>
+                  <td>{application.animal_id}</td>
+                  <td>{application.status}</td>
+                </tr>
+              ))}  
+              </tbody>
             </table>
           </div>
       </div>

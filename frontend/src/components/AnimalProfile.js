@@ -102,9 +102,9 @@ class AnimalProfile extends Component {
             {this.state.showForm ?
               <NewApplications
                 closePopup={this.togglePopup.bind(this)}  
-                animal_id
+                animal_id={animal.id}
                 animal_name={animal.name}
-                user_id
+                user_id={this.state.user_id}
                 status='new'
                 onApplicationSubmit={addApplication}
               />: null}
