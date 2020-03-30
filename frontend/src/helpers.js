@@ -37,7 +37,7 @@ export const updateFavourites = function (animalID, callBackToggleFavourite) {
         })
           .then(response => response.json())
           .then(data => {
-            console.log(data)
+            console.log(`adding animal: ${animalID}`)
             callBackToggleFavourite(data)
           })
 
@@ -58,6 +58,7 @@ export const updateFavourites = function (animalID, callBackToggleFavourite) {
         })
           .then(response => response.json())
           .then(data => {
+            console.log(`updating ${favourite_object_id}, animal: ${animalID}`)
             callBackToggleFavourite(data)
           })
 
@@ -84,7 +85,7 @@ export const addApplication = function (animalId, userId, status, applicationInf
   })
     .then(response => response.json())
     .then(data => {
-      // console.log('new app', data)
+      console.log('new app', data)
       // console.log('added')
     })
     .catch(error => {

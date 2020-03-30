@@ -114,7 +114,7 @@ class User extends Component {
       .then(response => response.json())
       .then(data => {
         console.log('ggg: ', data)
-        let fave_ids = data.map(animal => animal.id)
+        let fave_ids = data.favourites.map(animal => animal.id)
         console.log('fave_ids: ', fave_ids)
         this.setState({
           favourites: data.favourites,
@@ -229,9 +229,9 @@ class User extends Component {
           <div className='profile-section'>
             <div className="title">Your favourite animals</div>
             <Animals
-               toggleFavourite={this.toggleFavourite} animals={this.state.favourites} favourite_animal_ids={this.state.favourite_animal_ids}
+              toggleFavourite={this.toggleFavourite} animals={this.state.favourites} favourite_animal_ids={this.state.favourite_animal_ids}
             />
-          </div>  
+          </div>
           <div className='profile-section-applications'>
             <div className="title">Pending Applications</div>
             <table >
@@ -243,13 +243,13 @@ class User extends Component {
                 </tr>
               </thead>
               <tbody>
-              {this.state.applications.map(application => (
-                <tr key={application.id} >
-                  <td>{Date(application.created_at).slice(0,25)}</td>
-                  <td>{this.state.animals.filter(item => item.id === application.animal_id).map(item => item.name)}</td>
-                  <td>{application.status}</td>
-                </tr>
-              ))}  
+                {this.state.applications.map(application => (
+                  <tr key={application.id} >
+                    <td>{Date(application.created_at).slice(0, 25)}</td>
+                    <td>{this.state.animals.filter(item => item.id === application.animal_id).map(item => item.name)}</td>
+                    <td>{application.status}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>

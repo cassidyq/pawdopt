@@ -30,11 +30,11 @@ class Shelter extends Component {
       token = cookie2[1];
       shelterID = Number(cookie1[1]);
     }
-    
+
     try {
       const res = await fetch(`http://127.0.0.1:8000/api/shelters/shelterpageinfo/${shelterID}`); // fetching the data from api, before the page loaded
       const info = await res.json();
-      console.log(info)
+      console.log('info: ', info)
       const shelter = info.shelter[0];
       const animals = info.animals;
       const applications = info.applications;
@@ -124,61 +124,61 @@ class Shelter extends Component {
       <article className='shelter-page'>
         <div className='shelter-container'>
           <div className='shelter-profile'>
-            
-              <div key={shelter.id}>
-                <img src={shelter.photo_url} className='shelter-logo' alt='shelterlogo'></img>
-                <div className='shelter-name title'>{shelter.name}</div>
-                <Button 
-                  className='edit-shelter-button' 
-                  onClick={() => this.setState({ showForm: !this.state.showForm, key: this.state.shelter.id })} 
-                  variant="primary"
-                >Edit Shelter Info</Button>
-                {this.state.showForm && this.state.key === this.state.shelter.id ? 
-                  <EditShelter 
-                    closePopup={this.togglePopup.bind(this)} 
-                    shelter={shelter} 
-                    onEditSubmit={this.updateShelter} 
-                  /> : null}
-              </div>
-          </div>
-       <br></br>
-        <div className="shelter-animal-section">
-          <span className='title'>Active Animals &nbsp; 
-            <Button style={ {fontFamily:'sans-serif' }}
-              onClick={() => this.setState({ showForm: !this.state.showForm, key: 0 })} 
-              variant="primary">
-              + New Animal
-            </Button>
-          </span>
-          {this.state.showForm && this.state.key === 0 ? 
-            <EditAnimal 
-              closePopup={this.togglePopup.bind(this)}  
-              animal={{ shelter_id: this.state.shelter.id }} 
-              onCreateSubmit={this.createAnimal} 
-            /> : null}
-        <div className='shelter-animals'>
-          {this.state.animals.map(animal => (
-            <div key={animal.id} className="animal-card">
-              <div className='card-header'>{animal.name}</div>
-              <img src={animal.photo_url} className='animalphoto' alt='animalphoto'></img>
-              <br></br>
-              <Button 
-                className='edit-animal-button' 
-                onClick={() => this.setState({ showForm: !this.state.showForm, key: animal.id })} 
+
+            <div key={shelter.id}>
+              <img src={shelter.photo_url} className='shelter-logo' alt='shelterlogo'></img>
+              <div className='shelter-name title'>{shelter.name}</div>
+              <Button
+                className='edit-shelter-button'
+                onClick={() => this.setState({ showForm: !this.state.showForm, key: this.state.shelter.id })}
                 variant="primary"
-              > Edit {animal.name}'s Info</Button>
-              {this.state.showForm && this.state.key === animal.id ? 
-              <EditAnimal 
-                closePopup={this.togglePopup.bind(this)} 
-                animal={animal} 
-                onEditSubmit={this.updateAnimal} 
-              /> : null}
+              >Edit Shelter Info</Button>
+              {this.state.showForm && this.state.key === this.state.shelter.id ?
+                <EditShelter
+                  closePopup={this.togglePopup.bind(this)}
+                  shelter={shelter}
+                  onEditSubmit={this.updateShelter}
+                /> : null}
             </div>
-          ))}
           </div>
+          <br></br>
+          <div className="shelter-animal-section">
+            <span className='title'>Active Animals &nbsp;
+            <Button style={{ fontFamily: 'sans-serif' }}
+                onClick={() => this.setState({ showForm: !this.state.showForm, key: 0 })}
+                variant="primary">
+                + New Animal
+            </Button>
+            </span>
+            {this.state.showForm && this.state.key === 0 ?
+              <EditAnimal
+                closePopup={this.togglePopup.bind(this)}
+                animal={{ shelter_id: this.state.shelter.id }}
+                onCreateSubmit={this.createAnimal}
+              /> : null}
+            <div className='shelter-animals'>
+              {this.state.animals.map(animal => (
+                <div key={animal.id} className="animal-card">
+                  <div className='card-header'>{animal.name}</div>
+                  <img src={animal.photo_url} className='animalphoto' alt='animalphoto'></img>
+                  <br></br>
+                  <Button
+                    className='edit-animal-button'
+                    onClick={() => this.setState({ showForm: !this.state.showForm, key: animal.id })}
+                    variant="primary"
+                  > Edit {animal.name}'s Info</Button>
+                  {this.state.showForm && this.state.key === animal.id ?
+                    <EditAnimal
+                      closePopup={this.togglePopup.bind(this)}
+                      animal={animal}
+                      onEditSubmit={this.updateAnimal}
+                    /> : null}
+                </div>
+              ))}
+            </div>
           </div>
-        <div className='shelter-applications'>
-          <div className='title'>Applications for your animals</div>
+          <div className='shelter-applications'>
+            <div className='title'>Applications for your animals</div>
             <table >
               <thead>
                 <tr>
@@ -188,16 +188,16 @@ class Shelter extends Component {
                   <th></th>
                 </tr>
               </thead>
-                <tbody>
-            {this.state.applications.map(application => (
+              <tbody>
+                {this.state.applications.map(application => (
 
-                <tr key={application.id} >
-                  <td>{Date(application.created_at).slice(0,25)}</td>
-                  <td>{this.state.animals.filter(item => item.id === application.animal_id).map(item => item.name)}</td>
-                  <td>{application.status}</td>
-                  <td><Button>View</Button></td>
-                </tr>
-            ))}  
+                  <tr key={application.id} >
+                    <td>{Date(application.created_at).slice(0, 25)}</td>
+                    <td>{this.state.animals.filter(item => item.id === application.animal_id).map(item => item.name)}</td>
+                    <td>{application.status}</td>
+                    <td><Button>View</Button></td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
