@@ -4,6 +4,9 @@ import '../styles/AnimalProfile.scss';
 import '../styles/shelter.scss';
 import NewApplications from './NewApplications';
 import { addApplication } from '../helpers';
+import { IoIosArrowBack } from 'react-icons/io';
+import { Link, Route } from 'react-router-dom';
+
 
 class AnimalProfile extends Component {
   state = {
@@ -72,7 +75,12 @@ class AnimalProfile extends Component {
     let animal = this.state.animal;
     return (
       <div className="animal-profile-container" >
+
+        <Link to='/' className="back">
+          <IoIosArrowBack size={40} />
+        </Link>
         <h1 className="animal-profile-title">Meet {animal.name} </h1>
+
         <div className="animal-details">
 
           <div className="animal-profile-imageclass">
