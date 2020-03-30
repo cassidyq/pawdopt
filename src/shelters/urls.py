@@ -6,4 +6,5 @@ from . import views
 urlpatterns = [
     path('', views.ListShelter.as_view()),
     path('<int:pk>/', views.DetailShelter.as_view()),
+    path('shelterpageinfo/<userID>', views.GetShelterPageInfo.as_view()),
 ]

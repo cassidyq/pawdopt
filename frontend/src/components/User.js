@@ -17,6 +17,7 @@ class User extends Component {
     profile_id: null,
     favourites: [],
     applications: [],
+    animals: [],
     currentProfile: [],
     key: 0,
     showForm: false,
@@ -118,7 +119,8 @@ class User extends Component {
         console.log("fave data:", data)
         this.setState({
           favourites: data.favourites,
-          applications: data.applications
+          applications: data.applications,
+          animals: data.animals
         })
         console.log('what in the heck? ', this.state)
       })
@@ -233,7 +235,7 @@ class User extends Component {
               {this.state.applications.map(application => (
                 <tr key={application.id} >
                   <td>{Date(application.created_at).slice(0,25)}</td>
-                  <td>{application.animal_id}</td>
+                  <td>{this.state.animals.filter(item => item.id === application.animal_id).map(item => item.name)}</td>
                   <td>{application.status}</td>
                 </tr>
               ))}  
