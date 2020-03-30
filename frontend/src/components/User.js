@@ -4,6 +4,7 @@ import '../styles/UserProfile.scss';
 import { Button } from 'react-bootstrap';
 import Animals from './Animals';
 import EditUserProfile from './EditUserProfile';
+import { updateFavourites } from '../helpers';
 
 class User extends Component {
 
@@ -31,6 +32,7 @@ class User extends Component {
     user_animalStay: '',
     user_activityLevel: '',
     user_why: '',
+    favourite_animal_ids: [],
   }
 
   componentDidMount() {
@@ -109,14 +111,27 @@ class User extends Component {
     })
       .then(response => response.json())
       .then(data => {
+        console.log('ggg: ', data)
+        let fave_ids = data.map(animal => animal.id)
+        console.log('fave_ids: ', fave_ids)
         this.setState({
           favourites: data,
-          user_id: userID
+          user_id: userID,
+          favourite_animal_ids: fave_ids
         })
       })
       .catch(error => {
         console.error('Error:', error);
       });
+  }
+
+  toggleFavourite = animalID => {
+    if (this.state.favourite_animal_ids.includes(animalID)) {
+      this.setState({ favourite_animal_ids: this.state.favourite_animal_ids.filter(id => id !== animalID) })
+    } else {
+      this.setState({ favourite_animal_ids: [...this.state.favourite_animal_ids, animalID] })
+    }
+    updateFavourites(animalID, (response) => { console.log(response) })
   }
 
   updateProfile = (url, action, params) => {
@@ -210,7 +225,7 @@ class User extends Component {
         <div className='profile-section'>
           <div className="title">Your favourite animals</div>
           <Animals
-            animals={this.state.favourites}
+            toggleFavourite={this.toggleFavourite} animals={this.state.favourites} favourite_animal_ids={this.state.favourite_animal_ids}
           />
         </div>
         <div className='profile-section-applications'>

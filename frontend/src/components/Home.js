@@ -1,10 +1,9 @@
 import React, { Component, useState } from 'react';
 import '../styles/base-padding.scss';
 import '../styles/Animals.scss';
-
+import { updateFavourites } from '../helpers';
 import Animals from './Animals';
 import Filter from './Filter';
-import Cookies from 'universal-cookie';
 
 class Home extends Component {
 
@@ -20,6 +19,7 @@ class Home extends Component {
 
 
   async componentDidMount() {
+    console.log("array of ids: ", this.state.favourite_animal_ids)
     let str;
     let cookie1;
     let cookie2;
@@ -86,6 +86,15 @@ class Home extends Component {
       .then(data => this.setState({ animals: data }));
   }
 
+  toggleFavourite = animalID => {
+    if (this.state.favourite_animal_ids.includes(animalID)) {
+      this.setState({ favourite_animal_ids: this.state.favourite_animal_ids.filter(id => id !== animalID) })
+    } else {
+      this.setState({ favourite_animal_ids: [...this.state.favourite_animal_ids, animalID] })
+    }
+    updateFavourites(animalID, (response) => { console.log(response) })
+  }
+
   render() {
 
     return (
@@ -94,7 +103,7 @@ class Home extends Component {
           <Filter onFilterSubmit={this.getFilteredAnimals} categories={this.state.categories} />
         </div>
         <div className='animal-article'>
-          <Animals animals={this.state.animals} favourite_animal_ids={this.state.favourite_animal_ids} />
+          <Animals toggleFavourite={this.toggleFavourite} animals={this.state.animals} favourite_animal_ids={this.state.favourite_animal_ids} />
         </div>
       </div>
     )

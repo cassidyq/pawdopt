@@ -10,63 +10,63 @@ import AnimalProfile from './AnimalProfile';
 
 
 export default function Animals(props) {
-  const { animals, favourite_animal_ids } = props
+  const { animals, favourite_animal_ids, toggleFavourite } = props
   // console.log('animals: ', animals)
-  if (props.favourite_animal_ids) {
-    // const { favourite_animal_ids } = props
-    return (
-      <div className="animal-grid">
-        {animals.map(animal => (
-          < div className="card" key={animal.id} >
-            <NavLink to={{ pathname: `/animals/${animal.id}`, animal_info: { animal } }}>
-              <div className="imageclass">
-                <img className="card-img-top" src={animal.photo_url} alt="Card image cap" />
-              </div>
-            </NavLink>
-            <div className="card-body">
-              <div className="card-title">{animal.name} </div>
-              <p className="card-text">
-                {animal.gender} | {animal.breed} <br />
+  // if (props.favourite_animal_ids) {
+  // const { favourite_animal_ids } = props
+  return (
+    <div className="animal-grid">
+      {animals.map(animal => (
+        < div className="card" key={animal.id} >
+          <NavLink to={{ pathname: `/animals/${animal.id}`, animal_info: { animal } }}>
+            <div className="imageclass">
+              <img className="card-img-top" src={animal.photo_url} alt="Card image cap" />
+            </div>
+          </NavLink>
+          <div className="card-body">
+            <div className="card-title">{animal.name} </div>
+            <p className="card-text">
+              {animal.gender} | {animal.breed} <br />
               Age: {animal.age}
-              </p>
-              <div className='card-footer'>
-                <span>Victoria, BC</span>{(favourite_animal_ids.includes(animal.id)) ? <IoIosHeart size={40} color={'red'} onClick={() => updateFavourites(animal.id)} /> : <IoIosHeart size={40} onClick={() => updateFavourites(animal.id)} />}
-              </div>
+            </p>
+            <div className='card-footer'>
+              <span>Victoria, BC</span>{(favourite_animal_ids.includes(animal.id)) ? <IoIosHeart size={40} color={'red'} onClick={() => toggleFavourite(animal.id)} /> : <IoIosHeart size={40} onClick={() => toggleFavourite(animal.id)} />}
             </div>
           </div>
-        )).reverse()
-        }
-      </div >
-    )
-  } else {
-    return (
-      <div className="animal-grid">
-        {animals.map(animal => (
-          < div className="card" key={animal.id} >
-            <NavLink to={{ pathname: `/animals/${animal.id}`, animal_info: { animal } }}>
-              <div className="imageclass">
-                <img className="card-img-top" src={animal.photo_url} alt="Card image cap" />
-              </div>
-            </NavLink>
-            <div className="card-body">
-              <div className="card-title">{animal.name} </div>
-              <p className="card-text">
-                {animal.gender} | {animal.breed} <br />
-              Age: {animal.age}
-              </p>
-              <div className='card-footer'>
+        </div>
+      )).reverse()
+      }
+    </div >
+  )
+  // } else {
+  //   return (
+  //     <div className="animal-grid">
+  //       {animals.map(animal => (
+  //         < div className="card" key={animal.id} >
+  //           <NavLink to={{ pathname: `/animals/${animal.id}`, animal_info: { animal } }}>
+  //             <div className="imageclass">
+  //               <img className="card-img-top" src={animal.photo_url} alt="Card image cap" />
+  //             </div>
+  //           </NavLink>
+  //           <div className="card-body">
+  //             <div className="card-title">{animal.name} </div>
+  //             <p className="card-text">
+  //               {animal.gender} | {animal.breed} <br />
+  //             Age: {animal.age}
+  //             </p>
+  //             <div className='card-footer'>
 
-                <span>Victoria, BC</span><IoIosHeart size={40} color={'red'} onClick={() => updateFavourites(animal.id)} />
+  //               <span>Victoria, BC</span><IoIosHeart size={40} color={'red'} onClick={() => toggleFavourite(animal.id)} />
 
 
 
 
-              </div>
-            </div>
-          </div>
-        )).reverse()
-        }
-      </div >
-    )
-  }
+  //             </div>
+  //           </div>
+  //         </div>
+  //       )).reverse()
+  //       }
+  //     </div >
+  //   )
+  // }
 }

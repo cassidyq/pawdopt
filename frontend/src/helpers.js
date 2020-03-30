@@ -1,9 +1,4 @@
-
-import Cookies from 'universal-cookie';
-
-
-
-export const updateFavourites = function (animalID) {
+export const updateFavourites = function (animalID, callBackToggleFavourite) {
   let userID = null;
   let user_favourites;
   if (document.cookie.includes('user_id')) {
@@ -41,27 +36,31 @@ export const updateFavourites = function (animalID) {
           })
         })
           .then(response => response.json())
-          .then(data => { console.log(data) })
+          .then(data => {
+            console.log(data)
+            callBackToggleFavourite(data)
+          })
 
-        // console.log('add new favourite: ', animalID)
       } else { //update existing favourite
         let opposite_of = user_favourite[0].active;
         let favourite_object_id = user_favourite[0].id;
-
+        let update_body = {
+          "user_id": userID,
+          "animal_id": animalID,
+          "active": !opposite_of
+        }
         fetch(`http://localhost:8000/api/favourites/${favourite_object_id}`, {
           method: 'PUT', // or 'PUT'
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({
-            "user_id": userID,
-            "animal_id": animalID,
-            "active": !opposite_of
-          })
+          body: JSON.stringify(update_body)
         })
           .then(response => response.json())
-          .then(data => { console.log(data) })
-        // console.log(`toggle active on animal ${animalID} to ${!opposite_of}`)
+          .then(data => {
+            callBackToggleFavourite(data)
+          })
+
       }
     })
     .catch(error => {
