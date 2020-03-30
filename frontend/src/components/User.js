@@ -3,16 +3,14 @@ import '../styles/base-padding.scss';
 import '../styles/UserProfile.scss';
 import { Button } from 'react-bootstrap';
 import Animals from './Animals';
-import { updateFavourites } from '../helpers';
 import EditUserProfile from './EditUserProfile';
+import { updateFavourites } from '../helpers';
 
 class User extends Component {
 
   state = {
     username: '',
     email: '',
-    photo_url: '',
-    bio: '',
     user_id: null,
     profile_id: null,
     favourites: [],
@@ -21,6 +19,7 @@ class User extends Component {
     currentProfile: [],
     key: 0,
     showForm: false,
+    user_photo: '',
     user_name: '',
     user_address: '',
     user_city: '',
@@ -35,13 +34,14 @@ class User extends Component {
     user_animalStay: '',
     user_activityLevel: '',
     user_why: '',
+    favourite_animal_ids: [],
   }
 
   componentDidMount() {
     const str = document.cookie.split('; ');
     const cookie1 = str[0].split('=');
     const cookie2 = str[1].split('=');
-  
+
     let token = null;
     let userID = null;
 
@@ -53,7 +53,6 @@ class User extends Component {
       userID = Number(cookie1[1]);
     }
 
-    console.log('id: ', userID)
     fetch('http://localhost:8000/api/auth/user', {
       headers: {
         'Authorization': `Token ${token}`
@@ -61,9 +60,11 @@ class User extends Component {
     })
       .then(response => response.json())
       .then(data => {
+        console.log("data after auth user? ", data);
         this.setState({
           username: data.username,
           email: data.email,
+          user_id: data.id
         })
       })
       .catch(error => {
@@ -76,15 +77,11 @@ class User extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        // console.log("profile data: ", data)
-        // let profile_info = {};
         for (const profile of data) {
-          // console.log('profile: ', profile)
           if (profile.user_id === userID) {
-            console.log('profile: ', profile)
             this.setState({
-              photo_url: profile.photo_url,
-              user_id: userID,
+              user_photo: profile.photo_url || 'https://res.cloudinary.com/dq4wzywzh/image/upload/v1585454063/computer-icons-user-profile-male-png-favpng-ZmC9dDrp9x27KFnnge0jKWKBs_pwdqfg.jpg',
+              user_id: profile.user_id,
               user_name: profile.name,
               user_address: profile.address,
               user_city: profile.city,
@@ -107,7 +104,7 @@ class User extends Component {
       .catch(error => {
         console.error('Error:', error);
       });
-    console.log('user id: ', userID)
+
     fetch(`http://localhost:8000/api/favourites/get_favourited/${userID}`, {
       method: 'GET',
       headers: {
@@ -116,18 +113,30 @@ class User extends Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log("fave data:", data)
+        console.log('ggg: ', data)
+        let fave_ids = data.map(animal => animal.id)
+        console.log('fave_ids: ', fave_ids)
         this.setState({
           favourites: data.favourites,
           applications: data.applications,
-          animals: data.animals
+          animals: data.animals,
+          user_id: userID,
+          favourite_animal_ids: fave_ids
         })
-        console.log('what in the heck? ', this.state)
       })
       .catch(error => {
         console.error('Error:', error);
       });
 
+  }
+
+  toggleFavourite = animalID => {
+    if (this.state.favourite_animal_ids.includes(animalID)) {
+      this.setState({ favourite_animal_ids: this.state.favourite_animal_ids.filter(id => id !== animalID) })
+    } else {
+      this.setState({ favourite_animal_ids: [...this.state.favourite_animal_ids, animalID] })
+    }
+    updateFavourites(animalID, (response) => { console.log(response) })
   }
 
   updateProfile = (url, action, params) => {
@@ -141,9 +150,9 @@ class User extends Component {
       body: JSON.stringify(params)
     }).then(response => response.json())
       .then(data => {
-        console.log("data", data)
         this.setState({
           showForm: false,
+          user_photo: data.photo_url,
           user_name: data.name,
           user_address: data.address,
           user_city: data.city,
@@ -159,7 +168,8 @@ class User extends Component {
           user_activityLevel: data.activityLevel,
           user_why: data.why,
         })
-      });
+      })
+      .catch(err => console.log(err));
   }
 
   togglePopup() {
@@ -171,54 +181,55 @@ class User extends Component {
     return (
       <div className='user-profile'>
         <h1 className="welcome">Welcome {this.state.username}</h1>
-          <div className="user-profile-container" >
-            <div className="user-details">
-              <div className="user-profile-imageclass">
-                <img src={this.state.photo_url} alt="user profile image cap" />
-              </div>
+        <div className="user-profile-container" >
+          <div className="user-details">
+            <div className="user-profile-imageclass">
+              <img src={this.state.user_photo} alt="user profile image cap" />
             </div>
+          </div>
 
-            <div className="user-profile-caption">
-              <div className="user-bio">
-                <div className="user-profile-title">Email: {this.state.email}</div>
-                <div className="user-bio-text">Edit your adoption application 
+          <div className="user-profile-caption">
+            <div className="user-bio">
+              <div className="user-profile-title">Email: {this.state.email}</div>
+              <div className="user-bio-text">Edit your adoption application
                   <Button
-                    className='edit-bio-button'
-                    onClick={() => {
-                      this.setState({ showForm: !this.state.showForm, key: this.state.user_id })
-                      console.log('state set: ', this.state)
-                    }}
-                    variant="primary"
-                    >Edit Bio</Button>
-                  {this.state.showForm ?
-                    <EditUserProfile
-                      closePopup={this.togglePopup.bind(this)}
-                      name={this.state.user_name}
-                      address={this.state.user_address}
-                      city={this.state.user_city}
-                      postalCode={this.state.user_postalCode}
-                      phone={this.state.user_phone}
-                      email={this.state.user_email}
-                      birthdate={this.state.user_birthdate}
-                      house={this.state.user_house}
-                      kids={this.state.user_kids}
-                      otherPets={this.state.user_otherPets}
-                      allergic={this.state.user_allergic}
-                      animalStay={this.state.user_animalStay}
-                      activityLevel={this.state.user_activityLevel}
-                      why={this.state.user_why}
-                      user_id={this.state.user_id}
-                      profile_id={this.state.profile_id}
-                      onEditSubmit={this.updateProfile}
-                    /> : null}
-                </div>
+                  className='edit-bio-button'
+                  onClick={() => {
+                    this.setState({ showForm: !this.state.showForm, key: this.state.user_id })
+                    console.log('state set: ', this.state)
+                  }}
+                  variant="primary"
+                >Edit Bio</Button>
+                {this.state.showForm ?
+                  <EditUserProfile
+                    closePopup={this.togglePopup.bind(this)}
+                    photo={this.state.user_photo}
+                    name={this.state.user_name}
+                    address={this.state.user_address}
+                    city={this.state.user_city}
+                    postalCode={this.state.user_postalCode}
+                    phone={this.state.user_phone}
+                    email={this.state.user_email}
+                    birthdate={this.state.user_birthdate}
+                    house={this.state.user_house}
+                    kids={this.state.user_kids}
+                    otherPets={this.state.user_otherPets}
+                    allergic={this.state.user_allergic}
+                    animalStay={this.state.user_animalStay}
+                    activityLevel={this.state.user_activityLevel}
+                    why={this.state.user_why}
+                    user_id={this.state.user_id}
+                    profile_id={this.state.profile_id}
+                    onEditSubmit={this.updateProfile}
+                    onCreateSubmit={this.updateProfile}
+                  /> : null}
               </div>
             </div>
           </div>
           <div className='profile-section'>
             <div className="title">Your favourite animals</div>
             <Animals
-              animals={this.state.favourites}
+               toggleFavourite={this.toggleFavourite} animals={this.state.favourites} favourite_animal_ids={this.state.favourite_animal_ids}
             />
           </div>  
           <div className='profile-section-applications'>
@@ -242,6 +253,7 @@ class User extends Component {
               </tbody>
             </table>
           </div>
+        </div>
       </div>
     )
   }

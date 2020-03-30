@@ -35,7 +35,6 @@ class App extends Component {
       <BrowserRouter>
         <Navbar />
         <Route exact path='/' component={Home} />
-        <Route exact path='/about' component={About} />
         <Route exact path='/register' exact component={Register} />
         <Route exact path='/shelter' exact component={Shelter} />
         <Route exact path='/user' exact component={User} />

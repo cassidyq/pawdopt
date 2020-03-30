@@ -8,13 +8,21 @@
   font-family: 'Fredoka One', cursive;
   z-index: 4;
 }
-
+.stretch {
+  display: flex;
+  justify-content: center;
+  background-color: #7091E2;
+  width: 100%;
+  height: 60px;
+  top: 0;
+}
 .navbar-logo {
   z-index: 1000 !important;
   align-items: center;
   margin-top: 5px;
   margin-left: 5px;
   height: 40px;
+  padding-left: 5%;
 
    img {
      height: 120%;
@@ -24,6 +32,7 @@
 .to-profile-page {
   color: white;
   font-style: none;
+  padding-right: 15px;
 }
 
 .navbar-items {
@@ -32,6 +41,7 @@
   justify-content: flex-end;
   align-items: center;
   color: #edf0f1;
+  padding-right: 5%;
 }
 
 .navbar-name {
@@ -46,6 +56,7 @@
   @extend .set-default-text;
   margin-left: 1rem;
   margin-right:1rem;
+  padding-right: 10px;
 }
 .navbar-login {
   @extend .set-default-text;

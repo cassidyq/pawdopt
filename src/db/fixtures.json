@@ -55,13 +55,13 @@
     "pk": 1,
     "fields": {
       "name": "Boris",
-      "description": "Cheeky little schnauzer. Loves belly rubs.",
+      "description": "Cheeky little schnauzer. Loves belly rubs. He recently saw snow for the first time and hated it. Give Boris a warm home and he'll be content. Not great with kids or other dogs.",
       "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584492812/Pawdopt/SchnauzerStanley-1_todyvk.jpg",
-      "animal_type": "dog",
-      "breed": "schnauzer",
+      "animal_type": "Dog",
+      "breed": "Schnauzer",
       "age": "10+",
-      "size": "medium",
-      "gender": "male",
+      "size": "Medium",
+      "gender": "Male",
       "shelter_id": 1
     }
   },
@@ -70,14 +70,14 @@
     "pk": 2,
     "fields": {
       "name": "Clarence",
-      "description": "Poodle with sass. Does bite. Super ugly. Sheds a lot.",
+      "description": "Poodle with sass. Does bite. Super ugly. Sheds a lot. Previous owner was a shut in who tried tirelessly teach Clarence the subtleties of chess. Clarence has beaten some of the staff here at chess.",
       "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584492976/Pawdopt/4064c477e627a632936425e89596bd7b_ssh9w0.jpg",
-      "animal_type": "dog",
-      "breed": "shitzhu",
+      "animal_type": "Dog",
+      "breed": "Shitzhu",
       "age": "3-5",
-      "size": "small",
-      "gender": "female",
-      "shelter_id": 1
+      "size": "Small",
+      "gender": "Female",
+      "shelter_id": 3
     }
   },
   {
@@ -85,14 +85,14 @@
     "pk": 3,
     "fields": {
       "name": "Dream Berry",
-      "description": "Loveable stray we took in. She seems obsessed with the tv remote.",
+      "description": "Loveable stray we took in. She seems obsessed with the tv remote. Perfectly happy to sit on the couch and watch reruns of Friends. She will get up and leave if Jeopardy is on. Favourite food is rare steak. Very protective over those she trusts. Can be somewhat aggressive towards other dogs, especially around food.",
       "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584493111/Pawdopt/357470e4c6e853a9eeb57b53a2fc811e_gytb5u.png",
-      "animal_type": "dog",
-      "breed": "pitbull",
+      "animal_type": "Dog",
+      "breed": "Pitbull",
       "age": "0-1",
-      "size": "medium",
-      "gender": "female",
-      "shelter_id": 1
+      "size": "Medium",
+      "gender": "Female",
+      "shelter_id": 3
     }
   },
   {
@@ -100,13 +100,13 @@
     "pk": 4,
     "fields": {
       "name": "Carlo",
-      "description": "Fantistic hunting dog. Great nose. Hates bread.",
+      "description": "Fantistic hunting dog. Great nose. Hates bread. Carlo loves the water. Can play fetch for hours. Seems to take the lead when in a pack. Has a fierce bark that will ward of would-be invaders. Could use some help managing excitement levels around new people.",
       "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584569891/Pawdopt/german-shepherd_tnt6pi.jpg",
-      "animal_type": "dog",
-      "breed": "german sheppard",
+      "animal_type": "Dog",
+      "breed": "German Sheppard",
       "age": "1-3",
-      "size": "large",
-      "gender": "male",
+      "size": "Large",
+      "gender": "Male",
       "shelter_id": 2
     }
   },
@@ -115,13 +115,13 @@
     "pk": 5,
     "fields": {
       "name": "Marshmallow",
-      "description": "Fuzzy wuzzy itty bitty kitten",
+      "description": "Fuzzy wuzzy itty bitty kitten. We don't know much about Marshmallow yet other than he's the cutest mostest softest thing ever. Loves tagging along in shirt pockets. Wants to become a private investigator so he can track down his father.",
       "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584569799/Pawdopt/How-to-Care-for-Siamese-Kittens-min_oigubo.jpg",
-      "animal_type": "cat",
-      "breed": "siamese",
+      "animal_type": "Cat",
+      "breed": "Siamese",
       "age": "0-1",
-      "size": "small",
-      "gender": "male",
+      "size": "Small",
+      "gender": "Male",
       "shelter_id": 2
     }
   },
@@ -130,13 +130,13 @@
     "pk": 6,
     "fields": {
       "name": "Chapstick",
-      "description": "super moist lips",
+      "description": "super moist lips. Chapstick has a condition where her tongue constantly is hanging out. It's a permanent blep. Chapstick has an affinity for the laser pointer and does NOT want her belly rubbed. Relatively slow to anger, Chapstick is a playful delight who's shy around new people. She warms up fast, faster with treats.",
       "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584493345/Pawdopt/e69b6feb89a524682cf149d527026893_ogo1cd.jpg",
-      "animal_type": "cat",
-      "breed": "tabby",
+      "animal_type": "Cat",
+      "breed": "Tabby",
       "age": "5-8",
-      "size": "small",
-      "gender": "female",
+      "size": "Small",
+      "gender": "Female",
       "shelter_id": 2
     }
   },
@@ -145,13 +145,13 @@
     "pk": 7,
     "fields": {
       "name": "The Duchess",
-      "description": "Queen-like. Many enemies in the community. Not to be trusted with any amount of money.",
+      "description": "Queen-like. Many enemies in the community. Not to be trusted with any amount of money. The Duchess will eat promptly at 7am: wet food, half mixed with dry, spritzed with water and then microwaved for 10 seconds. Make sure to pet her exactly three time before she eats. Any less and she'll complain, any more and she'll get over stimulated and vomit.",
       "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584493449/Pawdopt/1200px-Oryctolagus_cuniculus_Rcdo_jz1n2w.jpg",
-      "animal_type": "rabbit",
-      "breed": "jackrabbit",
+      "animal_type": "Rabbit",
+      "breed": "Jackrabbit",
       "age": "unknown",
-      "size": "big",
-      "gender": "female",
+      "size": "Big",
+      "gender": "Female",
       "shelter_id": 3
     }
   },
@@ -160,13 +160,13 @@
     "pk": 8,
     "fields": {
       "name": "Bobby Christo",
-      "description": "Absolutely no ability to see or hear. Can play the piano beautifully.",
+      "description": "Absolutely no ability to see or hear. Can play the piano beautifully. Hasn't moved since we got him. We aren't convinced he's real but our boss insists on giving him time to acclimate to his new surroundings. We do not have a terrarium for him.",
       "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584493526/Pawdopt/photo-1504450874802-0ba2bcd9b5ae_gqkaxx.jpg",
-      "animal_type": "lizard",
-      "breed": "bearded dragon",
+      "animal_type": "Lizard",
+      "breed": "Bearded Dragon",
       "age": "3-5",
-      "size": "small",
-      "gender": "male",
+      "size": "Small",
+      "gender": "Male",
       "shelter_id": 3
     }
   },
@@ -175,50 +175,194 @@
     "pk": 9,
     "fields": {
       "name": "Ubiquitous",
-      "description": "Keeps escaping her cage. Somehow appears in a new place every time.",
+      "description": "Keeps escaping her cage. Somehow appears in a new place every time. Her p'kaw can be heard from anywhere, it really pierces through anything. She loves grapes and raw salmon. She knows 1 really funny joke but you have to earn her trust before she'll tell you.",
       "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1584493510/Pawdopt/249px-Congo_African_Grey_pet_on_a_perch_roll6e.jpg",
-      "animal_type": "bird",
-      "breed": "parrot",
+      "animal_type": "Bird",
+      "breed": "Parrot",
       "age": "10+",
-      "size": "small",
-      "gender": "female",
+      "size": "Small",
+      "gender": "Female",
       "shelter_id": 3
     }
   },
   {
-    "model": "applications.application",
-    "pk": 1,
+    "model": "animals.animal",
+    "pk": 10,
     "fields": {
-      "user_id": 1,
-      "animal_id": 1,
-      "info": "I would like to apply for Boris. He is the beet to my borscht."
+      "name": "Pizza Box",
+      "description": "We named him pizza box because he is obsessed with pizza. Obviously his weight is a concern but it's also really cute and he's so old we might as well let him have what he wants. Pizza sleeps most of the day and gives a few deep grumbles for food at night. Never seems bothered by anything except having to walk to his food. Occasionally the smaller cats will sleep on him.",
+      "photo_url": "https://res.cloudinary.com/dq4wzywzh/image/upload/v1585443778/5dcc613f1f00009304dee539_scg7xq.jpg",
+      "animal_type": "Cat",
+      "breed": "Short Hair",
+      "age": "10+",
+      "size": "Medium",
+      "gender": "Male",
+      "shelter_id": 1
     }
   },
   {
-    "model": "applications.application",
-    "pk": 2,
+    "model": "animals.animal",
+    "pk": 11,
     "fields": {
-      "user_id": 1,
-      "animal_id": 5,
-      "info": "Please, oh please, pick me!"
+      "name": "Ronnie",
+      "description": "Chipper little go getter. Owns several succesfull start ups. Used to work for UPS as a delivery driver. Gave that up to pursue a passion for organic chemistry and bio engineering. She'll be defending her PhD thesis in the fall. Mother of 2, works 2 part time jobs and finds time to volunteer at the local food bank. Recently awarded the key to the city of Victoria.",
+      "photo_url": "https://res.cloudinary.com/dq4wzywzh/image/upload/v1585443713/chihuahua-dog-running-across-grass-royalty-free-image-1580743445.jpg_nmbgt3.jpg",
+      "animal_type": "Dog",
+      "breed": "Chihuahua",
+      "age": "5",
+      "size": "Small",
+      "gender": "Female",
+      "shelter_id": 1
     }
   },
   {
-    "model": "applications.application",
-    "pk": 3,
+    "model": "animals.animal",
+    "pk": 12,
     "fields": {
-      "user_id": 1,
-      "animal_id": 8,
-      "info": "This one will go great on my wall!"
+      "name": "Chuck",
+      "description": "Chuck never seems to learn. Always going nose first into trouble. Last we he upturned the neighbor's garden trying to bury his toy. Yesterday he ate a bunch of cardboard and threw up next to the garbage. We think he's living his best life and we are looking for someone as reckless as he is to be his partner in crime.",
+      "photo_url": "https://res.cloudinary.com/dq4wzywzh/image/upload/v1585443717/photo_l_wdzkb4.jpg",
+      "animal_type": "Dog",
+      "breed": "Mixed",
+      "age": "8",
+      "size": "Large",
+      "gender": "Male",
+      "shelter_id": 2
     }
   },
   {
-    "model": "applications.application",
-    "pk": 4,
+    "model": "animals.animal",
+    "pk": 13,
     "fields": {
-      "user_id": 1,
-      "animal_id": 2,
-      "info": "My boy would love a dog."
+      "name": "Rusty",
+      "description": "Rusty will be a great dog for the right home. He really doesn't like being alone and is very active. We are hoping his adopting family will want to work on his separation anxiety and take him on long walks/runs.",
+      "photo_url": "https://res.cloudinary.com/dq4wzywzh/image/upload/v1585443707/single-minded-royalty-free-image-997141470-1558379890.jpg_ijchfh.jpg",
+      "animal_type": "Dog",
+      "breed": "Mixed",
+      "age": "0-1",
+      "size": "Small",
+      "gender": "Male",
+      "shelter_id": 1
+    }
+  },
+  {
+    "model": "animals.animal",
+    "pk": 14,
+    "fields": {
+      "name": "Sharpie",
+      "description": "Have my breakfast spaghetti yarn eat grass, throw it back up the fat cat sat on the mat bat away with paws but annoy the old grumpy cat, start a fight and then retreat to wash when i lose yet eat and than sleep on your face check cat door for ambush 10 times before coming in and at four in the morning wake up owner meeeeeeooww scratch at legs and beg for food then cry and yowl until they wake up at two pm jump on window and sleep while observing the bootyful cat next door that u really like but who already has a boyfriend end up making babies with her and let her move in.",
+      "photo_url": "https://res.cloudinary.com/dq4wzywzh/image/upload/v1585443855/cat-playing-with-toy_nkw8n5.jpg",
+      "animal_type": "Cat",
+      "breed": "Maine Coon",
+      "age": "4",
+      "size": "Medium",
+      "gender": "Female",
+      "shelter_id": 2
+    }
+  },
+  {
+    "model": "animals.animal",
+    "pk": 15,
+    "fields": {
+      "name": "Sunset",
+      "description": "Sit on human they not getting up ever meow loudly just to annoy owners. Sit and stare weigh eight pounds but take up a full-size bed ooooh feather moving feather!. Meow in empty rooms stare at owner accusingly then wink have my breakfast spaghetti yarn but thinking longingly about tuna brine pose purrfectly to show my beauty. Scratch. Reward the chosen human with a slow blink kitten is playing with dead mouse give me attention or face the wrath of my claws and scratch at the door then walk away.",
+      "photo_url": "https://res.cloudinary.com/dq4wzywzh/image/upload/v1585443816/1800x1200_cat_weight_other_hnw7bb.jpg",
+      "animal_type": "Cat",
+      "breed": "Tabby",
+      "age": "8",
+      "size": "Medium",
+      "gender": "Male",
+      "shelter_id": 2
+    }
+  },
+  {
+    "model": "animals.animal",
+    "pk": 16,
+    "fields": {
+      "name": "Jelly Bean",
+      "description": "Pupper long bois boofers shoob he made many woofs boof, aqua doggo corgo doggorino long doggo. Corgo snoot doggo woofer pupperino smol, heckin boof bork waggy wags. Fluffer ruff most angery pupper I have ever seen smol borking doggo with a long snoot for pats, heckin super chub, doing me a frighten corgo. Noodle horse clouds yapper I am bekom fat wow very biscit corgo, stop it fren pupperino most angery pupper I have ever seen. Waggy wags big ol pupper long doggo clouds I am bekom fat, doge blop.",
+      "photo_url": "https://res.cloudinary.com/dq4wzywzh/image/upload/v1585443998/national-pets-thumbs-day-640x514_bk9lrj.jpg",
+      "animal_type": "Dog",
+      "breed": "Basenji",
+      "age": "2",
+      "size": "Medium",
+      "gender": "Male",
+      "shelter_id": 2
+    }
+  },
+  {
+    "model": "animals.animal",
+    "pk": 17,
+    "fields": {
+      "name": "Rick Sanchez",
+      "description": "Scientific mastermind. Perfected space & time travel. Goes on wacky misssions with his grandson, Morty, where they collect rare crystals from other worlds, or party with glip glops on Woochester9. Don't worry about having a good time when Rick is around, he's for sure the life of the party. Grab a beer and chill out *burp*, bro. Life is meaningless.",
+      "photo_url": "https://res.cloudinary.com/dq4wzywzh/image/upload/v1585444077/Dog-urinating-in-home-e1579911824367_vevubi.jpg",
+      "animal_type": "Dog",
+      "breed": "Genius",
+      "age": "84",
+      "size": "Medium",
+      "gender": "Male",
+      "shelter_id": 3
+    }
+  },
+  {
+    "model": "animals.animal",
+    "pk": 18,
+    "fields": {
+      "name": "Popcorn",
+      "description": "Strange dog. Managed to open the door and get in over night. Tries to bark when the other dogs are barking but can't quite get it right. Looking for an animal speech pathologist to help this little buckaroo achieve his dreams and become one of the dogs. Tested negative for rabbies. Be careful leaving valuables out around Popcorn, we don't quite trust him yet.",
+      "photo_url": "https://res.cloudinary.com/dq4wzywzh/image/upload/v1585516421/_111369540_mediaitem111369539_zecpam.jpg",
+      "animal_type": "Dog",
+      "breed": "Mixed",
+      "age": "2",
+      "size": "Medium",
+      "gender": "Male",
+      "shelter_id": 2
+    }
+  },
+  {
+    "model": "animals.animal",
+    "pk": 19,
+    "fields": {
+      "name": "Fruit Loop",
+      "description": "Rescued from an exotic game trader in James Bay. Fruit Loop misses the tropics. We're hopping a family traveling to South America will take Fruit Loop on an adventure back home. Fruit Loop is guaranteed to get you a discount on cereal in any province or state.",
+      "photo_url": "https://res.cloudinary.com/dq4wzywzh/image/upload/v1585443913/cargo_live_animals_parrot_dynmp9.jpg",
+      "animal_type": "Bird",
+      "breed": "Tucan",
+      "age": "2",
+      "size": "Medium",
+      "gender": "Female",
+      "shelter_id": 3
+    }
+  },
+  {
+    "model": "animals.animal",
+    "pk": 20,
+    "fields": {
+      "name": "Musket",
+      "description": "Wiked little devil. Caution: seriously aggressive and territorial. Intimidating to hold eye contact with. Usually goes to the bathroom in inappropriate places. No signs of empathy or sympathy for others. Greedy beyond belief. Only eats live birds. Prefers heavy metal over country music. Drink of choice: Jameson whiskey. Has never lost a fight. 13k followers on Instagram.",
+      "photo_url": "https://res.cloudinary.com/dq4wzywzh/image/upload/v1585443870/1800x1200_cat_eating_meal_other_dzfofl.jpg",
+      "animal_type": "Cat",
+      "breed": "Norwegian Forrest Cat",
+      "age": "2",
+      "size": "Medium",
+      "gender": "Female",
+      "shelter_id": 3
+    }
+  },
+  {
+    "model": "animals.animal",
+    "pk": 21,
+    "fields": {
+      "name": "Abigale",
+      "description": "How could you say no to this face? We sure can't. Abigale has quickly won our hearts. A big sweetheart with an even bigger personality. Abigale came to us from Rhode Island where she was bred to be a show dog. She will show you why dogs make the best companions! We will be heavily scrutinizing any and all applicants because this beauty needs some good hearted, fun loving, wonderful folk.",
+      "photo_url": "https://res.cloudinary.com/cassidyquaite/image/upload/v1585440861/Pawdopt/e28c9775a5dc14b6b57de2eba4d8dc47_qud1dk.jpg",
+      "animal_type": "Dog",
+      "breed": "Poodle",
+      "age": "3-6",
+      "size": "Small",
+      "gender": "Female",
+      "shelter_id": 3
     }
   }
 ]

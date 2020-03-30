@@ -12,14 +12,14 @@ class Shelter extends Component {
     applications: [],
     profiles: [],
     showForm: false,
-    key: 0
+    key: 0,
+    shelterID: null,
   };
 
   async componentDidMount() {
     const str = document.cookie.split('; ');
     const cookie1 = str[0].split('=');
     const cookie2 = str[1].split('=');
-  
     let token = null;
     let shelterID = null;
 
@@ -56,11 +56,11 @@ class Shelter extends Component {
     }
   }
 
-  togglePopup() {  
-    this.setState({  
-         showForm: !this.state.showForm 
-    });  
-  } 
+  togglePopup() {
+    this.setState({
+      showForm: !this.state.showForm
+    });
+  }
 
   updateAnimal = (url, action, params) => {
     fetch(url, {
@@ -71,15 +71,15 @@ class Shelter extends Component {
       },
       body: JSON.stringify(params)
     }).then(response => response.json())
-       .then (data => {
-          const animalsArr = this.state.animals
-          const index = animalsArr.findIndex(p => p.id == data.id)
-          animalsArr[index] = data
-         this.setState({ 
-           showForm: false,
-           animals: animalsArr
-         })
-    });
+      .then(data => {
+        const animalsArr = this.state.animals
+        const index = animalsArr.findIndex(p => p.id == data.id)
+        animalsArr[index] = data
+        this.setState({
+          showForm: false,
+          animals: animalsArr
+        })
+      });
   }
 
   createAnimal = (url, action, params) => {
@@ -91,16 +91,14 @@ class Shelter extends Component {
       },
       body: JSON.stringify(params)
     }).then(response => response.json())
-       .then (data => {
-         console.log("post response data", data)
-         let test = [ data, ...this.state.animals]
-         console.log(test)
-         this.setState({ 
-           showForm: false,
-           animals: test
+      .then(data => {
+        let test = [data, ...this.state.animals]
+        this.setState({
+          showForm: false,
+          animals: test
 
-         })
-    });
+        })
+      });
   }
 
   updateShelter = (url, action, params) => {
@@ -113,13 +111,12 @@ class Shelter extends Component {
       },
       body: JSON.stringify(params)
     }).then(response => response.json())
-       .then (data => {
-         console.log("data", data)
-         this.setState({ 
+      .then(data => {
+        this.setState({
           showForm: false,
           shelter: data
-         })
-    });
+        })
+      });
   }
   render() {
     const shelter = this.state.shelter;

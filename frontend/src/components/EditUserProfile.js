@@ -7,25 +7,10 @@ export default function EditUserProfile(props) {
   const {
     user_id,
     profile_id,
-    // name,
-    // address,
-    // city,
-    // postalCode,
-    // phone,
-    // email,
-    // birthdate,
-    // house,
-    // kids,
-    // otherPets,
-    // allergic,
-    // animalStay,
-    // activityLevel,
-    // why,
   } = props;
 
-  // console.log('name: ', name)
-
   const [profileId, setProfileId] = useState(profile_id || '');
+  const [photo, setPhoto] = useState(props.photo || 'https://res.cloudinary.com/dq4wzywzh/image/upload/v1585454063/computer-icons-user-profile-male-png-favpng-ZmC9dDrp9x27KFnnge0jKWKBs_pwdqfg.jpg');
   const [name, setName] = useState(props.name || '');
   const [address, setAddress] = useState(props.address || '');
   const [city, setCity] = useState(props.city || '');
@@ -40,10 +25,11 @@ export default function EditUserProfile(props) {
   const [animalStay, setAnimalStay] = useState(props.animalStay || '');
   const [activityLevel, setActivityLevel] = useState(props.activityLevel || '');
   const [why, setWhy] = useState(props.why || '');
-  // console.log('name: ', props.name)
+
   const onSubmit = (e) => {
     e.preventDefault();
     const params = {
+      "photo_url": photo,
       name,
       address,
       city,
@@ -59,13 +45,9 @@ export default function EditUserProfile(props) {
       activityLevel,
       why,
     };
-    console.log('params: ', params)
-    if (!profileId) {
-      // props.onCreateSubmit(`http://127.0.0.1:8000/api/animals/`, 'POST', params);
-      // props.closePopup()
-    } else {
+
+    if (profileId) {
       params["id"] = profileId;
-      console.log('id: ', profileId)
       props.onEditSubmit(`http://127.0.0.1:8000/api/profiles/${profileId}`, 'PUT', params);
       props.closePopup()
     }
@@ -75,6 +57,16 @@ export default function EditUserProfile(props) {
     <div className='popup' >
       <div className='popup-content'>
         <form >
+          <FormGroup controlId='photo' bsSize='large'>
+            <ControlLabel>Photo</ControlLabel>
+            <FormControl
+              required
+              autoFocus
+              type='text'
+              value={photo}
+              onChange={e => setPhoto(e.target.value)}
+            />
+          </FormGroup>
           <FormGroup controlId='name' bsSize='large'>
             <ControlLabel>Name</ControlLabel>
             <FormControl
@@ -146,7 +138,7 @@ export default function EditUserProfile(props) {
             />
           </FormGroup>
           <FormGroup controlId='house' bsSize='large'>
-            <ControlLabel>What do you live in? (House, appartment, van, etc.)</ControlLabel>
+            <ControlLabel>What do you live in? (House, apartment, van, etc.)</ControlLabel>
             <FormControl
               required
               autoFocus
@@ -206,7 +198,7 @@ export default function EditUserProfile(props) {
             />
           </FormGroup>
           <FormGroup controlId='why' bsSize='large'>
-            <ControlLabel>What sets you appart as a good animal caregiver?</ControlLabel>
+            <ControlLabel>What sets you apart as a good animal caregiver?</ControlLabel>
             <FormControl
               required
               autoFocus
