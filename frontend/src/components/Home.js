@@ -47,7 +47,7 @@ class Home extends Component {
       const animals = await res.json();
       this.setState({
         animals,
-        loading: false
+        loading: false,
       });
 
       const res2 = await fetch('http://127.0.0.1:8000/api/animals/categories');
@@ -58,13 +58,13 @@ class Home extends Component {
       if (userID) {
         const res3 = await fetch(`http://127.0.0.1:8000/api/favourites/get_favourited/${userID}`);
         const favourites = await res3.json();
-
         const favourite_animal_ids = [];
         for (const favourite of favourites) {
           favourite_animal_ids.push(favourite.id)
         }
         this.setState({
           favourite_animal_ids,
+          loading: false,
         })
       }
     } catch (e) {
@@ -73,8 +73,6 @@ class Home extends Component {
   };
 
   getFilteredAnimals = (filterParams) => {
-
-
    
     let url = 'http://127.0.0.1:8000/api/animals/filter?';
     const activeParams = Object.keys(filterParams).filter(key => filterParams[key] !== '');
@@ -105,7 +103,7 @@ class Home extends Component {
     return (
       <div>
         <div className='filter'>
-          <Filter onFilterSubmit={this.getFilteredAnimals} categories={this.state.categories} />
+          <Filter onFilterSubmit={this.getFilteredAnimals} categories={this.state.categories}/>
         </div>
         <div className='animal-article'>
           <Animals toggleFavourite={this.toggleFavourite} animals={this.state.animals} favourite_animal_ids={this.state.favourite_animal_ids} loading={this.state.loading} />

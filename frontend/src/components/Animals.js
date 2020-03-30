@@ -15,14 +15,13 @@ export default function Animals(props) {
 
   return (
     <div className="animal-grid">
-            <div className="loading-status">
-            <ClipLoader
-              size={150}
-              color={"#7091E2"}
-              loading={loading}
-            />
-          </div>
-
+      <div className="loading-status">
+        <ClipLoader
+          size={150}
+          color={"#7091E2"}
+            loading={loading}
+        />
+      </div>
           {animals.map(animal => (
             < div className="card" key={animal.id} >
               <NavLink to={{ pathname: `/animals/${animal.id}`, animal_info: { animal } }}>

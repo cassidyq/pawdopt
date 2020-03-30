@@ -35,6 +35,7 @@ class User extends Component {
     user_activityLevel: '',
     user_why: '',
     favourite_animal_ids: [],
+    loading: true,
   }
 
   componentDidMount() {
@@ -121,7 +122,8 @@ class User extends Component {
           applications: data.applications,
           animals: data.animals,
           user_id: userID,
-          favourite_animal_ids: fave_ids
+          favourite_animal_ids: fave_ids,
+          loading: false,
         })
       })
       .catch(error => {
@@ -229,7 +231,7 @@ class User extends Component {
           <div className='profile-section'>
             <div className="title">Your favourite animals</div>
             <Animals
-              toggleFavourite={this.toggleFavourite} animals={this.state.favourites} favourite_animal_ids={this.state.favourite_animal_ids}
+              toggleFavourite={this.toggleFavourite} animals={this.state.favourites} favourite_animal_ids={this.state.favourite_animal_ids} loading={this.state.loading}
             />
           </div>
           <div className='profile-section-applications'>
