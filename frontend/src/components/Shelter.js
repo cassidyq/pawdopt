@@ -122,7 +122,7 @@ class Shelter extends Component {
     const shelter = this.state.shelter;
     return (
       <article className='shelter-page'>
-        <div>
+        <div className='shelter-container'>
           <div className='shelter-profile'>
             
               <div key={shelter.id}>

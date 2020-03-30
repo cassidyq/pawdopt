@@ -84,12 +84,8 @@ export const addApplication = function (animalId, userId, status, applicationInf
   })
     .then(response => response.json())
     .then(data => {
-<<<<<<< HEAD
-      console.log('new app', data)
-=======
       // console.log('new app', data)
       // console.log('added')
->>>>>>> master
     })
     .catch(error => {
       console.error('Error:', error);
