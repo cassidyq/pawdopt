@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import './Login.css';
+import '../styles/Login.scss';
 import '../styles/base-padding.scss';
 
 class RegisterShelter extends Component {

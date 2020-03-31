@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/base-padding.scss';
 import { Button } from 'react-bootstrap';
-import './Login.css';
+import '../styles/Login.scss';
 import { Link } from 'react-router-dom';
 
 export default function Login(props) {

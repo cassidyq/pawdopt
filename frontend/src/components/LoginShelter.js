@@ -1,7 +1,7 @@
 import React, { Component, } from 'react';
 import '../styles/base-padding.scss';
 import { Button, FormGroup, FormControl, ControlLabel } from 'react-bootstrap';
-import './Login.css';
+import '../styles/Login.scss';
 import { Link, Redirect } from 'react-router-dom';
 // import * as actions from '../store/actions/auth';
 // import PropTypes from 'prop-types';
