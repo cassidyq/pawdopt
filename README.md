@@ -1,4 +1,5 @@
-# Pawdopt - Animal Adoption App
+!["pawdopt-logo"](https://github.com/cassidyq/pawdopt/blob/master/frontend/src/images/pawdopt_blue_logo.png?raw=true)
+# Animal Adoption App
 
 ## Info
 
