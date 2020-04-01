@@ -87,7 +87,9 @@ close the server with ctrl-c.
 
 ## Screenshots
 
-soon...?
+!["home-page"](https://github.com/cassidyq/pawdopt/blob/master/screentshots/pawdopt-home-page.png?raw=true)
+!["animal-bio"](https://github.com/cassidyq/pawdopt/blob/master/screenshots/pawdopt-animal-bio.png?raw=true)
+
 
 ## Contributers
 
