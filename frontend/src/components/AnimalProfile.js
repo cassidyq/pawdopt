@@ -58,7 +58,8 @@ class AnimalProfile extends Component {
       }
     } else if (this.props.location.animal_info) {
       this.setState({
-        animal: this.props.location.animal_info.animal
+        animal: this.props.location.animal_info.animal,
+        // animalID: this.props.location.animal_info.animal.id
       })
     }
   }
@@ -104,7 +105,7 @@ class AnimalProfile extends Component {
             {this.state.showForm ?
               <NewApplications
                 closePopup={this.togglePopup.bind(this)}
-                animal_id
+                animal_id={animal.id}
                 animal_name={animal.name}
                 user_id={this.state.user_id}
                 status='new'

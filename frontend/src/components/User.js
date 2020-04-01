@@ -179,6 +179,7 @@ class User extends Component {
       showForm: !this.state.showForm
     });
   }
+
   render() {
     return (
       <div className='user-profile'>
@@ -189,7 +190,6 @@ class User extends Component {
               <img src={this.state.user_photo} alt="user profile image cap" />
             </div>
           </div>
-
           <div className="user-profile-caption">
             <div className="user-bio">
               <div className="user-profile-title">Email: {this.state.email}</div>
@@ -228,37 +228,117 @@ class User extends Component {
               </div>
             </div>
           </div>
-          <div className='profile-section'>
-            <div className="title">Your favourite animals</div>
-            <Animals
-              toggleFavourite={this.toggleFavourite} animals={this.state.favourites} favourite_animal_ids={this.state.favourite_animal_ids} loading={this.state.loading}
-            />
-          </div>
-          <div className='profile-section-applications'>
-            <div className="title">Pending Applications</div>
-            <table >
-              <thead>
-                <tr>
-                  <th>Created At</th>
-                  <th>Animal</th>
-                  <th>Status</th>
+        </div>
+        <div className='profile-section'>
+          <div className="title">Your favourite animals</div>
+          <Animals
+            toggleFavourite={this.toggleFavourite} animals={this.state.favourites} favourite_animal_ids={this.state.favourite_animal_ids} loading={this.state.loading}
+          />
+        </div>
+        <div className='profile-section-applications'>
+          <div className="title">Pending Applications</div>
+          <table >
+            <thead>
+              <tr>
+                <th>Created At</th>
+                <th>Animal</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.applications.map(application => (
+                <tr key={application.id} >
+                  <td>{Date(application.created_at).slice(0, 25)}</td>
+                  <td>{this.state.animals.filter(item => item.id === application.animal_id).map(item => item.name)}</td>
+                  <td>{application.status}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {this.state.applications.map(application => (
-                  <tr key={application.id} >
-                    <td>{Date(application.created_at).slice(0, 25)}</td>
-                    <td>{this.state.animals.filter(item => item.id === application.animal_id).map(item => item.name)}</td>
-                    <td>{application.status}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     )
   }
+  //   render() {
+  //     return (
+  //       <div className='user-profile'>
+  //         <h1 className="welcome">Welcome {this.state.username}</h1>
+  //         <div className="user-profile-container" >
+  //           <div className="user-details">
+  //             <div className="user-profile-imageclass">
+  //               <img src={this.state.user_photo} alt="user profile image cap" />
+  //             </div>
+  //           </div>
+
+  //           <div className="user-profile-caption">
+  //             <div className="user-bio">
+  //               <div className="user-profile-title">Email: {this.state.email}</div>
+  //               <div className="user-bio-text">Edit your adoption application
+  //                   <Button
+  //                   className='edit-bio-button'
+  //                   onClick={() => {
+  //                     this.setState({ showForm: !this.state.showForm, key: this.state.user_id })
+  //                     console.log('state set: ', this.state)
+  //                   }}
+  //                   variant="primary"
+  //                 >Edit Bio</Button>
+  //                 {this.state.showForm ?
+  //                   <EditUserProfile
+  //                     closePopup={this.togglePopup.bind(this)}
+  //                     photo={this.state.user_photo}
+  //                     name={this.state.user_name}
+  //                     address={this.state.user_address}
+  //                     city={this.state.user_city}
+  //                     postalCode={this.state.user_postalCode}
+  //                     phone={this.state.user_phone}
+  //                     email={this.state.user_email}
+  //                     birthdate={this.state.user_birthdate}
+  //                     house={this.state.user_house}
+  //                     kids={this.state.user_kids}
+  //                     otherPets={this.state.user_otherPets}
+  //                     allergic={this.state.user_allergic}
+  //                     animalStay={this.state.user_animalStay}
+  //                     activityLevel={this.state.user_activityLevel}
+  //                     why={this.state.user_why}
+  //                     user_id={this.state.user_id}
+  //                     profile_id={this.state.profile_id}
+  //                     onEditSubmit={this.updateProfile}
+  //                     onCreateSubmit={this.updateProfile}
+  //                   /> : null}
+  //               </div>
+  //             </div>
+  //           </div>
+  //           <div className='profile-section'>
+  //             <div className="title">Your favourite animals</div>
+  //             <Animals
+  //               toggleFavourite={this.toggleFavourite} animals={this.state.favourites} favourite_animal_ids={this.state.favourite_animal_ids} loading={this.state.loading}
+  //             />
+  //           </div>
+  //           <div className='profile-section-applications'>
+  //             <div className="title">Pending Applications</div>
+  //             <table >
+  //               <thead>
+  //                 <tr>
+  //                   <th>Created At</th>
+  //                   <th>Animal</th>
+  //                   <th>Status</th>
+  //                 </tr>
+  //               </thead>
+  //               <tbody>
+  //                 {this.state.applications.map(application => (
+  //                   <tr key={application.id} >
+  //                     <td>{Date(application.created_at).slice(0, 25)}</td>
+  //                     <td>{this.state.animals.filter(item => item.id === application.animal_id).map(item => item.name)}</td>
+  //                     <td>{application.status}</td>
+  //                   </tr>
+  //                 ))}
+  //               </tbody>
+  //             </table>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     )
+  //   }
 }
 
 
