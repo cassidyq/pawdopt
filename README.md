@@ -93,8 +93,8 @@ close the server with ctrl-c.
 
 ## Contributers
 
-- Cassidy Quaite: https://github.com/cassidyq
+- Cassidy Quaite: .[cassidyq].(https://github.com/cassidyq)
 
-- Max Rosenthal: https://github.com/mxrosenthal
+- Max Rosenthal: .[mxrosenthal].(https://github.com/mxrosenthal)
 
-- Benjamin Vincent: https://github.com/BenjaminVincent
+- Benjamin Vincent: .[BenjaminVincent].(https://github.com/BenjaminVincent)
